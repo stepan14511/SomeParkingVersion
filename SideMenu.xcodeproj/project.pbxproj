@@ -33,6 +33,13 @@
 		84B489BA1DD469DA00D6CB43 /* SideMenu.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B91DD469DA00D6CB43 /* SideMenu.podspec */; };
 		867BC4B5254C6EE60066F565 /* PopolnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */; };
 		867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867BC4BC254C93D20066F565 /* TransportViewController.swift */; };
+		868F7F352587D810003E68E9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F342587D810003E68E9 /* Network.swift */; };
+		868F7F362587D810003E68E9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F342587D810003E68E9 /* Network.swift */; };
+		868F7F3B2587D98F003E68E9 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F3A2587D98F003E68E9 /* AccountModel.swift */; };
+		868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F3A2587D98F003E68E9 /* AccountModel.swift */; };
+		868F7F422587E468003E68E9 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F412587E468003E68E9 /* CarModel.swift */; };
+		868F7F432587E468003E68E9 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F412587E468003E68E9 /* CarModel.swift */; };
+		86B1E6B12576B0AD0019D182 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1E6B02576B0AD0019D182 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +85,10 @@
 		84FFB98723556C4400E241DA /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopolnitViewController.swift; sourceTree = "<group>"; };
 		867BC4BC254C93D20066F565 /* TransportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
+		868F7F342587D810003E68E9 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		868F7F3A2587D98F003E68E9 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		868F7F412587E468003E68E9 /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
+		86B1E6B02576B0AD0019D182 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C7DA85E73FE6228663AD9236 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,11 +145,10 @@
 			isa = PBXGroup;
 			children = (
 				65FF1B391DE31DA3007B0845 /* SupportingFiles */,
+				866D9EE12586898B00DFA56E /* ServerConnection */,
+				868F7F392587D969003E68E9 /* CustomClasses */,
+				86B1E6AD2576B0890019D182 /* ViewControllers */,
 				7B48A0D51DCB2487002990A1 /* AppDelegate.swift */,
-				7B48A0F31DCB2518002990A1 /* MainViewController.swift */,
-				7B48A0F51DCB2518002990A1 /* SideMenuTableViewController.swift */,
-				867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */,
-				867BC4BC254C93D20066F565 /* TransportViewController.swift */,
 				7B552D5C1DCC65830010301C /* Launch Screen.storyboard */,
 				7B5FA9B51DCB269700278DF6 /* Main.storyboard */,
 			);
@@ -183,6 +193,35 @@
 				84FFB98523556C1600E241DA /* SideMenu.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		866D9EE12586898B00DFA56E /* ServerConnection */ = {
+			isa = PBXGroup;
+			children = (
+				868F7F342587D810003E68E9 /* Network.swift */,
+			);
+			name = ServerConnection;
+			sourceTree = "<group>";
+		};
+		868F7F392587D969003E68E9 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				868F7F3A2587D98F003E68E9 /* AccountModel.swift */,
+				868F7F412587E468003E68E9 /* CarModel.swift */,
+			);
+			name = CustomClasses;
+			sourceTree = "<group>";
+		};
+		86B1E6AD2576B0890019D182 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7B48A0F31DCB2518002990A1 /* MainViewController.swift */,
+				7B48A0F51DCB2518002990A1 /* SideMenuTableViewController.swift */,
+				867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */,
+				867BC4BC254C93D20066F565 /* TransportViewController.swift */,
+				86B1E6B02576B0AD0019D182 /* LoginViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		9FB98148377EAEC00E35AC14 /* Pods */ = {
@@ -355,10 +394,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86B1E6B12576B0AD0019D182 /* LoginViewController.swift in Sources */,
 				7B48A0F81DCB2518002990A1 /* SideMenuTableViewController.swift in Sources */,
 				867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */,
+				868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */,
 				7B48A0F61DCB2518002990A1 /* MainViewController.swift in Sources */,
+				868F7F432587E468003E68E9 /* CarModel.swift in Sources */,
 				867BC4B5254C6EE60066F565 /* PopolnitViewController.swift in Sources */,
+				868F7F362587D810003E68E9 /* Network.swift in Sources */,
 				7B48A0D61DCB2487002990A1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,14 +412,17 @@
 			files = (
 				849F7B9923210C9A005DEB6A /* SideMenuInteractionController.swift in Sources */,
 				849F7B9B23210C9A005DEB6A /* Extensions.swift in Sources */,
+				868F7F422587E468003E68E9 /* CarModel.swift in Sources */,
 				849F7BA323210C9A005DEB6A /* Protected.swift in Sources */,
 				849F7B9F23210C9A005DEB6A /* Deprecations.swift in Sources */,
 				849F7B9A23210C9A005DEB6A /* Initializable.swift in Sources */,
+				868F7F352587D810003E68E9 /* Network.swift in Sources */,
 				849F7BA223210C9A005DEB6A /* SideMenuManager.swift in Sources */,
 				849F7B9E23210C9A005DEB6A /* SideMenuPushCoordinator.swift in Sources */,
 				849F7BA123210C9A005DEB6A /* SideMenuPresentationController.swift in Sources */,
 				849F7B9C23210C9A005DEB6A /* SideMenuPresentationStyle.swift in Sources */,
 				849F7B9823210C9A005DEB6A /* SideMenuAnimationController.swift in Sources */,
+				868F7F3B2587D98F003E68E9 /* AccountModel.swift in Sources */,
 				849F7BA023210C9A005DEB6A /* Print.swift in Sources */,
 				849F7B9723210C9A005DEB6A /* SideMenuTransitionController.swift in Sources */,
 				849F7B9623210C9A005DEB6A /* UITableViewVibrantCell.swift in Sources */,
