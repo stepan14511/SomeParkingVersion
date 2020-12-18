@@ -9,6 +9,8 @@ import SideMenu
 
 class MainViewController: UIViewController {
     private var menuSettings: SideMenuSettings = SideMenuSettings()
+    
+    static var doOpenLogin: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +100,14 @@ extension MainViewController: SideMenuNavigationControllerDelegate {
     }
     
     func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
-        print("SideMenu Disappeared! (animated: \(animated))")
+        if(MainViewController.doOpenLogin){
+            MainViewController.doOpenLogin = false
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let secondViewController = storyboard.instantiateViewController(withIdentifier: "login") as! LoginViewController
+            secondViewController.modalPresentationStyle = .fullScreen
+            secondViewController.modalTransitionStyle = .flipHorizontal
+            self.present(secondViewController, animated: true, completion: nil)
+        }
     }
 }

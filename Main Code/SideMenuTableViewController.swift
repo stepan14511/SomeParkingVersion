@@ -25,6 +25,7 @@ class SideMenuTableViewController: UITableViewController {
         //imageView.contentMode = .scaleAspectFit
         //imageView.backgroundColor = UIColor.white
         tableView.backgroundView?.backgroundColor = UIColor.black
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,6 +36,17 @@ class SideMenuTableViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath == [0, 1]{
+            AccountController.password_hash = nil
+            AccountController.account = nil
+            AccountController.saveDataToMemory()
+            
+            MainViewController.doOpenLogin = true
+            dismiss(animated: true, completion: nil)
+        }
     }
     
 }

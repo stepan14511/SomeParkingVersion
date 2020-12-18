@@ -8,58 +8,86 @@
 
 import Foundation
 import UIKit
-import var CommonCrypto.CC_MD5_DIGEST_LENGTH
-import func CommonCrypto.CC_MD5
-import typealias CommonCrypto.CC_LONG
 
 class LoginViewController: UIViewController{
-    let model = AccountModel() // Needed for downloading Account
+    private let model = AccountModel() // Needed for downloading Account
     
     @IBOutlet weak var email_field: UITextField!
     @IBOutlet weak var password_field: UITextField!
     
     override func viewDidLoad() {
+        model.delegate = self
+        
+        print(AccountController.email ?? "nil")
+        print(AccountController.password_hash ?? "nil")
+        print(AccountController.account ?? "nil")
+        email_field.text = AccountController.email
         super.viewDidLoad()
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton){
-        //Get version number
-        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-    
-        let param = ["ios_app_ver": appVersion!, "email": email_field.text!, "passhash": MD5(string: password_field.text!)]
-        model.downloadAccountData(parameters: param, url: URLServices.login)
+        guard let email = email_field.text, !email.isEmpty else {
+            return
+        }
+        AccountController.email = email
+        AccountController.password_hash = nil
+        AccountController.account = nil
+        AccountController.saveDataToMemory()
+        
+        guard let password = password_field.text, !password.isEmpty else {
+            return
+        }
+        AccountController.password_hash = password
+        
+        loadAccountFromServer()
     }
     
-    func MD5(string: String) -> String {
-        let length = Int(CC_MD5_DIGEST_LENGTH)
-        let messageData = string.data(using:.utf8)!
-        var digestData = Data(count: length)
+    @IBAction func registrationButtonPressed(_ sender: UIButton){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "registration") as! RegistrationViewController
+        self.present(secondViewController, animated: true, completion: nil)
+    }
+    
+    func loadAccountFromServer(){
+        //Get version number
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
-        _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
-        messageData.withUnsafeBytes { messageBytes -> UInt8 in
-                if let messageBytesBaseAddress = messageBytes.baseAddress, let digestBytesBlindMemory = digestBytes.bindMemory(to: UInt8.self).baseAddress {
-                    let messageLength = CC_LONG(messageData.count)
-                    CC_MD5(messageBytesBaseAddress, messageLength, digestBytesBlindMemory)
-                }
-                return 0
-            }
-        }
-        
-        // Convert to string and return
-        return digestData.map { String(format: "%02hhx", $0) }.joined()
+        let param = ["ios_app_ver": appVersion!, "email": AccountController.email!, "passhash": AccountController.password_hash!]
+        model.downloadAccountData(parameters: param, url: URLServices.login)
     }
 }
 
 extension LoginViewController: Downloadable{
-    func didReceiveData(data: Any) {
+    func didReceiveData(data param: Any?) {
         // The data model has been dowloaded at this point
         // Now, pass the data model to the Holidays table view controller
-        DispatchQueue.main.sync {
-            let model: Account = (data as! Account)
-            self.email_field.text = model.full_name
-             //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-             //let secondViewController = storyboard.instantiateViewController(withIdentifier: "holidaysID") as! HolidaysViewController
-             //self.present(secondViewController, animated: true, completion: nil)
-         }
+        DispatchQueue.main.sync{
+            guard let data = param else{
+                // Smthing strange, not server error
+                email_field.text = "Not server error"
+                return
+            }
+            
+            guard let account = data as? Account else{
+                guard let error = data as? ServerError else{
+                    // This is literally impossible, but why not to leave it here)
+                    email_field.text = "Not server error"
+                    return
+                }
+                
+                // Server error
+                email_field.text = error.message
+                return
+            }
+            
+            AccountController.account = account
+            AccountController.saveDataToMemory()
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let secondViewController = storyboard.instantiateViewController(withIdentifier: "main") as! MainViewController
+            secondViewController.modalPresentationStyle = .fullScreen
+            secondViewController.modalTransitionStyle = .flipHorizontal
+            self.present(secondViewController, animated: true, completion: nil)
+        }
     }
 }

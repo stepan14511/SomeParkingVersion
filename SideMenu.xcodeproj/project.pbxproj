@@ -31,6 +31,11 @@
 		84B489B51DD469B000D6CB43 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B21DD469B000D6CB43 /* LICENSE */; };
 		84B489B71DD469B000D6CB43 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B41DD469B000D6CB43 /* README.md */; };
 		84B489BA1DD469DA00D6CB43 /* SideMenu.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B91DD469DA00D6CB43 /* SideMenu.podspec */; };
+		861E0B3E258950B30017719B /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E0B3D258950B30017719B /* AccountController.swift */; };
+		861E0B3F258950B30017719B /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E0B3D258950B30017719B /* AccountController.swift */; };
+		863FD83F258CDB5C0072FDC0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */; };
+		863FD843258D127A0072FDC0 /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD842258D127A0072FDC0 /* PhoneTextField.swift */; };
+		863FD847258D12F50072FDC0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD846258D12F50072FDC0 /* StringExtension.swift */; };
 		867BC4B5254C6EE60066F565 /* PopolnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */; };
 		867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867BC4BC254C93D20066F565 /* TransportViewController.swift */; };
 		868F7F352587D810003E68E9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F342587D810003E68E9 /* Network.swift */; };
@@ -39,6 +44,8 @@
 		868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F3A2587D98F003E68E9 /* AccountModel.swift */; };
 		868F7F422587E468003E68E9 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F412587E468003E68E9 /* CarModel.swift */; };
 		868F7F432587E468003E68E9 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F412587E468003E68E9 /* CarModel.swift */; };
+		869910AD258A1A8C001B50C1 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869910AC258A1A8C001B50C1 /* ServerError.swift */; };
+		869910AE258A1A8C001B50C1 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869910AC258A1A8C001B50C1 /* ServerError.swift */; };
 		86B1E6B12576B0AD0019D182 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1E6B02576B0AD0019D182 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,11 +90,16 @@
 		84B489B91DD469DA00D6CB43 /* SideMenu.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SideMenu.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		84FFB98523556C1600E241DA /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FFB98723556C4400E241DA /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		861E0B3D258950B30017719B /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
+		863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		863FD842258D127A0072FDC0 /* PhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextField.swift; sourceTree = "<group>"; };
+		863FD846258D12F50072FDC0 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopolnitViewController.swift; sourceTree = "<group>"; };
 		867BC4BC254C93D20066F565 /* TransportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
 		868F7F342587D810003E68E9 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		868F7F3A2587D98F003E68E9 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		868F7F412587E468003E68E9 /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
+		869910AC258A1A8C001B50C1 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		86B1E6B02576B0AD0019D182 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C7DA85E73FE6228663AD9236 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,6 +220,10 @@
 			children = (
 				868F7F3A2587D98F003E68E9 /* AccountModel.swift */,
 				868F7F412587E468003E68E9 /* CarModel.swift */,
+				861E0B3D258950B30017719B /* AccountController.swift */,
+				869910AC258A1A8C001B50C1 /* ServerError.swift */,
+				863FD842258D127A0072FDC0 /* PhoneTextField.swift */,
+				863FD846258D12F50072FDC0 /* StringExtension.swift */,
 			);
 			name = CustomClasses;
 			sourceTree = "<group>";
@@ -220,6 +236,7 @@
 				867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */,
 				867BC4BC254C93D20066F565 /* TransportViewController.swift */,
 				86B1E6B02576B0AD0019D182 /* LoginViewController.swift */,
+				863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -395,14 +412,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				86B1E6B12576B0AD0019D182 /* LoginViewController.swift in Sources */,
+				861E0B3F258950B30017719B /* AccountController.swift in Sources */,
 				7B48A0F81DCB2518002990A1 /* SideMenuTableViewController.swift in Sources */,
 				867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */,
 				868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */,
+				863FD843258D127A0072FDC0 /* PhoneTextField.swift in Sources */,
 				7B48A0F61DCB2518002990A1 /* MainViewController.swift in Sources */,
+				863FD83F258CDB5C0072FDC0 /* RegistrationViewController.swift in Sources */,
+				863FD847258D12F50072FDC0 /* StringExtension.swift in Sources */,
 				868F7F432587E468003E68E9 /* CarModel.swift in Sources */,
 				867BC4B5254C6EE60066F565 /* PopolnitViewController.swift in Sources */,
 				868F7F362587D810003E68E9 /* Network.swift in Sources */,
 				7B48A0D61DCB2487002990A1 /* AppDelegate.swift in Sources */,
+				869910AE258A1A8C001B50C1 /* ServerError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +447,8 @@
 				868F7F3B2587D98F003E68E9 /* AccountModel.swift in Sources */,
 				849F7BA023210C9A005DEB6A /* Print.swift in Sources */,
 				849F7B9723210C9A005DEB6A /* SideMenuTransitionController.swift in Sources */,
+				869910AD258A1A8C001B50C1 /* ServerError.swift in Sources */,
+				861E0B3E258950B30017719B /* AccountController.swift in Sources */,
 				849F7B9623210C9A005DEB6A /* UITableViewVibrantCell.swift in Sources */,
 				849F7B9D23210C9A005DEB6A /* SideMenuNavigationController.swift in Sources */,
 			);

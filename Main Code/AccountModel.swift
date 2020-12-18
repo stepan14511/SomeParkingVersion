@@ -8,12 +8,14 @@
 
 import Foundation
 
-struct Account: Decodable {
+struct Account: Codable {
     var email: String
-    var phone: Int64
-    var full_name: String
+    var phone: String
+    var surname: String
+    var name: String
+    var patronymic: String?
     var balance: Int
-    var cars: [Car]
+    var cars: [Car]?
 }
 
 class AccountModel {
@@ -24,8 +26,14 @@ class AccountModel {
     func downloadAccountData(parameters: [String: Any], url: String) {
         let request = networkModel.request(parameters: parameters, url: url)
         networkModel.response(request: request) { (data) in
-            let model = try! JSONDecoder().decode(Account?.self, from: data) as Account?
-            self.delegate?.didReceiveData(data: model! as Account)
+            var model: Any?
+            do{
+                model = try JSONDecoder().decode(Account?.self, from: data) as Account? as Any?
+            } catch {
+                model = try? JSONDecoder().decode(ServerError?.self, from: data) as ServerError? as Any?
+            }
+            self.delegate?.didReceiveData(data: model)
         }
     }
 }
+

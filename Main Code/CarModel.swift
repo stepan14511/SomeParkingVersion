@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct Car: Decodable {
+struct Car: Codable {
     var id: Int
-    var tariff: Int8
-    var parking_lot_type: Int8
-    var parking_lot_id: Int
+    var tariff: Int8?
+    var parking_lot_type: Int8?
+    var parking_lot_id: Int?
     var plates: String
-    var payed_till: Date
+    var payed_till: Date?
     var is_auto_cont: Bool
     var main_card: Int
-    var second_main_card: Int
-    var additional_cards: [Int]
+    var second_main_card: Int?
+    var additional_cards: [Int?]
 }

@@ -9,12 +9,12 @@
 import Foundation
 
 protocol Downloadable: class {
-    func didReceiveData(data: Any)
+    func didReceiveData(data: Any?)
 }
 
 enum URLServices {
     static let login: String = "http://localhost:8080/Parking/login.php"
-    
+    static let registration: String = "http://localhost:8080/Parking/registration.php"
 }
 
 class Network {
