@@ -27,4 +27,8 @@ extension String {
         }
         return pureNumber
     }
+    
+    var isInt: Bool {
+        return Int(self) != nil
+    }
 }

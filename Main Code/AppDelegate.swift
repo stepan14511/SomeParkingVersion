@@ -10,6 +10,8 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    private var mainViewController: MainViewController?
 
     var window: UIWindow?
 
@@ -79,7 +81,7 @@ extension AppDelegate{
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let mainViewController: MainViewController = mainStoryboard.instantiateViewController(withIdentifier: "main") as! MainViewController
+        mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "main") as? MainViewController
 
         self.window?.rootViewController = mainViewController
 
@@ -105,28 +107,26 @@ extension AppDelegate: Downloadable{
         DispatchQueue.main.sync{
             guard let data = param else{
                 // Smthing strange, not server error
-                print("not server")
                 return
             }
             
             guard let account = data as? Account else{
                 guard let error = data as? ServerError else{
-                    print("not server2")
                     // This is literally impossible, but why not to leave it here)
                     return
                 }
                 
                 // Server error
                 if(error.code == 2){ // Invalid login/password
-                    print("2 server")
                     openLoginView()
                 }
-                print("not 2 server")
                 return
             }
-            print("all is ok")
             AccountController.account = account
             AccountController.saveDataToMemory()
+            if let _ = mainViewController{
+                mainViewController?.updateAccountDataUI()
+            }
         }
     }
 }

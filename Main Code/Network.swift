@@ -15,6 +15,7 @@ protocol Downloadable: class {
 enum URLServices {
     static let login: String = "http://localhost:8080/Parking/login.php"
     static let registration: String = "http://localhost:8080/Parking/registration.php"
+    static let payment: String = "http://localhost:8080/Parking/payment.php"
 }
 
 class Network {

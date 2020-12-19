@@ -58,6 +58,9 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="FVG-mn-9HX"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="balanceShower" destination="Z8c-FL-Z71" id="FBw-yA-Ncb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVk-3R-pAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -166,9 +169,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="ND4-TG-qyO" kind="showDetail" id="1TV-Xm-b76"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="mAf-mx-C48" style="IBUITableViewCellStyleDefault" id="dc6-l8-0cu" customClass="UITableViewVibrantCell" customModule="SideMenu">
                                         <rect key="frame" x="0.0" y="160" width="375" height="44"/>
@@ -308,6 +308,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="39V-js-NfP"/>
+                    <connections>
+                        <outlet property="balanceLabel" destination="30e-8F-Ele" id="Hv0-5Y-ocf"/>
+                        <outlet property="fullNameLabel" destination="4WI-Ed-3Gr" id="DQu-e8-oRB"/>
+                        <outlet property="phoneNumberLabel" destination="nm4-G4-erw" id="S35-2w-qDt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWh-eM-xqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -432,15 +437,6 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Bm3-u3-kuF">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="uTv-Me-9kd">
-                                <rect key="frame" x="276" y="13" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Править">
-                                    <color key="titleColor" systemColor="linkColor"/>
-                                </state>
-                            </button>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addTransport" destination="yRN-5z-SQ5" id="y0q-Rx-glo"/>
@@ -469,9 +465,9 @@
         <!--Popolnit View Controller-->
         <scene sceneID="Ccs-ob-6gI">
             <objects>
-                <viewController id="ND4-TG-qyO" customClass="PopolnitViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="payment" id="ND4-TG-qyO" customClass="PopolnitViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0Q-J8-Slx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TzP-aH-YiO">
@@ -481,7 +477,7 @@
                                     <navigationItem title="Пополнить счет" id="k3J-vv-qys">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="JvY-I7-loI">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="8zF-jG-tBl">
-                                                <rect key="frame" x="16" y="13" width="83" height="30"/>
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Отменить">
                                                     <color key="titleColor" systemColor="linkColor"/>
@@ -527,7 +523,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Axc-eZ-Q8W">
-                                <rect key="frame" x="23" y="587" width="330" height="40"/>
+                                <rect key="frame" x="23" y="607" width="330" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <state key="normal" title="Оплатить"/>
@@ -536,6 +532,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pay:" destination="ND4-TG-qyO" eventType="touchUpInside" id="Zof-RV-JTW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UYm-Zh-ONi"/>
@@ -543,6 +542,7 @@
                     </view>
                     <connections>
                         <outlet property="changePaymentSystemView" destination="rw9-CO-Te3" id="HqL-qG-rST"/>
+                        <outlet property="paymentAmountTextField" destination="IRv-pB-VBO" id="UjD-qw-hBi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kuy-ml-KVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -557,7 +557,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n69-9K-nns">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="n69-9K-nns">
                                 <rect key="frame" x="48" y="261" width="280" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
