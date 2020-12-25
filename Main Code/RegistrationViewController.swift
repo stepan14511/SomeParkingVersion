@@ -19,6 +19,8 @@ class RegistrationViewController: UIViewController{
     @IBOutlet weak var phone_field: UITextField!
     @IBOutlet weak var password_field: UITextField!
     
+    var openMainViewClosure: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         model.delegate = self
@@ -128,11 +130,7 @@ extension RegistrationViewController: Downloadable{
             AccountController.email = account.email
             AccountController.saveDataToMemory()
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let secondViewController = storyboard.instantiateViewController(withIdentifier: "main") as! MainViewController
-            secondViewController.modalPresentationStyle = .fullScreen
-            secondViewController.modalTransitionStyle = .flipHorizontal
-            self.present(secondViewController, animated: true, completion: nil)
+            dismiss(animated: true, completion: openMainViewClosure)
         }
     }
 }

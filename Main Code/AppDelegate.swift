@@ -10,8 +10,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    private var mainViewController: MainViewController?
 
     var window: UIWindow?
 
@@ -23,31 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //HERE TO PICK LAUNCHING SCREEN
-        
         let logged: Bool? = AccountController.loadDataFromMemory()
         
-        if let state = logged{
-            if(state){
-                // Download and then immidiately pass
-                // Download
-                print(logged ?? "nil")
-                let model = AccountModel()
-                model.delegate = self
-                
-                let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-                
-                let param = ["ios_app_ver": appVersion!, "email": AccountController.email!, "passhash": AccountController.password_hash!]
-                model.downloadAccountData(parameters: param, url: URLServices.login)
-                
-                // Open main view
-                openMainView()
-                
-                return true
-            }
+        guard let state = logged, state else{
+            openLoginView()
+            return true
         }
-        // If we do not have at least one type of data about account
-        openLoginView()
         
+        openMainView()
         return true
     }
 
@@ -81,7 +62,7 @@ extension AppDelegate{
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-        mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "main") as? MainViewController
+        let mainViewController = mainStoryboard.instantiateViewController(withIdentifier: "main") as? MainViewController
 
         self.window?.rootViewController = mainViewController
 
@@ -89,6 +70,10 @@ extension AppDelegate{
     }
     
     func openLoginView(){
+        AccountController.password_hash = nil
+        AccountController.account = nil
+        AccountController.saveDataToMemory()
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -99,35 +84,3 @@ extension AppDelegate{
         self.window?.makeKeyAndVisible()
     }
 }
-
-extension AppDelegate: Downloadable{
-    func didReceiveData(data param: Any?) {
-        // The data model has been dowloaded at this point
-        // Now, pass the data model to the Holidays table view controller
-        DispatchQueue.main.sync{
-            guard let data = param else{
-                // Smthing strange, not server error
-                return
-            }
-            
-            guard let account = data as? Account else{
-                guard let error = data as? ServerError else{
-                    // This is literally impossible, but why not to leave it here)
-                    return
-                }
-                
-                // Server error
-                if(error.code == 2){ // Invalid login/password
-                    openLoginView()
-                }
-                return
-            }
-            AccountController.account = account
-            AccountController.saveDataToMemory()
-            if let _ = mainViewController{
-                mainViewController?.updateAccountDataUI()
-            }
-        }
-    }
-}
-

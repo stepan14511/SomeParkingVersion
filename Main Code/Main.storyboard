@@ -223,9 +223,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="5MA-Kh-PQj" kind="showDetail" id="buT-CX-Rmx"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="lkv-Bc-wD5" style="IBUITableViewCellStyleDefault" id="s9X-dw-evC" customClass="UITableViewVibrantCell" customModule="SideMenu">
                                         <rect key="frame" x="0.0" y="292" width="375" height="44"/>
@@ -321,9 +318,9 @@
         <!--Транспорт-->
         <scene sceneID="WTy-RF-9I4">
             <objects>
-                <tableViewController id="YsZ-SW-PbM" customClass="TransportViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="transport" id="YsZ-SW-PbM" customClass="TransportViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tdl-hY-Igr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="yRN-5z-SQ5">
@@ -427,7 +424,7 @@
                     <navigationItem key="navigationItem" title="Транспорт" id="QeE-Jp-GO9">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="iAY-tX-Qpo">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="yid-1a-Q1U">
-                                <rect key="frame" x="16" y="13" width="83" height="30"/>
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Отменить">
                                     <color key="titleColor" systemColor="linkColor"/>
@@ -444,14 +441,116 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USH-JK-htS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3748" y="-74"/>
+            <point key="canvasLocation" x="3697" y="-73"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Xbl-wP-znO">
+            <objects>
+                <navigationController storyboardIdentifier="carAdd_nav" id="zKD-9z-OO6" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cR4-BI-2oT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="W8P-ZL-xPE" kind="relationship" relationship="rootViewController" id="TXH-RA-o7r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jjq-Zd-FbA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4631" y="-73"/>
+        </scene>
+        <!--Добавить ТС-->
+        <scene sceneID="bk8-kS-D43">
+            <objects>
+                <viewController storyboardIdentifier="carAdd" id="W8P-ZL-xPE" customClass="CarAddViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wUa-mi-vul">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="A000AA136" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ghH-Zf-d4N">
+                                <rect key="frame" x="47" y="75" width="280" height="34"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
+                                <connections>
+                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="B33-ab-1Pt"/>
+                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="IaM-aO-lPu"/>
+                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingChanged" id="YBu-xP-LXx"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Карта от ворот" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0r0-n8-IeV">
+                                <rect key="frame" x="47" y="117" width="280" height="34"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
+                                <connections>
+                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingChanged" id="Bft-dc-wFL"/>
+                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="HtD-R6-O6l"/>
+                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="dfD-XA-uzM"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Карта от дверей" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QbK-4l-SVg">
+                                <rect key="frame" x="47" y="159" width="280" height="34"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
+                                <connections>
+                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingChanged" id="Iud-P5-aXV"/>
+                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="ecS-bF-fw1"/>
+                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="wGc-7M-46i"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FNa-3a-MLg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Добавить ТС" largeTitleDisplayMode="never" id="C7P-He-VsA">
+                        <barButtonItem key="backBarButtonItem" title="Отменить" id="lfo-cW-iY5"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="42r-qC-QmH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9Md-SU-DpZ">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Отменить">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButtonPressed:" destination="W8P-ZL-xPE" eventType="touchUpInside" id="UiP-ml-maB"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="c3s-tv-zdl">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="V0Z-41-g0l">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Готово">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="W8P-ZL-xPE" eventType="touchUpInside" id="NOo-Od-9aR"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="additionalCardTextField" destination="QbK-4l-SVg" id="KAb-9d-mUO"/>
+                        <outlet property="doneButton" destination="V0Z-41-g0l" id="yiy-zC-Nwe"/>
+                        <outlet property="mainCardTextField" destination="0r0-n8-IeV" id="Pmu-Vj-A1B"/>
+                        <outlet property="platesTextField" destination="ghH-Zf-d4N" id="PGu-uU-3Rl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JBn-CF-s8Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5527" y="-73"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QmM-zd-uod">
             <objects>
-                <navigationController id="5MA-Kh-PQj" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="transport_nav" id="5MA-Kh-PQj" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qGY-PT-qVI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

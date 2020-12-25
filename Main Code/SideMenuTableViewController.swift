@@ -14,6 +14,11 @@ class SideMenuTableViewController: UITableViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel?
     @IBOutlet weak var balanceLabel: UILabel?
     
+    var callbackClosure: (() -> Void)?
+    var openLoginScreenClosure: (() -> Void)?
+    var openTransportViewControllerClosure: (() -> Void)?
+    var openPopolnitViewControllerClosure: (() -> Void)?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -28,6 +33,11 @@ class SideMenuTableViewController: UITableViewController {
         updateAccountDataUI()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        callbackClosure?()
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! UITableViewVibrantCell
 
@@ -39,22 +49,16 @@ class SideMenuTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath == [0, 1]{ // Account button
-            AccountController.password_hash = nil
-            AccountController.account = nil
-            AccountController.saveDataToMemory()
-            
-            MainViewController.doOpenLogin = true
-            dismiss(animated: true, completion: nil)
+        
+        if indexPath == [0, 1]{
+            dismiss(animated: true, completion: openLoginScreenClosure)
         }
-        if indexPath == [0, 2]{ // Account button
-            guard let popolnitController = self.storyboard?.instantiateViewController(withIdentifier: "payment") as? PopolnitViewController else { return }
-            
-            popolnitController.callbackClosure = {
-                self.updateAccountDataUI()
-            }
-            
-            self.present(popolnitController, animated: true, completion: nil)
+        if indexPath == [0, 2]{ // Popolnit button
+            dismiss(animated: true, completion: openPopolnitViewControllerClosure)
+        }
+        
+        if indexPath == [0, 5]{ // Transport button
+            dismiss(animated: true, completion: openTransportViewControllerClosure)
         }
     }
     

@@ -30,7 +30,11 @@ class AccountModel {
             do{
                 model = try JSONDecoder().decode(Account?.self, from: data) as Account? as Any?
             } catch {
-                model = try? JSONDecoder().decode(ServerError?.self, from: data) as ServerError? as Any?
+                do{
+                    model = try JSONDecoder().decode(ServerError?.self, from: data) as ServerError? as Any?
+                } catch {
+                    model = try? JSONDecoder().decode(ServerSuccess?.self, from: data) as ServerSuccess? as Any?
+                }
             }
             self.delegate?.didReceiveData(data: model)
         }

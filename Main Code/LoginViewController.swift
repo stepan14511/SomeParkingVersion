@@ -16,13 +16,11 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var password_field: UITextField!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         model.delegate = self
         
-        print(AccountController.email ?? "nil")
-        print(AccountController.password_hash ?? "nil")
-        print(AccountController.account ?? "nil")
         email_field.text = AccountController.email
-        super.viewDidLoad()
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton){
@@ -45,6 +43,9 @@ class LoginViewController: UIViewController{
     @IBAction func registrationButtonPressed(_ sender: UIButton){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondViewController = storyboard.instantiateViewController(withIdentifier: "registration") as! RegistrationViewController
+        
+        secondViewController.openMainViewClosure = openMainView
+        
         self.present(secondViewController, animated: true, completion: nil)
     }
     
@@ -54,6 +55,14 @@ class LoginViewController: UIViewController{
         
         let param = ["ios_app_ver": appVersion!, "email": AccountController.email!, "passhash": AccountController.password_hash!]
         model.downloadAccountData(parameters: param, url: URLServices.login)
+    }
+    
+    func openMainView(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "main") as! MainViewController
+        secondViewController.modalPresentationStyle = .fullScreen
+        secondViewController.modalTransitionStyle = .flipHorizontal
+        self.present(secondViewController, animated: true, completion: nil)
     }
 }
 
@@ -76,18 +85,19 @@ extension LoginViewController: Downloadable{
                 }
                 
                 // Server error
-                email_field.text = error.message
+                if error.code == 2{
+                    password_field.layer.borderWidth = 1
+                    password_field.layer.cornerRadius = 5
+                    password_field.layer.borderColor = UIColor.red.cgColor
+                    print("wtf")
+                }
                 return
             }
             
             AccountController.account = account
             AccountController.saveDataToMemory()
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let secondViewController = storyboard.instantiateViewController(withIdentifier: "main") as! MainViewController
-            secondViewController.modalPresentationStyle = .fullScreen
-            secondViewController.modalTransitionStyle = .flipHorizontal
-            self.present(secondViewController, animated: true, completion: nil)
+            openMainView()
         }
     }
 }

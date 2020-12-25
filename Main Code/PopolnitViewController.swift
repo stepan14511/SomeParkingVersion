@@ -14,8 +14,11 @@ class PopolnitViewController: UIViewController{
     @IBOutlet weak var paymentAmountTextField: UITextField?
     
     var callbackClosure: (() -> Void)?
+    var openLoginScreenClosure: (() -> Void)?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         model.delegate = self
         
         // Setting changePaymentSystem tap recogniser
@@ -24,6 +27,7 @@ class PopolnitViewController: UIViewController{
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         callbackClosure?()
     }
     
@@ -32,17 +36,18 @@ class PopolnitViewController: UIViewController{
     }
     
     @IBAction func pay(_ sender: UIButton){
-        guard let paymentAmount = paymentAmountTextField?.text,
-              paymentAmount.isInt,
-              let email = AccountController.email,
+        guard let email = AccountController.email,
               let passhash = AccountController.password_hash else{
+            dismiss(animated: true, completion: openLoginScreenClosure)
+            return
+        }
+        
+        guard let paymentAmount = paymentAmountTextField?.text, paymentAmount.isInt else{
             return
         }
         
         //Get version number
-        guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else{
-            return
-        }
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unable to get app version"
         
         let param =
             [
@@ -79,14 +84,7 @@ extension PopolnitViewController: Downloadable{
                 
                 // Server error
                 if(error.code == 2){
-                    AccountController.password_hash = nil
-                    AccountController.account = nil
-                    
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let secondViewController = storyboard.instantiateViewController(withIdentifier: "login") as! LoginViewController
-                    secondViewController.modalPresentationStyle = .fullScreen
-                    secondViewController.modalTransitionStyle = .flipHorizontal
-                    self.present(secondViewController, animated: true, completion: nil)
+                    dismiss(animated: true, completion: openLoginScreenClosure)
                 }
                 return
             }

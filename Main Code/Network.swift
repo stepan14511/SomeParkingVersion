@@ -13,9 +13,10 @@ protocol Downloadable: class {
 }
 
 enum URLServices {
-    static let login: String = "http://localhost:8080/Parking/login.php"
-    static let registration: String = "http://localhost:8080/Parking/registration.php"
-    static let payment: String = "http://localhost:8080/Parking/payment.php"
+    static let login: String = "http://31.210.210.172/Parking/login.php"
+    static let registration: String = "http://31.210.210.172/Parking/registration.php"
+    static let payment: String = "http://31.210.210.172/Parking/payment.php"
+    static let addCar: String = "http://31.210.210.172/Parking/addCar.php"
 }
 
 class Network {
@@ -28,6 +29,27 @@ class Network {
         
         request.httpBody = parameters.percentEscaped().data(using: .utf8)
         return request
+    }
+    
+    func response(request: URLRequest, errorClosure: @escaping ((URLResponse?, Error?) -> Void), completionBlock: @escaping (Data) -> Void) -> Void {
+        
+        let task = URLSession.shared.dataTask(with: request) { data, _response, error in
+            guard let data = data,
+                let response = _response as? HTTPURLResponse,
+                error == nil else {                                              // check for fundamental networking error
+                    errorClosure(_response, error)
+                    print("error", error ?? "Unknown error")
+                    return
+            }
+            guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
+                errorClosure(_response, error)
+                print("statusCode should be 2xx, but is \(response.statusCode)")
+                print("response = \(response)")
+                return
+            }
+            completionBlock(data);
+        }
+        task.resume()
     }
     
     func response(request: URLRequest, completionBlock: @escaping (Data) -> Void) -> Void {
