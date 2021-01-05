@@ -11,18 +11,24 @@ import Foundation
 let kPhonePattern = "+# (###) ###-##-##"
 let kPhonePatternReplaceChar: Character = "#"
 
+let kPlatesPattern = "# ### ## ###"
+let kPlatesPatternReplaceChar: Character = "#"
+
+let kCardNumbersPattern = "######"
+let kCardNumbersPatternReplaceChar: Character = "#"
+
 extension String {
     var digits: String {
         return String(filter(("0"..."9").contains))
     }
     
-    func applyPatternOnNumbers(pattern: String = kPhonePattern, replacmentCharacter: Character = kPhonePatternReplaceChar) -> String {
-        var pureNumber = self.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
+    func applyPatternOnNumbers(pattern: String = kPhonePattern, replacementCharacter: Character = kPhonePatternReplaceChar, numbersRE: String = "[^0-9]") -> String {
+        var pureNumber = self.replacingOccurrences( of: numbersRE, with: "", options: .regularExpression)
         for index in 0 ..< pattern.count {
             guard index < pureNumber.count else { return pureNumber }
             let stringIndex = String.Index(encodedOffset: index)
             let patternCharacter = pattern[stringIndex]
-            guard patternCharacter != replacmentCharacter else { continue }
+            guard patternCharacter != replacementCharacter else { continue }
             pureNumber.insert(patternCharacter, at: stringIndex)
         }
         return pureNumber
@@ -32,3 +38,4 @@ extension String {
         return Int(self) != nil
     }
 }
+

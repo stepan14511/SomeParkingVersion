@@ -16,8 +16,9 @@ class SideMenuTableViewController: UITableViewController {
     
     var callbackClosure: (() -> Void)?
     var openLoginScreenClosure: (() -> Void)?
-    var openTransportViewControllerClosure: (() -> Void)?
+    var openAccountViewControllerClosure: (() -> Void)?
     var openPopolnitViewControllerClosure: (() -> Void)?
+    var openTransportViewControllerClosure: (() -> Void)?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,7 +52,7 @@ class SideMenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath == [0, 1]{
-            dismiss(animated: true, completion: openLoginScreenClosure)
+            dismiss(animated: true, completion: openAccountViewControllerClosure)
         }
         if indexPath == [0, 2]{ // Popolnit button
             dismiss(animated: true, completion: openPopolnitViewControllerClosure)

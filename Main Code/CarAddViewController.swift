@@ -13,7 +13,6 @@ class CarAddViewController: UIViewController{
     let model = AccountModel()
     var vSpinner : UIView?
     
-    var callbackClosure: (() -> Void)?
     var openLoginScreenClosure: (() -> Void)?
     var updateAccountClosure: (() -> Void)?
     @IBOutlet weak var doneButton: UIButton?

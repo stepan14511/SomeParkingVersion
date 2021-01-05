@@ -81,6 +81,25 @@ extension MainViewController{
         self.present(secondViewController, animated: true, completion: nil)
     }
     
+    func openAccountViewController(){
+        guard let accountNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "account_nav") as? UINavigationController else { return }
+        
+        guard let accountViewController = accountNavigationViewController.children[0] as? AccountViewController else{ return }
+        
+        accountViewController.openLoginScreenClosure = openLoginScreen
+        
+        self.present(accountNavigationViewController, animated: true, completion: nil)
+    }
+    
+    func openPopolnitViewController(){
+        guard let popolnitController = self.storyboard?.instantiateViewController(withIdentifier: "payment") as? PopolnitViewController else { return }
+        
+        popolnitController.callbackClosure = updateAccountDataUI
+        popolnitController.openLoginScreenClosure = openLoginScreen
+        
+        self.present(popolnitController, animated: true, completion: nil)
+    }
+    
     func openTransportViewController(){
         guard let transportNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "transport_nav") as? UINavigationController else { return }
         
@@ -93,15 +112,6 @@ extension MainViewController{
         
         self.present(transportNavigationViewController, animated: true, completion: nil)
     }
-    
-    func openPopolnitViewController(){
-        guard let popolnitController = self.storyboard?.instantiateViewController(withIdentifier: "payment") as? PopolnitViewController else { return }
-        
-        popolnitController.callbackClosure = updateAccountDataUI
-        popolnitController.openLoginScreenClosure = openLoginScreen
-        
-        self.present(popolnitController, animated: true, completion: nil)
-    }
 }
 
 extension MainViewController: SideMenuNavigationControllerDelegate {
@@ -113,8 +123,9 @@ extension MainViewController: SideMenuNavigationControllerDelegate {
         
         sideMenuTableViewController.callbackClosure = updateAccountDataUI
         sideMenuTableViewController.openLoginScreenClosure = openLoginScreen
-        sideMenuTableViewController.openTransportViewControllerClosure = openTransportViewController
+        sideMenuTableViewController.openAccountViewControllerClosure = openAccountViewController
         sideMenuTableViewController.openPopolnitViewControllerClosure = openPopolnitViewController
+        sideMenuTableViewController.openTransportViewControllerClosure = openTransportViewController
     }
     
     func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {

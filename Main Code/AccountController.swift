@@ -116,6 +116,19 @@ class AccountController{
         return true
     }
     
+    static func getCarById(id: Int) -> Car?{
+        guard let cars = AccountController.account?.cars else{
+            return nil
+        }
+        
+        for car in cars{
+            if car.id == id{
+                return car
+            }
+        }
+        return nil
+    }
+    
     static private func MD5(string: String) -> String {
         let length = Int(CC_MD5_DIGEST_LENGTH)
         let messageData = string.data(using:.utf8)!

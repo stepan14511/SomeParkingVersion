@@ -84,10 +84,10 @@ class RegistrationViewController: UIViewController{
             sender.text = "+7 "
             return
         }
+        text = text.applyPatternOnNumbers()
         if text.count > 18{
             text = String(text.prefix(18))
         }
-        text = text.applyPatternOnNumbers()
         sender.text = text
         if text.count < 3{
             sender.text = "+7 "

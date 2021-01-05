@@ -18,6 +18,8 @@ class TransportViewController: UITableViewController{
     var callbackClosure: (() -> Void)?
     var openLoginScreenClosure: (() -> Void)?
     
+    private var spinnerStartTime: Date = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,16 +76,32 @@ class TransportViewController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
         
-        guard let account = AccountController.account, let car = account.cars?[indexPath[1]] else{
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let account = AccountController.account,
+              let car_id = account.cars?[row].id else{
             return
         }
         
-        // TODO
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "carEdit_nav") as! UINavigationController
+        
+        guard let carEditViewController = secondViewController.children[0] as? CarEditViewController else{
+            return
+        }
+        
+        carEditViewController.openLoginScreenClosure = openLoginScreenClosure
+        carEditViewController.updateAccountClosure = loadAccountFromServer
+        carEditViewController.car_id = car_id
+        
+        self.present(secondViewController, animated: true, completion: nil)
     }
     
     func loadAccountFromServer(){
         showSpinner(onView: self.view)
+        
         guard let email = AccountController.email,
               let passhash = AccountController.password_hash
         else{
@@ -105,7 +123,6 @@ class TransportViewController: UITableViewController{
             return
         }
         
-        carAddViewController.callbackClosure = nil
         carAddViewController.openLoginScreenClosure = openLoginScreenClosure
         carAddViewController.updateAccountClosure = loadAccountFromServer
         
@@ -129,15 +146,30 @@ extension TransportViewController {
         DispatchQueue.main.async {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
+            self.spinnerStartTime = Date()
         }
         
         self.vSpinner = spinnerView
     }
     
     func removeSpinner() {
-        DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
+        let timeNow = Date()
+        let secondMore = timeNow.addingTimeInterval(1.0)
+        let interval = DateInterval(start: spinnerStartTime, end: timeNow)
+        let second = DateInterval(start: timeNow, end: secondMore)
+        
+        if interval >= second{
+            DispatchQueue.main.async {
+                self.vSpinner?.removeFromSuperview()
+                self.vSpinner = nil
+            }
+        }
+        else{
+            let difference: Double = Double(second.compare(interval).rawValue)
+            DispatchQueue.main.asyncAfter(deadline: .now() + difference) {
+                self.vSpinner?.removeFromSuperview()
+                self.vSpinner = nil
+            }
         }
     }
 }
