@@ -122,7 +122,7 @@ extension CarAddViewController: Downloadable{
                 return
             }
             
-            guard let account = data as? ServerSuccess else{
+            guard let _ = data as? ServerSuccess else{
                 guard let error = data as? ServerError else{
                     return
                 }

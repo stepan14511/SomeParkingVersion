@@ -11,6 +11,7 @@ import UIKit
 
 class CarCardsViewController: UITableViewController{
     let model = AccountModel()
+    var vSpinner : UIView?
     
     var car: Car?
     var openLoginScreenClosure: (() -> Void)?
@@ -127,10 +128,6 @@ class CarCardsViewController: UITableViewController{
     }
     
     @IBAction func doneButtonPressed(){
-        //TODO: send request to server
-        // 2) Send data
-        // 3) Setup spinner
-        // 4) Update account (receive in same request)
         guard let email = AccountController.email,
               let passhash = AccountController.password_hash,
               let car_id = car?.id,
@@ -149,6 +146,8 @@ class CarCardsViewController: UITableViewController{
         }
         
         guard mainCard1 != nil, additionalCards.count == 5, additionalCards[0] != nil else{ return }
+        
+        showSpinner(onView: self.view)
         
         // Send data to server
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unable to get app version"
@@ -215,7 +214,6 @@ class CarCardsViewController: UITableViewController{
             doneButton?.isEnabled = false
             return
         }
-        print("'" + String(additionalCards[0]) + "'")
         
         doneButton?.isEnabled = false
         // Check if a main field is changed
@@ -246,6 +244,31 @@ class CarCardsViewController: UITableViewController{
     }
 }
 
+extension CarCardsViewController {
+    
+    func showSpinner(onView : UIView) {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        self.vSpinner = spinnerView
+    }
+    
+    func removeSpinner() {
+        DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+        }
+    }
+}
+
 extension CarCardsViewController: Downloadable{
     func didReceiveData(data param: Any?) {
         // The data model has been dowloaded at this point
@@ -271,6 +294,7 @@ extension CarCardsViewController: Downloadable{
             
             AccountController.account = account
             AccountController.saveDataToMemory()
+            removeSpinner()
             dismiss(animated: true, completion: updateUIClosure)
         }
     }

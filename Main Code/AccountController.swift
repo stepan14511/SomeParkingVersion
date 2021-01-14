@@ -116,7 +116,9 @@ class AccountController{
         return true
     }
     
-    static func getCarById(id: Int) -> Car?{
+    static func getCarById(id: Int?) -> Car?{
+        guard let id = id else{ return nil }
+        
         guard let cars = AccountController.account?.cars else{
             return nil
         }

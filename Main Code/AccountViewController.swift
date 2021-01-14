@@ -31,7 +31,13 @@ class AccountViewController: UITableViewController{
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath == [1, 0]{ // Sign out button
-            dismiss(animated: true, completion: openLoginScreenClosure)
+            // Showing alert for double asking user if they want to sign out
+            let alert = UIAlertController(title: "Вы действительно хотите выйти?", message: nil, preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Да", style: .default, handler: signOutButtonPressed))
+            alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: nil))
+
+            self.present(alert, animated: true)
         }
         if indexPath == [0, 0]{
             guard let fioNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "changeFIO_nav") as? UINavigationController else { return }
@@ -98,7 +104,7 @@ class AccountViewController: UITableViewController{
         return fio
     }
     
-    @objc func signOutButtonPressed(){
+    func signOutButtonPressed(_ alert: UIAlertAction){
         dismiss(animated: true, completion: openLoginScreenClosure)
     }
 }

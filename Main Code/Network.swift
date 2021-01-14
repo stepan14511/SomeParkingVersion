@@ -15,9 +15,10 @@ protocol Downloadable: class {
 enum URLServices {
     static let login: String = "http://31.210.210.172/Parking/login.php"
     static let registration: String = "http://31.210.210.172/Parking/registration.php"
+    static let updateFIO: String = "http://31.210.210.172/Parking/updateFIO.php"
     static let payment: String = "http://31.210.210.172/Parking/payment.php"
     static let addCar: String = "http://31.210.210.172/Parking/addCar.php"
-    static let updateFIO: String = "http://31.210.210.172/Parking/updateFIO.php"
+    static let deleteCar: String = "http://31.210.210.172/Parking/deleteCar.php"
     static let updateCards: String = "http://31.210.210.172/Parking/updateCards.php"
 }
 

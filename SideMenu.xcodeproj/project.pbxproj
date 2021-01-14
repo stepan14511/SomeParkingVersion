@@ -33,6 +33,7 @@
 		84B489BA1DD469DA00D6CB43 /* SideMenu.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B91DD469DA00D6CB43 /* SideMenu.podspec */; };
 		861E0B3F258950B30017719B /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E0B3D258950B30017719B /* AccountController.swift */; };
 		861FDE4E258E7D4C0061B565 /* CarEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861FDE4D258E7D4C0061B565 /* CarEditViewController.swift */; };
+		862838ED25AB206000C982B2 /* CarTariffChangeViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862838EC25AB206000C982B2 /* CarTariffChangeViewControler.swift */; };
 		863FD83F258CDB5C0072FDC0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */; };
 		863FD843258D127A0072FDC0 /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD842258D127A0072FDC0 /* PhoneTextField.swift */; };
 		863FD847258D12F50072FDC0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD846258D12F50072FDC0 /* StringExtension.swift */; };
@@ -93,6 +94,7 @@
 		84FFB98723556C4400E241DA /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		861E0B3D258950B30017719B /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		861FDE4D258E7D4C0061B565 /* CarEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarEditViewController.swift; sourceTree = "<group>"; };
+		862838EC25AB206000C982B2 /* CarTariffChangeViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTariffChangeViewControler.swift; sourceTree = "<group>"; };
 		863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		863FD842258D127A0072FDC0 /* PhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextField.swift; sourceTree = "<group>"; };
 		863FD846258D12F50072FDC0 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				86A2DD3B258FE11200532697 /* CarAddViewController.swift */,
 				8673B21C25A1168F008294BF /* CarCardsViewController.swift */,
 				861FDE4D258E7D4C0061B565 /* CarEditViewController.swift */,
+				862838EC25AB206000C982B2 /* CarTariffChangeViewControler.swift */,
 				8665B2BC2599E4DD00FEADFB /* FioChangeViewController.swift */,
 				86B1E6B02576B0AD0019D182 /* LoginViewController.swift */,
 				7B48A0F31DCB2518002990A1 /* MainViewController.swift */,
@@ -429,6 +432,7 @@
 				861E0B3F258950B30017719B /* AccountController.swift in Sources */,
 				7B48A0F81DCB2518002990A1 /* SideMenuTableViewController.swift in Sources */,
 				86A2DD3C258FE11200532697 /* CarAddViewController.swift in Sources */,
+				862838ED25AB206000C982B2 /* CarTariffChangeViewControler.swift in Sources */,
 				867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */,
 				868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */,
 				863FD843258D127A0072FDC0 /* PhoneTextField.swift in Sources */,
