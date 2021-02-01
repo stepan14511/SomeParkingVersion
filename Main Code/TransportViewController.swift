@@ -92,7 +92,7 @@ class TransportViewController: UITableViewController{
             return
         }
         
-        carEditViewController.openLoginScreenClosure = openLoginScreenClosure
+        carEditViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
         carEditViewController.updateAccountClosure = loadAccountFromServer
         carEditViewController.car_id = car_id
         
@@ -123,7 +123,7 @@ class TransportViewController: UITableViewController{
             return
         }
         
-        carAddViewController.openLoginScreenClosure = openLoginScreenClosure
+        carAddViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
         carAddViewController.updateAccountClosure = loadAccountFromServer
         
         self.present(secondViewController, animated: true, completion: nil)

@@ -44,7 +44,7 @@ class AccountViewController: UITableViewController{
             
             guard let fioViewController = fioNavigationViewController.children[0] as? FioChangeViewController else{ return }
             
-            fioViewController.openLoginScreenClosure = openLoginScreenClosure
+            fioViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
             fioViewController.updateUIClosure = updateRowsText
             
             self.present(fioNavigationViewController, animated: true, completion: nil)

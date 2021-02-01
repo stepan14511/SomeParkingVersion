@@ -52,7 +52,7 @@ class CarEditViewController: UITableViewController{
             guard let tariffChangeViewController = tariffChangeNavigationViewController.children[0] as? CarTariffChangeViewController else{ return }
             
             tariffChangeViewController.car = car
-            tariffChangeViewController.openLoginScreenClosure = openLoginScreenClosure
+            tariffChangeViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
             tariffChangeViewController.updateUIClosure = updateRowsText
             
             self.present(tariffChangeNavigationViewController, animated: true, completion: nil)
@@ -69,7 +69,7 @@ class CarEditViewController: UITableViewController{
             guard let cardsViewController = cardsNavigationViewController.children[0] as? CarCardsViewController else{ return }
             
             cardsViewController.car = car
-            cardsViewController.openLoginScreenClosure = openLoginScreenClosure
+            cardsViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
             cardsViewController.updateUIClosure = updateRowsText
             
             self.present(cardsNavigationViewController, animated: true, completion: nil)

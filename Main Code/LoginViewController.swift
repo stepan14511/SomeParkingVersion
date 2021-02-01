@@ -51,9 +51,9 @@ class LoginViewController: UIViewController{
     
     func loadAccountFromServer(){
         //Get version number
-        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unable to get app version"
         
-        let param = ["ios_app_ver": appVersion!, "email": AccountController.email!, "passhash": AccountController.password_hash!]
+        let param = ["ios_app_ver": appVersion, "email": AccountController.email!, "passhash": AccountController.password_hash!]
         model.downloadAccountData(parameters: param, url: URLServices.login)
     }
     

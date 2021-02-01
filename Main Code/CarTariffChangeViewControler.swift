@@ -17,6 +17,7 @@ class CarTariffChangeViewController: UITableViewController{
     var updateUIClosure: (() -> Void)?
     
     @IBOutlet var doneButton: UIButton?
+    @IBOutlet var autopayCell: UITableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +39,33 @@ class CarTariffChangeViewController: UITableViewController{
                 return
             }
         }
+        if indexPath.section == 1{
+            if indexPath.row == 1{
+                guard let autopayNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "autopay_nav") as? UINavigationController else { return }
+                
+                guard let autopayViewController = autopayNavigationViewController.children[0] as? AutopayViewController else{ return }
+                
+                autopayViewController.car = car
+                /*autopayViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
+                autopayViewController.updateUIClosure = updateRowsText*/
+                
+                self.present(autopayNavigationViewController, animated: true, completion: nil)
+            }
+        }
     }
     
     func setupCells(){
+        if #available(iOS 13.0, *) {
+            // Forward arrow for autopay
+            let chevronImage1 = UIImageView()
+            chevronImage1.image = UIImage(systemName: "chevron.forward")
+            chevronImage1.tintColor = .lightGray
+            autopayCell?.accessoryView = chevronImage1
+            autopayCell?.accessoryView?.frame = CGRect(x: 0, y: 0, width: 10, height: 15)
+        }
+        else{
+            //TODO: SET FOR OTHER IOS VERSIONS
+        }
         /*
         guard let mainCards = mainCardsCells,
               mainCards.count == 2,
