@@ -323,7 +323,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="yRN-5z-SQ5">
-                            <rect key="frame" x="0.0" y="223" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="222.5" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wOM-Ft-laS">
@@ -1635,7 +1635,7 @@
             </objects>
             <point key="canvasLocation" x="-615" y="336"/>
         </scene>
-        <!--Registration View Controller-->
+        <!--Регистрация-->
         <scene sceneID="xv9-9C-nOb">
             <objects>
                 <viewController storyboardIdentifier="registration" id="n3X-iG-bgd" customClass="RegistrationViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1700,6 +1700,20 @@
                         <viewLayoutGuide key="safeArea" id="78K-mE-Sju"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Регистрация" id="Trk-nf-WSg">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="aWQ-R3-I2f">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="D5Q-3q-J05">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Отмена">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed" destination="n3X-iG-bgd" eventType="touchUpInside" id="nWs-vT-xbI"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="email_field" destination="JQq-9H-gyM" id="yJh-o2-4Ct"/>
                         <outlet property="name_field" destination="5uQ-Lq-jc7" id="gyl-vh-6Kx"/>
@@ -1711,7 +1725,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wXb-fI-GOX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-615.20000000000005" y="1021.4392803598201"/>
+            <point key="canvasLocation" x="142" y="1047"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Fj9-DM-3La">
+            <objects>
+                <navigationController storyboardIdentifier="registration_nav" id="Abc-ZV-kvI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qyt-qU-hUM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="n3X-iG-bgd" kind="relationship" relationship="rootViewController" id="0gf-qg-a7Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pF7-b1-3RX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-615" y="1047"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

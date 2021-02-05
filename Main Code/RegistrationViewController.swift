@@ -101,6 +101,10 @@ class RegistrationViewController: UIViewController{
             }
         }
     }
+    
+    @IBAction func cancelButtonPressed(){
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension RegistrationViewController: Downloadable{

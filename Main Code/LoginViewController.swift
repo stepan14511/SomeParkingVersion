@@ -41,12 +41,13 @@ class LoginViewController: UIViewController{
     }
     
     @IBAction func registrationButtonPressed(_ sender: UIButton){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondViewController = storyboard.instantiateViewController(withIdentifier: "registration") as! RegistrationViewController
+        guard let registrationNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "registration_nav") as? UINavigationController else { return }
         
-        secondViewController.openMainViewClosure = openMainView
+        guard let registrationViewController = registrationNavigationViewController.children[0] as? RegistrationViewController else{ return }
         
-        self.present(secondViewController, animated: true, completion: nil)
+        registrationViewController.openMainViewClosure = openMainView
+        
+        self.present(registrationNavigationViewController, animated: true, completion: nil)
     }
     
     func loadAccountFromServer(){
