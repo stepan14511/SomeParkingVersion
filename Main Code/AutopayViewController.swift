@@ -23,6 +23,7 @@ class AutopayViewController: UITableViewController{
             return
         }
         let autoContType = isAutoCont ? 0 : 1
+        self.tableView.reloadData()
         self.tableView(self.tableView, didSelectRowAt: [0, autoContType])
     }
     
@@ -30,7 +31,6 @@ class AutopayViewController: UITableViewController{
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0{ // Type of autopay
-            print("wtf")
             for rowIndex in 0..<numberOfCellsInFirstSection{
                 self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView = nil
             }
