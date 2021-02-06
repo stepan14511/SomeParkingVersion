@@ -29,6 +29,8 @@ class CarTariffChangeViewController: UITableViewController{
             dismiss(animated: true, completion: nil)
             return
         }
+        self.tableView.reloadData()
+        setupCells()
         setupPageAfterDataChange()
     }
     
@@ -71,13 +73,11 @@ class CarTariffChangeViewController: UITableViewController{
     }
     
     func setupPageAfterDataChange(){
-        car = AccountController.getCarById(id: car?.id)
-        self.tableView.reloadData()
-        //clearTariffSector()
+        car = AccountController.getCarById(id: car?.id) // Update car
+        clearTariffSector()
         if let tariff = car?.tariff{
             self.tableView(self.tableView, didSelectRowAt: [0, Int(tariff)])
         }
-        setupCells()
         updateRowsText()
         setDoneButtonState()
     }
