@@ -122,7 +122,7 @@ class CarTariffChangeViewController: UITableViewController{
     }
     
     @IBAction func cancelButtonPressed(){
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: updateUIClosure)
     }
     
     @IBAction func doneButtonPressed(){

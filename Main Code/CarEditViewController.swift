@@ -17,12 +17,14 @@ class CarEditViewController: UITableViewController{
     var openLoginScreenClosure: (() -> Void)?
     var updateAccountClosure: (() -> Void)?
     
+    @IBOutlet var doneButton: UIButton?
     
     @IBOutlet var platesCell: UITableViewCell?
     let platesTextField = UITextField()
     @IBOutlet var parkingLotCell: UITableViewCell?
     @IBOutlet var tariffCell: UITableViewCell?
     @IBOutlet var cardsCell: UITableViewCell?
+    
     
     private var spinnerStartTime: Date = Date()
     
@@ -32,6 +34,7 @@ class CarEditViewController: UITableViewController{
         
         setupCells()
         updateRowsText()
+        checkDoneButtonState()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -135,9 +138,10 @@ class CarEditViewController: UITableViewController{
         }
         
         if let tariff = car.tariff,
-           [0, 1].contains(tariff)
+           tariffName.keys.contains(tariff),
+           let lot_id = car.parking_lot_id
            {
-            tariffCell?.detailTextLabel?.text = tariffName[tariff]
+            tariffCell?.detailTextLabel?.text = tariffName[tariff]! + " - " + String(lot_id)
         }
         else{
             tariffCell?.detailTextLabel?.text = "не выбрано"
@@ -153,10 +157,28 @@ class CarEditViewController: UITableViewController{
         }
         //text = text.applyPatternOnNumbers(pattern: kPlatesPattern, replacementCharacter: kPlatesPatternReplaceChar, numbersRE: "[^a-zA-Zа-яА-Я0-9]") //TODO: FIX THIS SHIT
         platesTextField.text = text
+        
+        checkDoneButtonState()
     }
     
     @objc func platesTextFieldEditingEnded(){
         //TODO: Check for possible plates
+    }
+    
+    func checkDoneButtonState(){
+        guard let _ = doneButton else { return }
+        
+        guard let plates = AccountController.getCarById(id: car_id)?.plates, !plates.isEmpty else{
+            doneButton?.isEnabled = false
+            return
+        }
+        
+        if plates == platesTextField.text{
+            doneButton?.isEnabled = false
+        }
+        else{
+            doneButton?.isEnabled = true
+        }
     }
     
     @IBAction func dismissButtonPressed(){

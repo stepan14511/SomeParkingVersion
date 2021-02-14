@@ -15,6 +15,8 @@ class AutopayViewController: UITableViewController{
     var openLoginScreenClosure: (() -> Void)?
     var car: Car?
     
+    @IBOutlet var doneButton: UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,6 +48,12 @@ class AutopayViewController: UITableViewController{
             cell?.accessoryView = checkmarkImage
             cell?.accessoryView?.frame = CGRect(x: 0, y: 0, width: 25, height: 20)
         }
+    }
+    
+    func checkDoneButtonState(){
+        guard let _ = doneButton else { return }
+        
+        
     }
     
     @IBAction func cancelButtonPressed(){

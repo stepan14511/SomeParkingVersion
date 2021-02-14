@@ -21,7 +21,7 @@ struct Car: Codable {
     var additional_cards: [Int?]
 }
 
-let tariffName: [Int8: String] = [0: "владелец", 1: "помесячно"]
+let tariffName: [Int8: String] = [0: "ежедневно", 1: "помесячно", 2: "собственник"]
 // Tariffs:
 // 0) Ежедневно
 // 1) Помесячно
