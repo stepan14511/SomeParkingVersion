@@ -21,7 +21,6 @@ class CarEditViewController: UITableViewController{
     
     @IBOutlet var platesCell: UITableViewCell?
     let platesTextField = UITextField()
-    @IBOutlet var parkingLotCell: UITableViewCell?
     @IBOutlet var tariffCell: UITableViewCell?
     @IBOutlet var cardsCell: UITableViewCell?
     
@@ -44,7 +43,7 @@ class CarEditViewController: UITableViewController{
             platesTextField.becomeFirstResponder()
         }
         
-        if indexPath == [0, 2]{ // Change tariff view
+        if indexPath == [0, 1]{ // Change tariff view
             guard let car = AccountController.getCarById(id: car_id) else{
                 dismiss(animated: true, completion: updateAccountClosure)
                 return
@@ -61,7 +60,7 @@ class CarEditViewController: UITableViewController{
             self.present(tariffChangeNavigationViewController, animated: true, completion: nil)
         }
         
-        if indexPath == [0, 3]{ // Change cards view
+        if indexPath == [0, 2]{ // Change cards view
             guard let car = AccountController.getCarById(id: car_id) else{
                 dismiss(animated: true, completion: updateAccountClosure)
                 return
@@ -129,13 +128,6 @@ class CarEditViewController: UITableViewController{
         }
         
         platesTextField.text = car.plates
-        
-        if let lot_id = car.parking_lot_id{
-            parkingLotCell?.detailTextLabel?.text = String(lot_id)
-        }
-        else{
-            parkingLotCell?.detailTextLabel?.text = "-"
-        }
         
         if let tariff = car.tariff,
            tariffName.keys.contains(tariff),
