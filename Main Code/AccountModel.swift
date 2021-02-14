@@ -25,15 +25,19 @@ class AccountModel {
     
     func downloadAccountData(parameters: [String: Any], url: String) {
         let request = networkModel.request(parameters: parameters, url: url)
+        
         networkModel.response(request: request) { (data) in
             var model: Any?
+            let decoder =  JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
             do{
-                model = try JSONDecoder().decode(Account?.self, from: data) as Account? as Any?
+                model = try decoder.decode(Account?.self, from: data) as Account? as Any?
+                print(model)
             } catch {
                 do{
-                    model = try JSONDecoder().decode(ServerError?.self, from: data) as ServerError? as Any?
+                    model = try decoder.decode(ServerError?.self, from: data) as ServerError? as Any?
                 } catch {
-                    model = try? JSONDecoder().decode(ServerSuccess?.self, from: data) as ServerSuccess? as Any?
+                    model = try? decoder.decode(ServerSuccess?.self, from: data) as ServerSuccess? as Any?
                 }
             }
             self.delegate?.didReceiveData(data: model)
