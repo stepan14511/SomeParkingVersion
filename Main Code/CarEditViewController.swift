@@ -53,7 +53,7 @@ class CarEditViewController: UITableViewController{
             
             guard let tariffChangeViewController = tariffChangeNavigationViewController.children[0] as? CarTariffChangeViewController else{ return }
             
-            tariffChangeViewController.car = car
+            tariffChangeViewController.car_id = car_id
             tariffChangeViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
             tariffChangeViewController.updateUIClosure = updateRowsText
             
@@ -61,7 +61,7 @@ class CarEditViewController: UITableViewController{
         }
         
         if indexPath == [0, 2]{ // Change cards view
-            guard let car = AccountController.getCarById(id: car_id) else{
+            guard let _ = AccountController.getCarById(id: car_id) else{
                 dismiss(animated: true, completion: updateAccountClosure)
                 return
             }
@@ -70,7 +70,7 @@ class CarEditViewController: UITableViewController{
             
             guard let cardsViewController = cardsNavigationViewController.children[0] as? CarCardsViewController else{ return }
             
-            cardsViewController.car = car
+            cardsViewController.car_id = car_id
             cardsViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
             cardsViewController.updateUIClosure = updateRowsText
             

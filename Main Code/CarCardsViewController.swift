@@ -13,7 +13,7 @@ class CarCardsViewController: UITableViewController{
     let model = AccountModel()
     var vSpinner : UIView?
     
-    var car: Car?
+    var car_id: Int?
     var openLoginScreenClosure: (() -> Void)?
     var updateUIClosure: (() -> Void)?
     
@@ -28,8 +28,8 @@ class CarCardsViewController: UITableViewController{
         super.viewDidLoad()
         model.delegate = self
         
-        guard let _ = car else{
-            dismiss(animated: true, completion: nil)
+        guard let _ = AccountController.getCarById(id: car_id) else{
+            dismiss(animated: true, completion: openLoginScreenClosure)
             return
         }
         
@@ -96,8 +96,8 @@ class CarCardsViewController: UITableViewController{
     }
     
     func updateRowsText(){
-        guard let car = car else{
-            dismiss(animated: true, completion: nil)
+        guard let car = AccountController.getCarById(id: car_id) else{
+            dismiss(animated: true, completion: openLoginScreenClosure)
             return
         }
         
@@ -130,7 +130,7 @@ class CarCardsViewController: UITableViewController{
     @IBAction func doneButtonPressed(){
         guard let email = AccountController.email,
               let passhash = AccountController.password_hash,
-              let car_id = car?.id,
+              let car_id = AccountController.getCarById(id: car_id)?.id,
               additionalCardsTextFields.count >= 5 else{
             return
         }
@@ -179,7 +179,7 @@ class CarCardsViewController: UITableViewController{
     
     @objc func cardsTextFieldChanged(){
         // Get all texts
-        guard let car = car,
+        guard let car = AccountController.getCarById(id: car_id),
             additionalCardsTextFields.count >= 5 else {
             doneButton?.isEnabled = false
             return

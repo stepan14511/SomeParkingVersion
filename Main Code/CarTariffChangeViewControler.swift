@@ -13,7 +13,7 @@ class CarTariffChangeViewController: UITableViewController{
     var model = AccountModel()
     var vSpinner : UIView?
     
-    var car: Car?
+    var car_id: Int?
     var openLoginScreenClosure: (() -> Void)?
     var updateUIClosure: (() -> Void)?
     
@@ -25,7 +25,7 @@ class CarTariffChangeViewController: UITableViewController{
         super.viewDidLoad()
         model.delegate = self
         
-        guard let _ = car else{
+        guard let _ = AccountController.getCarById(id: car_id) else{
             dismiss(animated: true, completion: nil)
             return
         }
@@ -62,7 +62,7 @@ class CarTariffChangeViewController: UITableViewController{
                 
                 guard let autopayViewController = autopayNavigationViewController.children[0] as? CarAutopayViewController else{ return }
                 
-                autopayViewController.car = car
+                autopayViewController.car_id = car_id
                 /*autopayViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
                 autopayViewController.updateUIClosure = updateRowsText*/
                 
@@ -72,10 +72,14 @@ class CarTariffChangeViewController: UITableViewController{
     }
     
     func setupPageAfterDataChange(){
+        guard let car = AccountController.getCarById(id: car_id) else {
+            dismiss(animated: true, completion: openLoginScreenClosure)
+            return
+        }
+
         self.tableView.reloadData()
-        car = AccountController.getCarById(id: car?.id) // Update car
         clearTariffSector()
-        if let tariff = car?.tariff{
+        if let tariff = car.tariff{
             self.tableView(self.tableView, didSelectRowAt: [0, Int(tariff)])
         }
         updateRowsText()
@@ -84,7 +88,7 @@ class CarTariffChangeViewController: UITableViewController{
         //Update payed till label
         if let cell = payedTillCell,
               let label = cell.detailTextLabel,
-              let time = car?.payed_till{
+              let time = car.payed_till{
             
             let formatter = DateFormatter()
             formatter.dateStyle = .short
@@ -119,13 +123,17 @@ class CarTariffChangeViewController: UITableViewController{
     }
     
     func setDoneButtonState(){
+        guard let car = AccountController.getCarById(id: car_id) else {
+            dismiss(animated: true, completion: openLoginScreenClosure)
+            return
+        }
         var pickedTariff: Int8? = nil
         for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
             if self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView != nil{
                 pickedTariff = Int8(rowIndex)
             }
         }
-        if pickedTariff == car?.tariff{
+        if pickedTariff == car.tariff{
             doneButton?.isEnabled = false
         }
         else{
@@ -140,7 +148,7 @@ class CarTariffChangeViewController: UITableViewController{
     @IBAction func doneButtonPressed(){
         guard let email = AccountController.email,
               let passhash = AccountController.password_hash,
-              let car_id = car?.id
+              let car_id = AccountController.getCarById(id: car_id)?.id
               else{
             return
         }
