@@ -32,7 +32,6 @@ class AccountModel {
             decoder.dateDecodingStrategy = .iso8601
             do{
                 model = try decoder.decode(Account?.self, from: data) as Account? as Any?
-                print(model)
             } catch {
                 do{
                     model = try decoder.decode(ServerError?.self, from: data) as ServerError? as Any?

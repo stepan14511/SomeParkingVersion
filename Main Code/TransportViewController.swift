@@ -18,8 +18,6 @@ class TransportViewController: UITableViewController{
     var callbackClosure: (() -> Void)?
     var openLoginScreenClosure: (() -> Void)?
     
-    private var spinnerStartTime: Date = Date()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -146,30 +144,15 @@ extension TransportViewController {
         DispatchQueue.main.async {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
-            self.spinnerStartTime = Date()
         }
         
         self.vSpinner = spinnerView
     }
     
     func removeSpinner() {
-        let timeNow = Date()
-        let secondMore = timeNow.addingTimeInterval(1.0)
-        let interval = DateInterval(start: spinnerStartTime, end: timeNow)
-        let second = DateInterval(start: timeNow, end: secondMore)
-        
-        if interval >= second{
-            DispatchQueue.main.async {
-                self.vSpinner?.removeFromSuperview()
-                self.vSpinner = nil
-            }
-        }
-        else{
-            let difference: Double = Double(second.compare(interval).rawValue)
-            DispatchQueue.main.asyncAfter(deadline: .now() + difference) {
-                self.vSpinner?.removeFromSuperview()
-                self.vSpinner = nil
-            }
+        DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
         }
     }
 }

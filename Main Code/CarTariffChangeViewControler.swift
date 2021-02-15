@@ -20,6 +20,7 @@ class CarTariffChangeViewController: UITableViewController{
     
     @IBOutlet var doneButton: UIButton?
     @IBOutlet var autopayCell: UITableViewCell?
+    @IBOutlet var payedTillCell: UITableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,6 @@ class CarTariffChangeViewController: UITableViewController{
             dismiss(animated: true, completion: nil)
             return
         }
-        self.tableView.reloadData()
         setupCells()
         setupPageAfterDataChange()
     }
@@ -73,6 +73,7 @@ class CarTariffChangeViewController: UITableViewController{
     }
     
     func setupPageAfterDataChange(){
+        self.tableView.reloadData()
         car = AccountController.getCarById(id: car?.id) // Update car
         clearTariffSector()
         if let tariff = car?.tariff{
@@ -80,6 +81,18 @@ class CarTariffChangeViewController: UITableViewController{
         }
         updateRowsText()
         setDoneButtonState()
+        
+        //Update payed till label
+        if let cell = payedTillCell,
+              let label = cell.detailTextLabel,
+              let time = car?.payed_till{
+            
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            formatter.timeStyle = .short
+            label.text = formatter.string(from: time)
+        }
+        
     }
     
     func clearTariffSector(){

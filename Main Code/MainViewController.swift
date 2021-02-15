@@ -12,6 +12,8 @@ class MainViewController: UIViewController {
     var model = AccountModel()
 
     @IBOutlet weak var balanceShower: UIButton?
+    @IBOutlet var imageViewForZooming: UIView?
+    @IBOutlet var scrollViewForZooming: UIScrollView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,6 +137,40 @@ extension MainViewController: SideMenuNavigationControllerDelegate {
     }
     
     func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+    }
+}
+
+extension MainViewController: UIScrollViewDelegate, UIGestureRecognizerDelegate{
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageViewForZooming
+    }
+    
+    @IBAction func userDoubleTappedScrollview(recognizer:  UITapGestureRecognizer) {
+        guard let scrollView = scrollViewForZooming else {return}
+        
+        if (scrollView.zoomScale > scrollView.minimumZoomScale) {
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
+        }
+        else {            let zoomRect = zoomRectForScale(scale: scrollView.maximumZoomScale / 2.0, center: recognizer.location(in: recognizer.view))
+            scrollView.zoom(to: zoomRect, animated: true)
+        }
+    }
+    
+    func zoomRectForScale(scale : CGFloat, center : CGPoint) -> CGRect {
+            var zoomRect = CGRect.zero
+            if let imageV = self.scrollViewForZooming {
+                zoomRect.size.height = imageV.frame.size.height / scale;
+                zoomRect.size.width  = imageV.frame.size.width  / scale;
+                let newCenter = center
+                zoomRect.origin.x = newCenter.x - ((zoomRect.size.width / 2.0));
+                zoomRect.origin.y = newCenter.y - ((zoomRect.size.height / 2.0));
+            }
+            return zoomRect;
+        }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return touch.view == gestureRecognizer.view
     }
 }
 
