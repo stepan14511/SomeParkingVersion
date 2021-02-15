@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class CarTariffChangeViewController: UITableViewController{
-    private let numberOfCellsInFirstSection = 3
     var model = AccountModel()
     var vSpinner : UIView?
     
@@ -39,7 +38,7 @@ class CarTariffChangeViewController: UITableViewController{
         
         if indexPath.section == 0{
             let viewBeforeSelecting = self.tableView.cellForRow(at: indexPath)?.accessoryView
-            for rowIndex in 0..<numberOfCellsInFirstSection{
+            for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
                 self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView = nil
             }
             if(viewBeforeSelecting == nil){
@@ -61,7 +60,7 @@ class CarTariffChangeViewController: UITableViewController{
             if indexPath.row == 1{
                 guard let autopayNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "autopay_nav") as? UINavigationController else { return }
                 
-                guard let autopayViewController = autopayNavigationViewController.children[0] as? AutopayViewController else{ return }
+                guard let autopayViewController = autopayNavigationViewController.children[0] as? CarAutopayViewController else{ return }
                 
                 autopayViewController.car = car
                 /*autopayViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
@@ -96,7 +95,7 @@ class CarTariffChangeViewController: UITableViewController{
     }
     
     func clearTariffSector(){
-        for rowIndex in 0..<numberOfCellsInFirstSection{
+        for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
             self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView = nil
         }
     }
@@ -121,7 +120,7 @@ class CarTariffChangeViewController: UITableViewController{
     
     func setDoneButtonState(){
         var pickedTariff: Int8? = nil
-        for rowIndex in 0..<numberOfCellsInFirstSection{
+        for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
             if self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView != nil{
                 pickedTariff = Int8(rowIndex)
             }
@@ -160,7 +159,7 @@ class CarTariffChangeViewController: UITableViewController{
                 ] as [String : Any]
         
         var pickedTariff: Int8? = nil
-        for rowIndex in 0..<numberOfCellsInFirstSection{
+        for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
             if self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView != nil{
                 pickedTariff = Int8(rowIndex)
             }

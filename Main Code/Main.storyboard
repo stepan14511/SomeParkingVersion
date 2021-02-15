@@ -74,6 +74,14 @@
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="zoomInButtonPressed" destination="QHN-nZ-kbB" eventType="touchUpInside" id="Iy6-Sp-eYx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQS-2V-5oJ">
                                         <rect key="frame" x="0.0" y="70" width="22" height="50"/>
@@ -82,11 +90,20 @@
                                             <color key="titleColor" systemColor="labelColor"/>
                                             <imageReference key="image" image="minus" catalog="system" symbolScale="large"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="zoomOutButtonPressed" destination="QHN-nZ-kbB" eventType="touchUpInside" id="iAS-2m-ZNA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="tintColor" systemColor="labelColor"/>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="8Yk-5u-CFk"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                     </view>
@@ -96,6 +113,7 @@
                         <outlet property="balanceShower" destination="Z8c-FL-Z71" id="FBw-yA-Ncb"/>
                         <outlet property="imageViewForZooming" destination="Ntx-LL-9A0" id="t0s-M5-zY6"/>
                         <outlet property="scrollViewForZooming" destination="ahO-HI-eoT" id="jMz-jM-3Pi"/>
+                        <outlet property="stackView" destination="rpV-rd-RN6" id="yO7-vY-y12"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVk-3R-pAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1000,7 +1018,7 @@ CQ
         <!--Автопродление-->
         <scene sceneID="pUS-bN-xsp">
             <objects>
-                <tableViewController storyboardIdentifier="autopay" id="0B4-se-xMc" customClass="AutopayViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="autopay" id="0B4-se-xMc" customClass="CarAutopayViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="R9x-xz-PRo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

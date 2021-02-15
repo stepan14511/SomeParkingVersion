@@ -31,7 +31,7 @@
 		84B489B51DD469B000D6CB43 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B21DD469B000D6CB43 /* LICENSE */; };
 		84B489B71DD469B000D6CB43 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B41DD469B000D6CB43 /* README.md */; };
 		84B489BA1DD469DA00D6CB43 /* SideMenu.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B91DD469DA00D6CB43 /* SideMenu.podspec */; };
-		8605311825C4858B00CA3F11 /* AutopayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8605311725C4858B00CA3F11 /* AutopayViewController.swift */; };
+		8605311825C4858B00CA3F11 /* CarAutopayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8605311725C4858B00CA3F11 /* CarAutopayViewController.swift */; };
 		861E0B3F258950B30017719B /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E0B3D258950B30017719B /* AccountController.swift */; };
 		861FDE4E258E7D4C0061B565 /* CarEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861FDE4D258E7D4C0061B565 /* CarEditViewController.swift */; };
 		862838ED25AB206000C982B2 /* CarTariffChangeViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862838EC25AB206000C982B2 /* CarTariffChangeViewControler.swift */; };
@@ -93,7 +93,7 @@
 		84B489B91DD469DA00D6CB43 /* SideMenu.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SideMenu.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		84FFB98523556C1600E241DA /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FFB98723556C4400E241DA /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8605311725C4858B00CA3F11 /* AutopayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutopayViewController.swift; sourceTree = "<group>"; };
+		8605311725C4858B00CA3F11 /* CarAutopayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarAutopayViewController.swift; sourceTree = "<group>"; };
 		861E0B3D258950B30017719B /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		861FDE4D258E7D4C0061B565 /* CarEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarEditViewController.swift; sourceTree = "<group>"; };
 		862838EC25AB206000C982B2 /* CarTariffChangeViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTariffChangeViewControler.swift; sourceTree = "<group>"; };
@@ -243,9 +243,9 @@
 		86B1E6AD2576B0890019D182 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8605311725C4858B00CA3F11 /* AutopayViewController.swift */,
 				86DD6D712597E03200BFCCFB /* AccountViewController.swift */,
 				86A2DD3B258FE11200532697 /* CarAddViewController.swift */,
+				8605311725C4858B00CA3F11 /* CarAutopayViewController.swift */,
 				8673B21C25A1168F008294BF /* CarCardsViewController.swift */,
 				861FDE4D258E7D4C0061B565 /* CarEditViewController.swift */,
 				862838EC25AB206000C982B2 /* CarTariffChangeViewControler.swift */,
@@ -434,7 +434,7 @@
 				86B1E6B12576B0AD0019D182 /* LoginViewController.swift in Sources */,
 				861E0B3F258950B30017719B /* AccountController.swift in Sources */,
 				7B48A0F81DCB2518002990A1 /* SideMenuTableViewController.swift in Sources */,
-				8605311825C4858B00CA3F11 /* AutopayViewController.swift in Sources */,
+				8605311825C4858B00CA3F11 /* CarAutopayViewController.swift in Sources */,
 				86A2DD3C258FE11200532697 /* CarAddViewController.swift in Sources */,
 				862838ED25AB206000C982B2 /* CarTariffChangeViewControler.swift in Sources */,
 				867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */,

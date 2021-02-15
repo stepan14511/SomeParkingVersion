@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-class AutopayViewController: UITableViewController{
-    private let numberOfCellsInFirstSection = 2
-    
+class CarAutopayViewController: UITableViewController{
     var openLoginScreenClosure: (() -> Void)?
     var car: Car?
     
@@ -27,13 +25,14 @@ class AutopayViewController: UITableViewController{
         let autoContType = isAutoCont ? 0 : 1
         self.tableView.reloadData()
         self.tableView(self.tableView, didSelectRowAt: [0, autoContType])
+        checkDoneButtonState()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0{ // Type of autopay
-            for rowIndex in 0..<numberOfCellsInFirstSection{
+            for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
                 self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView = nil
             }
             // Checkmark for chosen
@@ -47,13 +46,35 @@ class AutopayViewController: UITableViewController{
             checkmarkImage.tintColor = .systemGreen
             cell?.accessoryView = checkmarkImage
             cell?.accessoryView?.frame = CGRect(x: 0, y: 0, width: 25, height: 20)
+            
+            checkDoneButtonState()
         }
     }
     
     func checkDoneButtonState(){
         guard let _ = doneButton else { return }
         
+        // Get current state of autoContType from memory
+        guard let isAutoCont = car?.is_auto_cont else{
+            dismiss(animated: true, completion: openLoginScreenClosure)
+            return
+        }
+        let autoContType = isAutoCont ? 0 : 1
         
+        // Get the picked variant by user
+        var pickedTariff: Int8? = nil
+        for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
+            if self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView != nil{
+                pickedTariff = Int8(rowIndex)
+            }
+        }
+        
+        if (pickedTariff ?? -1 == autoContType) || (pickedTariff == nil){
+            doneButton?.isEnabled = false
+        }
+        else{
+            doneButton?.isEnabled = true
+        }
     }
     
     @IBAction func cancelButtonPressed(){
