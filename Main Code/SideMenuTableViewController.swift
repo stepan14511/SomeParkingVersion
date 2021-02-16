@@ -19,6 +19,7 @@ class SideMenuTableViewController: UITableViewController {
     var openAccountViewControllerClosure: (() -> Void)?
     var openPopolnitViewControllerClosure: (() -> Void)?
     var openTransportViewControllerClosure: (() -> Void)?
+    var openHowToOwnerViewControllerClosure: (() -> Void)?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -60,6 +61,10 @@ class SideMenuTableViewController: UITableViewController {
         
         if indexPath == [0, 5]{ // Transport button
             dismiss(animated: true, completion: openTransportViewControllerClosure)
+        }
+        
+        if indexPath == [0, 7]{ // Transport button
+            dismiss(animated: true, completion: openHowToOwnerViewControllerClosure)
         }
     }
     

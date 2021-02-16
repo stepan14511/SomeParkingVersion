@@ -17,7 +17,6 @@ class CarTariffChangeViewController: UITableViewController{
     var openLoginScreenClosure: (() -> Void)?
     var updateUIClosure: (() -> Void)?
     
-    @IBOutlet var doneButton: UIButton?
     @IBOutlet var autopayCell: UITableViewCell?
     @IBOutlet var payedTillCell: UITableViewCell?
     
@@ -37,32 +36,35 @@ class CarTariffChangeViewController: UITableViewController{
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0{
-            let viewBeforeSelecting = self.tableView.cellForRow(at: indexPath)?.accessoryView
-            for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
-                self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView = nil
+            switch indexPath.row {
+            case 0:
+                print("daily")
+            case 1:
+                guard let accountNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "monthlyTariff_nav") as? UINavigationController else { return }
+                
+                guard let accountViewController = accountNavigationViewController.children[0] as? TariffMonthlyViewController else{ return }
+                
+                self.present(accountNavigationViewController, animated: true, completion: nil)
+            case 2:
+                guard let transportNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "howtoowner_nav") as? UINavigationController else { return }
+                
+                self.present(transportNavigationViewController, animated: true, completion: nil)
+            
+            default:
+                print("Programmer is invalid, forgot to create logic for new tariff cells.")
             }
-            if(viewBeforeSelecting == nil){
-                // Checkmark for chosen
-                let cell = self.tableView.cellForRow(at: indexPath)
-                let checkmarkImage = UIImageView()
-                if #available(iOS 13.0, *) {
-                    checkmarkImage.image = UIImage(systemName: "checkmark")
-                } else {
-                    // Fallback on earlier versions
-                }
-                checkmarkImage.tintColor = .systemGreen
-                cell?.accessoryView = checkmarkImage
-                cell?.accessoryView?.frame = CGRect(x: 0, y: 0, width: 25, height: 20)
-            }
-            setDoneButtonState()
         }
         if indexPath.section == 1{
             if indexPath.row == 1{
+                guard let car = AccountController.getCarById(id: car_id) else {
+                    dismiss(animated: true, completion: openLoginScreenClosure)
+                    return
+                }
                 guard let autopayNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "autopay_nav") as? UINavigationController else { return }
                 
                 guard let autopayViewController = autopayNavigationViewController.children[0] as? CarAutopayViewController else{ return }
                 
-                autopayViewController.car_id = car_id
+                autopayViewController.car_id = car.id
                 /*autopayViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
                 autopayViewController.updateUIClosure = updateRowsText*/
                 
@@ -76,14 +78,6 @@ class CarTariffChangeViewController: UITableViewController{
             dismiss(animated: true, completion: openLoginScreenClosure)
             return
         }
-
-        self.tableView.reloadData()
-        clearTariffSector()
-        if let tariff = car.tariff{
-            self.tableView(self.tableView, didSelectRowAt: [0, Int(tariff)])
-        }
-        updateRowsText()
-        setDoneButtonState()
         
         //Update payed till label
         if let cell = payedTillCell,
@@ -98,110 +92,49 @@ class CarTariffChangeViewController: UITableViewController{
         
     }
     
-    func clearTariffSector(){
-        for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
-            self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView = nil
-        }
-    }
-    
     func setupCells(){
         if #available(iOS 13.0, *) {
-            // Forward arrow for autopay
+            // Forward arrow for first tariff
             let chevronImage1 = UIImageView()
             chevronImage1.image = UIImage(systemName: "chevron.forward")
             chevronImage1.tintColor = .lightGray
             autopayCell?.accessoryView = chevronImage1
             autopayCell?.accessoryView?.frame = CGRect(x: 0, y: 0, width: 10, height: 15)
+            
+            // Forward arrow for second tariff
+            if self.tableView.numberOfRows(inSection: 0) >= 1{
+                let chevronImage2 = UIImageView()
+                chevronImage2.image = UIImage(systemName: "chevron.forward")
+                chevronImage2.tintColor = .lightGray
+                self.tableView.cellForRow(at: [0, 0])?.accessoryView = chevronImage2
+                self.tableView.cellForRow(at: [0, 0])?.accessoryView?.frame = CGRect(x: 0, y: 0, width: 10, height: 15)
+            }
+            
+            // Forward arrow for third tariff
+            if self.tableView.numberOfRows(inSection: 0) >= 2{
+                let chevronImage3 = UIImageView()
+                chevronImage3.image = UIImage(systemName: "chevron.forward")
+                chevronImage3.tintColor = .lightGray
+                self.tableView.cellForRow(at: [0, 1])?.accessoryView = chevronImage3
+                self.tableView.cellForRow(at: [0, 1])?.accessoryView?.frame = CGRect(x: 0, y: 0, width: 10, height: 15)
+            }
+            
+            // Forward arrow for autopay
+            if self.tableView.numberOfRows(inSection: 0) >= 3{
+                let chevronImage4 = UIImageView()
+                chevronImage4.image = UIImage(systemName: "chevron.forward")
+                chevronImage4.tintColor = .lightGray
+                self.tableView.cellForRow(at: [0, 2])?.accessoryView = chevronImage4
+                self.tableView.cellForRow(at: [0, 2])?.accessoryView?.frame = CGRect(x: 0, y: 0, width: 10, height: 15)
+            }
         }
         else{
             //TODO: SET FOR OTHER IOS VERSIONS
         }
     }
     
-    func updateRowsText(){
-        //TODO: add end time label
-    }
-    
-    func setDoneButtonState(){
-        guard let car = AccountController.getCarById(id: car_id) else {
-            dismiss(animated: true, completion: openLoginScreenClosure)
-            return
-        }
-        var pickedTariff: Int8? = nil
-        for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
-            if self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView != nil{
-                pickedTariff = Int8(rowIndex)
-            }
-        }
-        if pickedTariff == car.tariff{
-            doneButton?.isEnabled = false
-        }
-        else{
-            doneButton?.isEnabled = true
-        }
-    }
-    
     @IBAction func cancelButtonPressed(){
         dismiss(animated: true, completion: updateUIClosure)
-    }
-    
-    @IBAction func doneButtonPressed(){
-        guard let email = AccountController.email,
-              let passhash = AccountController.password_hash,
-              let car_id = AccountController.getCarById(id: car_id)?.id
-              else{
-            return
-        }
-        
-        showSpinner(onView: self.view)
-        
-        // Send data to server
-        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unable to get app version"
-        
-        var param =
-                [
-                    "ios_app_ver": appVersion,
-                    "email": email,
-                    "passhash": passhash,
-                    "car_id": car_id
-                ] as [String : Any]
-        
-        var pickedTariff: Int8? = nil
-        for rowIndex in 0..<self.tableView.numberOfRows(inSection: 0){
-            if self.tableView.cellForRow(at: [0, rowIndex])?.accessoryView != nil{
-                pickedTariff = Int8(rowIndex)
-            }
-        }
-        if pickedTariff != nil{
-            param["tariff"] = pickedTariff
-        }
-        
-        model.downloadAccountData(parameters: param, url: URLServices.updateTariff)
-    }
-}
-
-extension CarTariffChangeViewController {
-    
-    func showSpinner(onView : UIView) {
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
-        ai.startAnimating()
-        ai.center = spinnerView.center
-        
-        DispatchQueue.main.async {
-            spinnerView.addSubview(ai)
-            onView.addSubview(spinnerView)
-        }
-        
-        self.vSpinner = spinnerView
-    }
-    
-    func removeSpinner() {
-        DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
-        }
     }
 }
 
@@ -230,7 +163,6 @@ extension CarTariffChangeViewController: Downloadable{
             AccountController.account = account
             AccountController.saveDataToMemory()
             setupPageAfterDataChange()
-            removeSpinner()
         }
     }
 }

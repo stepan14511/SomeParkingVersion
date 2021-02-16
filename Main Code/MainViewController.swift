@@ -117,6 +117,12 @@ extension MainViewController{
         
         self.present(transportNavigationViewController, animated: true, completion: nil)
     }
+    
+    func openHowToOwnerViewController(){
+        guard let transportNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "howtoowner_nav") as? UINavigationController else { return }
+        
+        self.present(transportNavigationViewController, animated: true, completion: nil)
+    }
 }
 
 extension MainViewController: SideMenuNavigationControllerDelegate {
@@ -131,6 +137,7 @@ extension MainViewController: SideMenuNavigationControllerDelegate {
         sideMenuTableViewController.openAccountViewControllerClosure = openAccountViewController
         sideMenuTableViewController.openPopolnitViewControllerClosure = openPopolnitViewController
         sideMenuTableViewController.openTransportViewControllerClosure = openTransportViewController
+        sideMenuTableViewController.openHowToOwnerViewControllerClosure = openHowToOwnerViewController
     }
     
     func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {

@@ -42,6 +42,8 @@
 		8673B21D25A1168F008294BF /* CarCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8673B21C25A1168F008294BF /* CarCardsViewController.swift */; };
 		867BC4B5254C6EE60066F565 /* PopolnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */; };
 		867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867BC4BC254C93D20066F565 /* TransportViewController.swift */; };
+		8684BDCD25DB6496007A4DD8 /* HowToOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684BDCC25DB6495007A4DD8 /* HowToOwnerViewController.swift */; };
+		8684BDD325DB66DE007A4DD8 /* TariffMonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684BDD225DB66DE007A4DD8 /* TariffMonthlyViewController.swift */; };
 		868F7F362587D810003E68E9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F342587D810003E68E9 /* Network.swift */; };
 		868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F3A2587D98F003E68E9 /* AccountModel.swift */; };
 		868F7F432587E468003E68E9 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F412587E468003E68E9 /* CarModel.swift */; };
@@ -104,6 +106,8 @@
 		8673B21C25A1168F008294BF /* CarCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCardsViewController.swift; sourceTree = "<group>"; };
 		867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopolnitViewController.swift; sourceTree = "<group>"; };
 		867BC4BC254C93D20066F565 /* TransportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
+		8684BDCC25DB6495007A4DD8 /* HowToOwnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToOwnerViewController.swift; sourceTree = "<group>"; };
+		8684BDD225DB66DE007A4DD8 /* TariffMonthlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffMonthlyViewController.swift; sourceTree = "<group>"; };
 		868F7F342587D810003E68E9 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		868F7F3A2587D98F003E68E9 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		868F7F412587E468003E68E9 /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
@@ -250,11 +254,13 @@
 				861FDE4D258E7D4C0061B565 /* CarEditViewController.swift */,
 				862838EC25AB206000C982B2 /* CarTariffChangeViewControler.swift */,
 				8665B2BC2599E4DD00FEADFB /* FioChangeViewController.swift */,
+				8684BDCC25DB6495007A4DD8 /* HowToOwnerViewController.swift */,
 				86B1E6B02576B0AD0019D182 /* LoginViewController.swift */,
 				7B48A0F31DCB2518002990A1 /* MainViewController.swift */,
 				867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */,
 				863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */,
 				7B48A0F51DCB2518002990A1 /* SideMenuTableViewController.swift */,
+				8684BDD225DB66DE007A4DD8 /* TariffMonthlyViewController.swift */,
 				867BC4BC254C93D20066F565 /* TransportViewController.swift */,
 			);
 			name = ViewControllers;
@@ -444,12 +450,14 @@
 				86DD6D732597E03200BFCCFB /* AccountViewController.swift in Sources */,
 				86E3D3CB2593586B003734D7 /* ServerSuccess.swift in Sources */,
 				861FDE4E258E7D4C0061B565 /* CarEditViewController.swift in Sources */,
+				8684BDD325DB66DE007A4DD8 /* TariffMonthlyViewController.swift in Sources */,
 				863FD83F258CDB5C0072FDC0 /* RegistrationViewController.swift in Sources */,
 				863FD847258D12F50072FDC0 /* StringExtension.swift in Sources */,
 				868F7F432587E468003E68E9 /* CarModel.swift in Sources */,
 				867BC4B5254C6EE60066F565 /* PopolnitViewController.swift in Sources */,
 				868F7F362587D810003E68E9 /* Network.swift in Sources */,
 				8673B21D25A1168F008294BF /* CarCardsViewController.swift in Sources */,
+				8684BDCD25DB6496007A4DD8 /* HowToOwnerViewController.swift in Sources */,
 				7B48A0D61DCB2487002990A1 /* AppDelegate.swift in Sources */,
 				869910AE258A1A8C001B50C1 /* ServerError.swift in Sources */,
 			);
