@@ -371,10 +371,9 @@
 			};
 			buildConfigurationList = 7B9DC8FE1DC6E8C1000D4007 /* Build configuration list for PBXProject "SideMenu" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);

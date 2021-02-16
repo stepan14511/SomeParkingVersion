@@ -60,7 +60,7 @@ class PopolnitViewController: UIViewController{
         model.downloadAccountData(parameters: param, url: URLServices.payment)
     }
     
-    @IBAction func Exit(){
+    @IBAction func cancelButtonPressed(){
         dismiss(animated: true, completion: nil)
     }
     

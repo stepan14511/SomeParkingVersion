@@ -130,10 +130,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Личные данные" id="gID-lO-w2D">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="ou1-Vh-vLg">
+                        <barButtonItem key="leftBarButtonItem" id="ou1-Vh-vLg">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Bnc-g3-p7y">
                                 <rect key="frame" x="20" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Отменить">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
@@ -224,10 +225,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ФИО" id="rkE-HT-sfJ">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="1Mb-AU-lSd">
+                        <barButtonItem key="leftBarButtonItem" id="1Mb-AU-lSd">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="vim-TX-vcU">
                                 <rect key="frame" x="20" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Отменить">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
@@ -236,11 +238,11 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="qqf-KF-ehd">
+                        <barButtonItem key="rightBarButtonItem" id="qqf-KF-ehd">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="pf5-Lj-l1z">
                                 <rect key="frame" x="311" y="6" width="83" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Готово">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>

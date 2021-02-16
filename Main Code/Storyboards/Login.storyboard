@@ -132,10 +132,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Регистрация" id="Jjf-TJ-cqq">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="Azu-mE-xAQ">
+                        <barButtonItem key="leftBarButtonItem" id="Azu-mE-xAQ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="KWu-Gb-Ccv">
                                 <rect key="frame" x="20" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Отмена">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>

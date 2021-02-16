@@ -100,12 +100,13 @@ extension MainViewController{
     
     func openPopolnitViewController(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let popolnitController = storyboard.instantiateViewController(withIdentifier: "payment") as? PopolnitViewController else { return }
+        guard let popolnitNavigationViewController = storyboard.instantiateViewController(withIdentifier: "payment_nav") as? UINavigationController else { return }
         
-        popolnitController.callbackClosure = updateAccountDataUI
-        popolnitController.openLoginScreenClosure = openLoginScreen
+        guard let popolnitViewController = popolnitNavigationViewController.children[0] as? PopolnitViewController else{ return }
         
-        self.present(popolnitController, animated: true, completion: nil)
+        popolnitViewController.openLoginScreenClosure = openLoginScreen
+        
+        self.present(popolnitNavigationViewController, animated: true, completion: nil)
     }
     
     func openTransportViewController(){

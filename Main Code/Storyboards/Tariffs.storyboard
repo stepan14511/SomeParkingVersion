@@ -18,27 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ve6-hs-viL">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ve6-hs-viL" id="0o5-Pf-zcp">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="qcx-6D-IlW" id="cfa-UH-uVR"/>
                             <outlet property="delegate" destination="qcx-6D-IlW" id="tPM-LT-XZ7"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Помесячно" id="7eN-kS-PUJ">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="OHn-uK-1Gt">
+                        <barButtonItem key="leftBarButtonItem" id="OHn-uK-1Gt">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nz5-rF-kGk">
                                 <rect key="frame" x="20" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Отмена">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Отменить">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
                                 <connections>
@@ -103,10 +94,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Купить место" id="xct-k9-fw3">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="yDS-v0-20N">
+                        <barButtonItem key="leftBarButtonItem" id="yDS-v0-20N">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Oi3-wg-wd9">
                                 <rect key="frame" x="20" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Отменить">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
