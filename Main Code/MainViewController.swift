@@ -66,7 +66,8 @@ class MainViewController: UIViewController {
     
     private func setupSideMenu() {
         // Define the menu
-        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        SideMenuManager.default.leftMenuNavigationController = storyboard.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
         
     }
 }
@@ -79,7 +80,7 @@ extension MainViewController{
         AccountController.account = nil
         AccountController.saveDataToMemory()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let secondViewController = storyboard.instantiateViewController(withIdentifier: "login") as! LoginViewController
         secondViewController.modalPresentationStyle = .fullScreen
         secondViewController.modalTransitionStyle = .flipHorizontal
@@ -87,7 +88,8 @@ extension MainViewController{
     }
     
     func openAccountViewController(){
-        guard let accountNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "account_nav") as? UINavigationController else { return }
+        let storyboard = UIStoryboard(name: "Account", bundle: nil)
+        guard let accountNavigationViewController = storyboard.instantiateViewController(withIdentifier: "account_nav") as? UINavigationController else { return }
         
         guard let accountViewController = accountNavigationViewController.children[0] as? AccountViewController else{ return }
         
@@ -97,7 +99,8 @@ extension MainViewController{
     }
     
     func openPopolnitViewController(){
-        guard let popolnitController = self.storyboard?.instantiateViewController(withIdentifier: "payment") as? PopolnitViewController else { return }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let popolnitController = storyboard.instantiateViewController(withIdentifier: "payment") as? PopolnitViewController else { return }
         
         popolnitController.callbackClosure = updateAccountDataUI
         popolnitController.openLoginScreenClosure = openLoginScreen
@@ -106,7 +109,8 @@ extension MainViewController{
     }
     
     func openTransportViewController(){
-        guard let transportNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "transport_nav") as? UINavigationController else { return }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let transportNavigationViewController = storyboard.instantiateViewController(withIdentifier: "transport_nav") as? UINavigationController else { return }
         
         guard let transportViewController = transportNavigationViewController.children[0] as? TransportViewController else{
             return
@@ -119,7 +123,8 @@ extension MainViewController{
     }
     
     func openHowToOwnerViewController(){
-        guard let transportNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "howtoowner_nav") as? UINavigationController else { return }
+        let storyboard = UIStoryboard(name: "Tariffs", bundle: nil)
+        guard let transportNavigationViewController = storyboard.instantiateViewController(withIdentifier: "howtoowner_nav") as? UINavigationController else { return }
         
         self.present(transportNavigationViewController, animated: true, completion: nil)
     }

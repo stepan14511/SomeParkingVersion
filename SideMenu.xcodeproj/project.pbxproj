@@ -44,6 +44,10 @@
 		867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867BC4BC254C93D20066F565 /* TransportViewController.swift */; };
 		8684BDCD25DB6496007A4DD8 /* HowToOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684BDCC25DB6495007A4DD8 /* HowToOwnerViewController.swift */; };
 		8684BDD325DB66DE007A4DD8 /* TariffMonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684BDD225DB66DE007A4DD8 /* TariffMonthlyViewController.swift */; };
+		8684BDDC25DB69D3007A4DD8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8684BDDB25DB69D3007A4DD8 /* Login.storyboard */; };
+		8684BDE225DB72F0007A4DD8 /* CarEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8684BDE125DB72F0007A4DD8 /* CarEdit.storyboard */; };
+		8684BDE625DB7391007A4DD8 /* Tariffs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8684BDE525DB7391007A4DD8 /* Tariffs.storyboard */; };
+		8684BDEA25DB741E007A4DD8 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8684BDE925DB741E007A4DD8 /* Account.storyboard */; };
 		868F7F362587D810003E68E9 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F342587D810003E68E9 /* Network.swift */; };
 		868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F3A2587D98F003E68E9 /* AccountModel.swift */; };
 		868F7F432587E468003E68E9 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F412587E468003E68E9 /* CarModel.swift */; };
@@ -108,6 +112,10 @@
 		867BC4BC254C93D20066F565 /* TransportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
 		8684BDCC25DB6495007A4DD8 /* HowToOwnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToOwnerViewController.swift; sourceTree = "<group>"; };
 		8684BDD225DB66DE007A4DD8 /* TariffMonthlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffMonthlyViewController.swift; sourceTree = "<group>"; };
+		8684BDDB25DB69D3007A4DD8 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		8684BDE125DB72F0007A4DD8 /* CarEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CarEdit.storyboard; sourceTree = "<group>"; };
+		8684BDE525DB7391007A4DD8 /* Tariffs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tariffs.storyboard; sourceTree = "<group>"; };
+		8684BDE925DB741E007A4DD8 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		868F7F342587D810003E68E9 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		868F7F3A2587D98F003E68E9 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		868F7F412587E468003E68E9 /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
@@ -175,9 +183,7 @@
 				866D9EE12586898B00DFA56E /* ServerConnection */,
 				868F7F392587D969003E68E9 /* CustomClasses */,
 				86B1E6AD2576B0890019D182 /* ViewControllers */,
-				7B48A0D51DCB2487002990A1 /* AppDelegate.swift */,
-				7B552D5C1DCC65830010301C /* Launch Screen.storyboard */,
-				7B5FA9B51DCB269700278DF6 /* Main.storyboard */,
+				8684BDD825DB698A007A4DD8 /* Storyboards */,
 			);
 			path = "Main Code";
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 				65FF1B3F1DE33097007B0845 /* Source */,
 				84B489B81DD469B900D6CB43 /* Podspec Metadata */,
 				7B48A0D41DCB2487002990A1 /* Main Code */,
+				7B48A0D51DCB2487002990A1 /* AppDelegate.swift */,
 				7B9DC9051DC6E8C1000D4007 /* Products */,
 				9FB98148377EAEC00E35AC14 /* Pods */,
 				84FFB98323556BD900E241DA /* Frameworks */,
@@ -228,6 +235,19 @@
 				868F7F342587D810003E68E9 /* Network.swift */,
 			);
 			name = ServerConnection;
+			sourceTree = "<group>";
+		};
+		8684BDD825DB698A007A4DD8 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7B552D5C1DCC65830010301C /* Launch Screen.storyboard */,
+				7B5FA9B51DCB269700278DF6 /* Main.storyboard */,
+				8684BDDB25DB69D3007A4DD8 /* Login.storyboard */,
+				8684BDE125DB72F0007A4DD8 /* CarEdit.storyboard */,
+				8684BDE525DB7391007A4DD8 /* Tariffs.storyboard */,
+				8684BDE925DB741E007A4DD8 /* Account.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		868F7F392587D969003E68E9 /* CustomClasses */ = {
@@ -374,9 +394,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8684BDE225DB72F0007A4DD8 /* CarEdit.storyboard in Resources */,
+				8684BDDC25DB69D3007A4DD8 /* Login.storyboard in Resources */,
 				7B552D5D1DCC65830010301C /* Launch Screen.storyboard in Resources */,
 				7B48A0DD1DCB2487002990A1 /* Assets.xcassets in Resources */,
+				8684BDE625DB7391007A4DD8 /* Tariffs.storyboard in Resources */,
 				7B5FA9B61DCB269700278DF6 /* Main.storyboard in Resources */,
+				8684BDEA25DB741E007A4DD8 /* Account.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

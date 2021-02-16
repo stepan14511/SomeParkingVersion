@@ -83,7 +83,7 @@ class TransportViewController: UITableViewController{
             return
         }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "CarEdit", bundle: nil)
         let secondViewController = storyboard.instantiateViewController(withIdentifier: "carEdit_nav") as! UINavigationController
         
         guard let carEditViewController = secondViewController.children[0] as? CarEditViewController else{

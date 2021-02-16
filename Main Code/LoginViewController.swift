@@ -41,7 +41,8 @@ class LoginViewController: UIViewController{
     }
     
     @IBAction func registrationButtonPressed(_ sender: UIButton){
-        guard let registrationNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "registration_nav") as? UINavigationController else { return }
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        guard let registrationNavigationViewController = storyboard.instantiateViewController(withIdentifier: "registration_nav") as? UINavigationController else { return }
         
         guard let registrationViewController = registrationNavigationViewController.children[0] as? RegistrationViewController else{ return }
         

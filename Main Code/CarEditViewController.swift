@@ -48,8 +48,8 @@ class CarEditViewController: UITableViewController{
                 dismiss(animated: true, completion: updateAccountClosure)
                 return
             }
-            
-            guard let tariffChangeNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "tariffChange_nav") as? UINavigationController else { return }
+            let storyboard = UIStoryboard(name: "CarEdit", bundle: nil)
+            guard let tariffChangeNavigationViewController = storyboard.instantiateViewController(withIdentifier: "tariffChange_nav") as? UINavigationController else { return }
             
             guard let tariffChangeViewController = tariffChangeNavigationViewController.children[0] as? CarTariffChangeViewController else{ return }
             
@@ -66,7 +66,8 @@ class CarEditViewController: UITableViewController{
                 return
             }
             
-            guard let cardsNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "cards_nav") as? UINavigationController else { return }
+            let storyboard = UIStoryboard(name: "CarEdit", bundle: nil)
+            guard let cardsNavigationViewController = storyboard.instantiateViewController(withIdentifier: "cards_nav") as? UINavigationController else { return }
             
             guard let cardsViewController = cardsNavigationViewController.children[0] as? CarCardsViewController else{ return }
             

@@ -36,17 +36,18 @@ class CarTariffChangeViewController: UITableViewController{
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0{
+            let storyboard = UIStoryboard(name: "Tariffs", bundle: nil)
             switch indexPath.row {
             case 0:
                 print("daily")
             case 1:
-                guard let accountNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "monthlyTariff_nav") as? UINavigationController else { return }
+                guard let accountNavigationViewController = storyboard.instantiateViewController(withIdentifier: "monthlyTariff_nav") as? UINavigationController else { return }
                 
                 guard let accountViewController = accountNavigationViewController.children[0] as? TariffMonthlyViewController else{ return }
                 
                 self.present(accountNavigationViewController, animated: true, completion: nil)
             case 2:
-                guard let transportNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "howtoowner_nav") as? UINavigationController else { return }
+                guard let transportNavigationViewController = storyboard.instantiateViewController(withIdentifier: "howtoowner_nav") as? UINavigationController else { return }
                 
                 self.present(transportNavigationViewController, animated: true, completion: nil)
             
@@ -60,7 +61,8 @@ class CarTariffChangeViewController: UITableViewController{
                     dismiss(animated: true, completion: openLoginScreenClosure)
                     return
                 }
-                guard let autopayNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "autopay_nav") as? UINavigationController else { return }
+                let storyboard = UIStoryboard(name: "CarEdit", bundle: nil)
+                guard let autopayNavigationViewController = storyboard.instantiateViewController(withIdentifier: "autopay_nav") as? UINavigationController else { return }
                 
                 guard let autopayViewController = autopayNavigationViewController.children[0] as? CarAutopayViewController else{ return }
                 

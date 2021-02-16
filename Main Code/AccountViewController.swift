@@ -40,7 +40,8 @@ class AccountViewController: UITableViewController{
             self.present(alert, animated: true)
         }
         if indexPath == [0, 0]{
-            guard let fioNavigationViewController = self.storyboard?.instantiateViewController(withIdentifier: "changeFIO_nav") as? UINavigationController else { return }
+            let storyboard = UIStoryboard(name: "Account", bundle: nil)
+            guard let fioNavigationViewController = storyboard.instantiateViewController(withIdentifier: "changeFIO_nav") as? UINavigationController else { return }
             
             guard let fioViewController = fioNavigationViewController.children[0] as? FioChangeViewController else{ return }
             
