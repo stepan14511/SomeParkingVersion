@@ -29,8 +29,9 @@ class MainViewController: UIViewController {
         loadAccountFromServer()
         
         updateAccountDataUI()
-        // Fix button sizes cause I ❤️ storyboards.
-        stackView?.bounds = CGRect(x: 10, y: 0, width: 50, height: 120)
+        
+        // Fix buttons size cause I ❤️ storyboards.
+        stackView?.bounds = CGRect(x: 10, y: 20, width: 50, height: 120)
     }
     
     func loadAccountFromServer(){

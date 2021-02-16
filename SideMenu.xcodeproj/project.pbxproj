@@ -55,6 +55,7 @@
 		86A2DD3C258FE11200532697 /* CarAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A2DD3B258FE11200532697 /* CarAddViewController.swift */; };
 		86B1E6B12576B0AD0019D182 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1E6B02576B0AD0019D182 /* LoginViewController.swift */; };
 		86DD6D732597E03200BFCCFB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD6D712597E03200BFCCFB /* AccountViewController.swift */; };
+		86E190F125DC8A2400BD68AF /* TariffMonthlyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E190F025DC8A2400BD68AF /* TariffMonthlyTableViewController.swift */; };
 		86E3D3CB2593586B003734D7 /* ServerSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E3D3CA2593586B003734D7 /* ServerSuccess.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		86A2DD3B258FE11200532697 /* CarAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAddViewController.swift; sourceTree = "<group>"; };
 		86B1E6B02576B0AD0019D182 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86DD6D712597E03200BFCCFB /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		86E190F025DC8A2400BD68AF /* TariffMonthlyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffMonthlyTableViewController.swift; sourceTree = "<group>"; };
 		86E3D3CA2593586B003734D7 /* ServerSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSuccess.swift; sourceTree = "<group>"; };
 		C7DA85E73FE6228663AD9236 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -280,6 +282,7 @@
 				867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */,
 				863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */,
 				7B48A0F51DCB2518002990A1 /* SideMenuTableViewController.swift */,
+				86E190F025DC8A2400BD68AF /* TariffMonthlyTableViewController.swift */,
 				8684BDD225DB66DE007A4DD8 /* TariffMonthlyViewController.swift */,
 				867BC4BC254C93D20066F565 /* TransportViewController.swift */,
 			);
@@ -475,6 +478,7 @@
 				861FDE4E258E7D4C0061B565 /* CarEditViewController.swift in Sources */,
 				8684BDD325DB66DE007A4DD8 /* TariffMonthlyViewController.swift in Sources */,
 				863FD83F258CDB5C0072FDC0 /* RegistrationViewController.swift in Sources */,
+				86E190F125DC8A2400BD68AF /* TariffMonthlyTableViewController.swift in Sources */,
 				863FD847258D12F50072FDC0 /* StringExtension.swift in Sources */,
 				868F7F432587E468003E68E9 /* CarModel.swift in Sources */,
 				867BC4B5254C6EE60066F565 /* PopolnitViewController.swift in Sources */,

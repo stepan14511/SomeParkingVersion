@@ -75,7 +75,7 @@ extension AppDelegate{
         AccountController.saveDataToMemory()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         
         let loginViewController: LoginViewController = mainStoryboard.instantiateViewController(withIdentifier: "login") as! LoginViewController
 
