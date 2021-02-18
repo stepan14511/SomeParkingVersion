@@ -10,18 +10,85 @@ import Foundation
 import UIKit
 
 class TariffMonthlyViewController: UIViewController{
+    var model = ParkingLotsModel()
+    var vSpinner : UIView?
+    var usersPickedLot: String?
+    
+    @IBOutlet var doneButton: UIButton?
+    
     @IBOutlet var imageViewForZooming: UIView?
     @IBOutlet var scrollViewForZooming: UIScrollView?
     @IBOutlet var stackView: UIStackView?
+    @IBOutlet var containerView: UIView?
+    
+    var openLoginScreenClosure: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        model.delegate = self
+        checkDoneButtonState()
+        
+        // Fix zoom buttons size
         stackView?.bounds = CGRect(x: 10, y: 0, width: 50, height: 120)
+        
+        // Setup tableview
+        let controller = self.children[0] as! TariffMonthlyTableViewConroller
+        controller.pickerViewToggledClosure = pickerViewToggled(isHidden:)
+        controller.responseOnInputFromPickerViewClosure = responseToUserInputFromPickerView(lot:)
+        
+        // Setup tableview size
+        pickerViewToggled(isHidden: true)
+        
+        // Download available places
+        downloadAvailablePlacesFromServer()
+    }
+    
+    func pickerViewToggled(isHidden: Bool){
+        guard let bounds = containerView?.frame else {return}
+        if isHidden{
+            UIView.animate(withDuration: 0.25, animations: {
+                self.containerView?.frame = CGRect(x: bounds.minX, y: bounds.minY, width: bounds.width, height: 80)
+            })
+        }
+        else{
+            UIView.animate(withDuration: 0.25, animations: {
+                self.containerView?.frame = CGRect(x: bounds.minX, y: bounds.minY, width: bounds.width, height: 245)
+            })
+        }
+    }
+    
+    func downloadAvailablePlacesFromServer(){
+        showSpinner(onView: self.view)
+        
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unable to get app version"
+        
+        let param = ["ios_app_ver": appVersion]
+        model.downloadParkingLotsData(parameters: param, url: URLServices.getAvailableParkingLots)
+    }
+    
+    func responseToUserInputFromPickerView(lot: String){
+        usersPickedLot = lot
+        checkDoneButtonState()
+    }
+    
+    func checkDoneButtonState(){
+        if let pickedLot = usersPickedLot,
+           pickedLot != "-"{
+            doneButton?.isEnabled = true
+        }
+        else{
+            doneButton?.isEnabled = false
+        }
     }
     
     @IBAction func cancelButtonPressed(){
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func doneButtonPressed(){
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 // Zoom and scroll of parking scheme
@@ -81,6 +148,62 @@ extension TariffMonthlyViewController: UIScrollViewDelegate, UIGestureRecognizer
         }
         else{
             scrollView.setZoomScale(3.5, animated: true)
+        }
+    }
+}
+
+extension TariffMonthlyViewController {
+    
+    func showSpinner(onView : UIView) {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        self.vSpinner = spinnerView
+    }
+    
+    func removeSpinner() {
+        DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+        }
+    }
+}
+
+extension TariffMonthlyViewController: Downloadable{
+    func didReceiveData(data param: Any?) {
+        // The data model has been dowloaded at this point
+        // Now, pass the data model to the Holidays table view controller
+        DispatchQueue.main.sync{
+            guard let data = param else{
+                // Smthing strange, not server error
+                return
+            }
+            
+            guard let lots = data as? [ParkingLot] else{
+                guard let error = data as? ServerError else{
+                    // This is literally impossible, but why not to leave it here)
+                    return
+                }
+                
+                // Server error
+                if error.code == 2{
+                    dismiss(animated: true, completion: openLoginScreenClosure)
+                    return
+                }
+                return
+            }
+
+            removeSpinner()
+            let controller = self.children[0] as! TariffMonthlyTableViewConroller
+            controller.availableParkingLots = lots
         }
     }
 }

@@ -57,6 +57,7 @@
 		86DD6D732597E03200BFCCFB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD6D712597E03200BFCCFB /* AccountViewController.swift */; };
 		86E190F125DC8A2400BD68AF /* TariffMonthlyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E190F025DC8A2400BD68AF /* TariffMonthlyTableViewController.swift */; };
 		86E3D3CB2593586B003734D7 /* ServerSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E3D3CA2593586B003734D7 /* ServerSuccess.swift */; };
+		86EA98DA25DCC4F00060A6FF /* ParkingLotsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA98D925DCC4F00060A6FF /* ParkingLotsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		86DD6D712597E03200BFCCFB /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		86E190F025DC8A2400BD68AF /* TariffMonthlyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffMonthlyTableViewController.swift; sourceTree = "<group>"; };
 		86E3D3CA2593586B003734D7 /* ServerSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSuccess.swift; sourceTree = "<group>"; };
+		86EA98D925DCC4F00060A6FF /* ParkingLotsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingLotsModel.swift; sourceTree = "<group>"; };
 		C7DA85E73FE6228663AD9236 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -258,6 +260,7 @@
 				861E0B3D258950B30017719B /* AccountController.swift */,
 				868F7F3A2587D98F003E68E9 /* AccountModel.swift */,
 				868F7F412587E468003E68E9 /* CarModel.swift */,
+				86EA98D925DCC4F00060A6FF /* ParkingLotsModel.swift */,
 				863FD842258D127A0072FDC0 /* PhoneTextField.swift */,
 				869910AC258A1A8C001B50C1 /* ServerError.swift */,
 				86E3D3CA2593586B003734D7 /* ServerSuccess.swift */,
@@ -486,6 +489,7 @@
 				8673B21D25A1168F008294BF /* CarCardsViewController.swift in Sources */,
 				8684BDCD25DB6496007A4DD8 /* HowToOwnerViewController.swift in Sources */,
 				7B48A0D61DCB2487002990A1 /* AppDelegate.swift in Sources */,
+				86EA98DA25DCC4F00060A6FF /* ParkingLotsModel.swift in Sources */,
 				869910AE258A1A8C001B50C1 /* ServerError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
