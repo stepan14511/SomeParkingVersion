@@ -105,7 +105,7 @@ class CarCardsViewController: UITableViewController{
         mainCard2TextField.text = car.second_main_card != nil ? String(car.second_main_card!) : nil
         if let mainCards = mainCardsCells,
            mainCards.count == 2{
-            if car.parking_lot_type == 1{ // Two card lot type
+            if car.parking_lot_type == 2{ // Two card lot type
                 mainCards[1].isUserInteractionEnabled = true
                 mainCards[1].textLabel?.textColor = .black
             }

@@ -9,8 +9,8 @@
 import Foundation
 
 struct ParkingLot: Codable {
-    var id: String
-    var type: Int8
+    var id: String?
+    var type: Int8?
 }
 
 class ParkingLotsModel {

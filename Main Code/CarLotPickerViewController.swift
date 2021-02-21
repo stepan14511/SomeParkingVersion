@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TariffMonthlyViewController: UIViewController{
+class CarLotPickerViewController: UIViewController{
     var model = ParkingLotsModel()
     var vSpinner : UIView?
     var usersPickedLot: String?
@@ -32,7 +32,7 @@ class TariffMonthlyViewController: UIViewController{
         stackView?.bounds = CGRect(x: 10, y: 0, width: 50, height: 120)
         
         // Setup tableview
-        let controller = self.children[0] as! TariffMonthlyTableViewConroller
+        let controller = self.children[0] as! CarLotPickerTableViewController
         controller.pickerViewToggledClosure = pickerViewToggled(isHidden:)
         controller.responseOnInputFromPickerViewClosure = responseToUserInputFromPickerView(lot:)
         
@@ -92,7 +92,7 @@ class TariffMonthlyViewController: UIViewController{
 }
 
 // Zoom and scroll of parking scheme
-extension TariffMonthlyViewController: UIScrollViewDelegate, UIGestureRecognizerDelegate{
+extension CarLotPickerViewController: UIScrollViewDelegate, UIGestureRecognizerDelegate{
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.imageViewForZooming
@@ -152,7 +152,7 @@ extension TariffMonthlyViewController: UIScrollViewDelegate, UIGestureRecognizer
     }
 }
 
-extension TariffMonthlyViewController {
+extension CarLotPickerViewController {
     
     func showSpinner(onView : UIView) {
         let spinnerView = UIView.init(frame: onView.bounds)
@@ -177,7 +177,7 @@ extension TariffMonthlyViewController {
     }
 }
 
-extension TariffMonthlyViewController: Downloadable{
+extension CarLotPickerViewController: Downloadable{
     func didReceiveData(data param: Any?) {
         // The data model has been dowloaded at this point
         // Now, pass the data model to the Holidays table view controller
@@ -202,7 +202,7 @@ extension TariffMonthlyViewController: Downloadable{
             }
 
             removeSpinner()
-            let controller = self.children[0] as! TariffMonthlyTableViewConroller
+            let controller = self.children[0] as! CarLotPickerTableViewController
             controller.availableParkingLots = lots
         }
     }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TariffMonthlyTableViewConroller: UITableViewController{
+class CarLotPickerTableViewController: UITableViewController{
     private var _isPickerHidden = true
     
     var isPickerHidden: Bool{

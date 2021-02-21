@@ -11,8 +11,11 @@ import Foundation
 struct Car: Codable {
     var id: Int
     var tariff: Int8?
-    var parking_lot_type: Int8? // 0 - single, 1 - 2 cars
-    var parking_lot_id: Int?
+    var new_tariff: Int8?
+    var parking_lot_type: Int8? // 1 - standart, 2 - extended
+    var parking_lot_id: String?
+    var new_parking_lot_type: Int8? // 1 - standart, 2 - extended
+    var new_parking_lot_id: String?
     var plates: String
     var payed_till: Date?
     var is_auto_cont: Bool

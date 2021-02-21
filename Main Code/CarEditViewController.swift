@@ -51,7 +51,7 @@ class CarEditViewController: UITableViewController{
             let storyboard = UIStoryboard(name: "CarEdit", bundle: nil)
             guard let tariffChangeNavigationViewController = storyboard.instantiateViewController(withIdentifier: "tariffChange_nav") as? UINavigationController else { return }
             
-            guard let tariffChangeViewController = tariffChangeNavigationViewController.children[0] as? CarTariffChangeViewController else{ return }
+            guard let tariffChangeViewController = tariffChangeNavigationViewController.children[0] as? CarTariffViewController else{ return }
             
             tariffChangeViewController.car_id = car.id
             tariffChangeViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
