@@ -13,8 +13,8 @@ class PopolnitViewController: UIViewController{
     @IBOutlet weak var changePaymentSystemView: UIView?
     @IBOutlet weak var paymentAmountTextField: UITextField?
     
-    var callbackClosure: (() -> Void)?
     var openLoginScreenClosure: (() -> Void)?
+    var updateDataClosure: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,6 @@ class PopolnitViewController: UIViewController{
         // Setting changePaymentSystem tap recogniser
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.changePaymentSystemPressed))
         self.changePaymentSystemView!.addGestureRecognizer(gesture)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        callbackClosure?()
     }
     
     @objc func changePaymentSystemPressed(sender : UITapGestureRecognizer) {
@@ -92,7 +87,7 @@ extension PopolnitViewController: Downloadable{
             AccountController.account = account
             AccountController.saveDataToMemory()
             
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: updateDataClosure)
         }
     }
 }

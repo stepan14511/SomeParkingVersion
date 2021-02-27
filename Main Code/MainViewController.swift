@@ -106,6 +106,7 @@ extension MainViewController{
         guard let popolnitViewController = popolnitNavigationViewController.children[0] as? PopolnitViewController else{ return }
         
         popolnitViewController.openLoginScreenClosure = openLoginScreen
+        popolnitViewController.updateDataClosure = updateAccountDataUI
         
         self.present(popolnitNavigationViewController, animated: true, completion: nil)
     }

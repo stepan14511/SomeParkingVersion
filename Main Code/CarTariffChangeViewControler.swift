@@ -23,8 +23,8 @@ class CarTariffViewController: UITableViewController{
     @IBOutlet var currTariffCell: UITableViewCell?
     
     // Next tariff labels
-    @IBOutlet var tariffs: [UITableViewCell]?
-    @IBOutlet var tariffNotChange: UITableViewCell?
+    @IBOutlet var tariffsCells: [UITableViewCell]?
+    @IBOutlet var tariffNotChangeCell: UITableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,9 @@ class CarTariffViewController: UITableViewController{
                 guard let accountNavigationViewController = storyboard.instantiateViewController(withIdentifier: "car_lot_nav") as? UINavigationController else { return }
                 
                 guard let accountViewController = accountNavigationViewController.children[0] as? CarLotPickerViewController else{ return }
+                
+                accountViewController.car_id = car_id
+                accountViewController.updateViewAfterDataChangeClosure = setupPageAfterDataChange
                 
                 self.present(accountNavigationViewController, animated: true, completion: nil)
             }
@@ -73,19 +76,43 @@ class CarTariffViewController: UITableViewController{
             let storyboard = UIStoryboard(name: "Tariffs", bundle: nil)
             switch indexPath.row {
             case 0:
-                print("daily")
+                changeTariff(newTariff: 0)
             case 1:
-                print("monthly")
+                changeTariff(newTariff: 1)
             case 2:
                 guard let transportNavigationViewController = storyboard.instantiateViewController(withIdentifier: "howtoowner_nav") as? UINavigationController else { return }
                 
                 self.present(transportNavigationViewController, animated: true, completion: nil)
+            case 3:
+                changeTariff(newTariff: nil)
             
             default:
                 print("Programmer is invalid, forgot to create logic for new tariff cells.")
             }
             
         }
+    }
+    
+    func changeTariff(newTariff: Int?){
+        showSpinner(onView: self.view)
+        
+        guard let email = AccountController.email,
+              let passhash = AccountController.password_hash,
+              let car_id = AccountController.getCarById(id: car_id)?.id
+        else{
+            dismiss(animated: true, completion: openLoginScreenClosure)
+            return
+        }
+        
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unable to get app version"
+        
+        var param = ["ios_app_ver": appVersion, "email": email, "passhash": passhash, "car_id": car_id] as [String : Any]
+        
+        if let newTariff = newTariff,
+           [0, 1].contains(newTariff){
+            param["new_tariff"] = newTariff
+        }
+        model.downloadAccountData(parameters: param, url: URLServices.updateTariff)
     }
     
     func setupPageAfterDataChange(){
@@ -150,41 +177,45 @@ class CarTariffViewController: UITableViewController{
         if let tariff = car.tariff,
            tariff == 2{ // Owner of lot case
             
-            if let tariffs = tariffs{
+            if let tariffs = tariffsCells{
                 for cell in tariffs{
                     cell.isUserInteractionEnabled = false
                     cell.textLabel?.textColor = .lightGray
                 }
             }
             
-            if let cell = tariffNotChange{
+            if let cell = tariffNotChangeCell{
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .lightGray
             }
         }
         else{
-            if let tariffs = tariffs{
+            if let tariffs = tariffsCells{
                 for cell in tariffs{
                     cell.isUserInteractionEnabled = true
                     cell.textLabel?.textColor = .black
                 }
             }
             
-            if let cell = tariffNotChange{
+            if let cell = tariffNotChangeCell{
                 cell.isUserInteractionEnabled = true
                 cell.textLabel?.textColor = .black
             }
             
             // Next tariff setup
-            if let tariffNotChange = tariffNotChange,
-               let tariffs = tariffs,
-               tariffs.count >= 3{
+            if let tariffNotChangeCell = tariffNotChangeCell,
+               let tariffsCells = tariffsCells,
+               tariffsCells.count >= 3{
                 
-                var toPutCheckmark: UITableViewCell = tariffNotChange
+                var toPutCheckmark: UITableViewCell = tariffNotChangeCell
+                tariffNotChangeCell.accessoryView = nil
                 
                 if let new_tariff = car.new_tariff,
                    new_tariff >= 0, new_tariff <= 2{
-                    toPutCheckmark = tariffs[Int(new_tariff)]
+                    toPutCheckmark = tariffsCells[Int(new_tariff)]
+                }
+                for cell in tariffsCells{
+                    cell.accessoryView = nil
                 }
                 
                 
@@ -232,6 +263,31 @@ class CarTariffViewController: UITableViewController{
     }
 }
 
+extension CarTariffViewController {
+    
+    func showSpinner(onView : UIView) {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        self.vSpinner = spinnerView
+    }
+    
+    func removeSpinner() {
+        DispatchQueue.main.async {
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+        }
+    }
+}
+
 extension CarTariffViewController: Downloadable{
     func didReceiveData(data param: Any?) {
         // The data model has been dowloaded at this point
@@ -257,6 +313,7 @@ extension CarTariffViewController: Downloadable{
             AccountController.account = account
             AccountController.saveDataToMemory()
             setupPageAfterDataChange()
+            removeSpinner()
         }
     }
 }

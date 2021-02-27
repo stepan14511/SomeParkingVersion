@@ -10,9 +10,11 @@ import Foundation
 import UIKit
 
 class CarLotPickerViewController: UIViewController{
-    var model = ParkingLotsModel()
+    var modelParking = ParkingLotsModel()
+    var modelAccount = AccountModel()
     var vSpinner : UIView?
     var usersPickedLot: String?
+    var car_id: Int?
     
     @IBOutlet var doneButton: UIButton?
     
@@ -20,12 +22,14 @@ class CarLotPickerViewController: UIViewController{
     @IBOutlet var scrollViewForZooming: UIScrollView?
     @IBOutlet var stackView: UIStackView?
     @IBOutlet var containerView: UIView?
-    
+
     var openLoginScreenClosure: (() -> Void)?
+    var updateViewAfterDataChangeClosure: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        model.delegate = self
+        modelParking.delegate = self
+        modelAccount.delegate = self
         checkDoneButtonState()
         
         // Fix zoom buttons size
@@ -63,7 +67,7 @@ class CarLotPickerViewController: UIViewController{
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unable to get app version"
         
         let param = ["ios_app_ver": appVersion]
-        model.downloadParkingLotsData(parameters: param, url: URLServices.getAvailableParkingLots)
+        modelParking.downloadParkingLotsData(parameters: param, url: URLServices.getAvailableParkingLots)
     }
     
     func responseToUserInputFromPickerView(lot: String){
@@ -72,12 +76,17 @@ class CarLotPickerViewController: UIViewController{
     }
     
     func checkDoneButtonState(){
-        if let pickedLot = usersPickedLot,
-           pickedLot != "-"{
+        if let _ = AccountController.getCarById(id: car_id)?.new_parking_lot_id{
             doneButton?.isEnabled = true
         }
         else{
-            doneButton?.isEnabled = false
+            if let pickedLot = usersPickedLot,
+               pickedLot != "-"{
+                doneButton?.isEnabled = true
+            }
+            else{
+                doneButton?.isEnabled = false
+            }
         }
     }
     
@@ -86,7 +95,25 @@ class CarLotPickerViewController: UIViewController{
     }
     
     @IBAction func doneButtonPressed(){
-        dismiss(animated: true, completion: nil)
+        showSpinner(onView: self.view)
+        
+        guard let email = AccountController.email,
+              let passhash = AccountController.password_hash,
+              let car_id = AccountController.getCarById(id: car_id)?.id
+        else{
+            dismiss(animated: true, completion: openLoginScreenClosure)
+            return
+        }
+        
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unable to get app version"
+        
+        var param = ["ios_app_ver": appVersion, "email": email, "passhash": passhash, "car_id": car_id] as [String : Any]
+        
+        if let pickedLot = usersPickedLot,
+           pickedLot != "-"{
+            param["new_lot"] = pickedLot
+        }
+        modelAccount.downloadAccountData(parameters: param, url: URLServices.updateParkingLot)
     }
     
 }
@@ -188,16 +215,24 @@ extension CarLotPickerViewController: Downloadable{
             }
             
             guard let lots = data as? [ParkingLot] else{
-                guard let error = data as? ServerError else{
-                    // This is literally impossible, but why not to leave it here)
+                guard let account = data as? Account else{
+                    guard let error = data as? ServerError else{
+                        // This is literally impossible, but why not to leave it here)
+                        return
+                    }
+                    
+                    // Server error
+                    if error.code == 2{
+                        dismiss(animated: true, completion: openLoginScreenClosure)
+                        return
+                    }
                     return
                 }
                 
-                // Server error
-                if error.code == 2{
-                    dismiss(animated: true, completion: openLoginScreenClosure)
-                    return
-                }
+                
+                AccountController.account = account
+                AccountController.saveDataToMemory()
+                dismiss(animated: true, completion: updateViewAfterDataChangeClosure)
                 return
             }
 

@@ -175,7 +175,7 @@ class CarEditViewController: UITableViewController{
     }
     
     @IBAction func dismissButtonPressed(){
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: updateAccountClosure)
     }
     
     func deleteCar(_ alert: UIAlertAction){

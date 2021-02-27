@@ -23,6 +23,7 @@ enum URLServices {
     static let updateTariff: String = "http://31.210.210.172/Parking/updateTariff.php"
     static let updateAutoPay: String = "http://31.210.210.172/Parking/updateAutoPay.php"
     static let getAvailableParkingLots: String = "http://31.210.210.172/Parking/getAvailableParkingLots.php"
+    static let updateParkingLot: String = "http://31.210.210.172/Parking/updateParkingLot.php"
 }
 
 class Network {
