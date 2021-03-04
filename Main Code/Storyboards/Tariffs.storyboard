@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="5584" y="1101"/>
         </scene>
-        <!--Помесячно-->
+        <!--Место-->
         <scene sceneID="edO-Fp-ucw">
             <objects>
                 <viewController id="HcW-9D-A0P" customClass="CarLotPickerViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,7 +60,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJk-AJ-6Q7">
-                                        <rect key="frame" x="0.0" y="0.0" width="22" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="22" height="438"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <state key="normal">
                                             <color key="titleColor" systemColor="labelColor"/>
@@ -76,7 +76,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLb-3l-Dzv">
-                                        <rect key="frame" x="0.0" y="70" width="22" height="50"/>
+                                        <rect key="frame" x="0.0" y="458" width="22" height="438"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <state key="normal">
                                             <color key="titleColor" systemColor="labelColor"/>
@@ -98,7 +98,7 @@
                         <viewLayoutGuide key="safeArea" id="Ah4-N6-z9i"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Помесячно" id="8UG-XJ-TbB">
+                    <navigationItem key="navigationItem" title="Место" id="8UG-XJ-TbB">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="q8y-kK-Gd8">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="RkT-pT-Dhn">
                                 <rect key="frame" x="20" y="6" width="92" height="32"/>
@@ -255,7 +255,7 @@
                                 <rect key="frame" x="20" y="6" width="83" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Отменить">
+                                <state key="normal" title="Назад">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
                                 <connections>
