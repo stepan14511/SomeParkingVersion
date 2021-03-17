@@ -22,14 +22,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="парковка,беговая,223-3 Model (1) 2" translatesAutoresizingMaskIntoConstraints="NO" id="Ntx-LL-9A0">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="001" translatesAutoresizingMaskIntoConstraints="NO" id="En1-0O-5el">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1t-zi-Mjo">
+                                        <rect key="frame" x="0.0" y="-44" width="428" height="926"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="qHS-jy-jVC">
+                                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
                                 </subviews>
                                 <gestureRecognizers/>
                                 <connections>
@@ -115,7 +118,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="balanceShower" destination="Z8c-FL-Z71" id="FBw-yA-Ncb"/>
-                        <outlet property="imageViewForZooming" destination="Ntx-LL-9A0" id="t0s-M5-zY6"/>
+                        <outlet property="imageViewForZooming" destination="i1t-zi-Mjo" id="poU-zY-KUG"/>
                         <outlet property="scrollViewForZooming" destination="ahO-HI-eoT" id="jMz-jM-3Pi"/>
                         <outlet property="stackView" destination="rpV-rd-RN6" id="yO7-vY-y12"/>
                     </connections>
@@ -680,12 +683,11 @@
     </scenes>
     <color key="tintColor" red="0.25098040700000002" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
-        <image name="001" width="2000" height="2651"/>
         <image name="icons8-menu" width="32" height="32"/>
+        <image name="map" width="824" height="1092"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="парковка,беговая,223-3 Model (1) 2" width="824" height="1092"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -63,6 +63,31 @@ class MainViewController: UIViewController {
             balanceShower!.setTitle(String(formattedBalance ?? "0,00 ₽"), for: .normal)
         }
         
+        updateMapUI()
+    }
+    
+    public func updateMapUI(){
+        guard let container = imageViewForZooming else{
+            return
+        }
+        
+        for (index, imageView) in container.subviews.enumerated(){
+            if index == 0{
+                continue
+            }
+            if let _ = imageView as? UIImageView{
+                imageView.removeFromSuperview()
+            }
+        }
+        
+        if let account = AccountController.account,
+           let cars = account.cars{
+            for car in cars{
+                if car.parking_lot_id != nil{
+                    //TODO: create subview for this car lot
+                }
+            }
+        }
     }
     
     private func setupSideMenu() {

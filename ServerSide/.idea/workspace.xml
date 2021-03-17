@@ -2,23 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="407d63a4-a691-457e-8235-922026fb7177" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Main Code/Assets.xcassets/001.imageset/001.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Main Code/Assets.xcassets/001.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Main Code/Assets.xcassets/парковка,беговая,223-3 Model (1) 2.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Main Code/Assets.xcassets/парковка,беговая,223-3 Model (1) 2.imageset/парковка,беговая,223-3 Model (1) 2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main Code/Storyboards/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/Storyboards/Main.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addCar.php" beforeDir="false" afterPath="$PROJECT_DIR$/addCar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deleteCar.php" beforeDir="false" afterPath="$PROJECT_DIR$/deleteCar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getAvailableParkingLots.php" beforeDir="false" afterPath="$PROJECT_DIR$/getAvailableParkingLots.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/registration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/updateAutoPay.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateAutoPay.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/updateCards.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateCards.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/updateFIO.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateFIO.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/updateParkingLot.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateParkingLot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/updateTariff.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateTariff.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SideMenu.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../SideMenu.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SideMenu.xcodeproj/project.xcworkspace/xcuserdata/stepankuznetsov.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../SideMenu.xcodeproj/project.xcworkspace/xcuserdata/stepankuznetsov.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,6 +53,7 @@
       <workItem from="1615798201468" duration="6351000" />
       <workItem from="1615845001734" duration="139000" />
       <workItem from="1615936242215" duration="3963000" />
+      <workItem from="1616013438476" duration="500000" />
     </task>
     <servers />
   </component>
