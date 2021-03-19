@@ -54,6 +54,8 @@
 		869910AE258A1A8C001B50C1 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869910AC258A1A8C001B50C1 /* ServerError.swift */; };
 		86A2DD3C258FE11200532697 /* CarAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A2DD3B258FE11200532697 /* CarAddViewController.swift */; };
 		86B1E6B12576B0AD0019D182 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1E6B02576B0AD0019D182 /* LoginViewController.swift */; };
+		86B8F09826043DAA00BABFA0 /* MapRed.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B8F09726043DAA00BABFA0 /* MapRed.xcassets */; };
+		86B8F09E26043E3A00BABFA0 /* MapGreen.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B8F09D26043E3A00BABFA0 /* MapGreen.xcassets */; };
 		86DD6D732597E03200BFCCFB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD6D712597E03200BFCCFB /* AccountViewController.swift */; };
 		86E190F125DC8A2400BD68AF /* CarLotPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E190F025DC8A2400BD68AF /* CarLotPickerTableViewController.swift */; };
 		86E3D3CB2593586B003734D7 /* ServerSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E3D3CA2593586B003734D7 /* ServerSuccess.swift */; };
@@ -124,6 +126,8 @@
 		869910AC258A1A8C001B50C1 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		86A2DD3B258FE11200532697 /* CarAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAddViewController.swift; sourceTree = "<group>"; };
 		86B1E6B02576B0AD0019D182 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		86B8F09726043DAA00BABFA0 /* MapRed.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MapRed.xcassets; sourceTree = "<group>"; };
+		86B8F09D26043E3A00BABFA0 /* MapGreen.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MapGreen.xcassets; sourceTree = "<group>"; };
 		86DD6D712597E03200BFCCFB /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		86E190F025DC8A2400BD68AF /* CarLotPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarLotPickerTableViewController.swift; sourceTree = "<group>"; };
 		86E3D3CA2593586B003734D7 /* ServerSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSuccess.swift; sourceTree = "<group>"; };
@@ -153,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				7B48A0E11DCB2487002990A1 /* Info.plist */,
-				7B48A0DC1DCB2487002990A1 /* Assets.xcassets */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 		7B48A0D41DCB2487002990A1 /* Main Code */ = {
 			isa = PBXGroup;
 			children = (
+				86B8F09B26043DE700BABFA0 /* Assets */,
 				65FF1B391DE31DA3007B0845 /* SupportingFiles */,
 				866D9EE12586898B00DFA56E /* ServerConnection */,
 				868F7F392587D969003E68E9 /* CustomClasses */,
@@ -290,6 +294,16 @@
 				867BC4BC254C93D20066F565 /* TransportViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		86B8F09B26043DE700BABFA0 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				7B48A0DC1DCB2487002990A1 /* Assets.xcassets */,
+				86B8F09726043DAA00BABFA0 /* MapRed.xcassets */,
+				86B8F09D26043E3A00BABFA0 /* MapGreen.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		9FB98148377EAEC00E35AC14 /* Pods */ = {
@@ -401,9 +415,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8684BDE225DB72F0007A4DD8 /* CarEdit.storyboard in Resources */,
+				86B8F09E26043E3A00BABFA0 /* MapGreen.xcassets in Resources */,
 				8684BDDC25DB69D3007A4DD8 /* Login.storyboard in Resources */,
 				7B552D5D1DCC65830010301C /* Launch Screen.storyboard in Resources */,
 				7B48A0DD1DCB2487002990A1 /* Assets.xcassets in Resources */,
+				86B8F09826043DAA00BABFA0 /* MapRed.xcassets in Resources */,
 				8684BDE625DB7391007A4DD8 /* Tariffs.storyboard in Resources */,
 				7B5FA9B61DCB269700278DF6 /* Main.storyboard in Resources */,
 				8684BDEA25DB741E007A4DD8 /* Account.storyboard in Resources */,

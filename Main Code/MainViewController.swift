@@ -72,6 +72,7 @@ class MainViewController: UIViewController {
         }
         
         for (index, imageView) in container.subviews.enumerated(){
+            print(index)
             if index == 0{
                 continue
             }
@@ -83,8 +84,18 @@ class MainViewController: UIViewController {
         if let account = AccountController.account,
            let cars = account.cars{
             for car in cars{
-                if car.parking_lot_id != nil{
+                if let lot_id = car.parking_lot_id{
                     //TODO: create subview for this car lot
+                    print(lot_id)
+                    let imageView = UIImageView()
+                    imageView.image = UIImage(named: "g_\(lot_id)")
+                    imageView.contentMode = .scaleAspectFit
+                    imageView.isOpaque = true
+                    imageView.clipsToBounds = true
+                    if container.subviews.count >= 1{
+                        imageView.frame = container.subviews[0].frame
+                    }
+                    container.addSubview(imageView)
                 }
             }
         }

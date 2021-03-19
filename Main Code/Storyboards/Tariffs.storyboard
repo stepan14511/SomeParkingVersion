@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="parking_scheme" translatesAutoresizingMaskIntoConstraints="NO" id="NT5-vt-zVr">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="NT5-vt-zVr">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -271,8 +271,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="map" width="824" height="1092"/>
         <image name="minus" catalog="system" width="128" height="24"/>
-        <image name="parking_scheme" width="766" height="995"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

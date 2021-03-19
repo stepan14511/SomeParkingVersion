@@ -26,7 +26,6 @@ class TransportViewController: UITableViewController{
         self.addTransport!.addGestureRecognizer(gesture)
         
         model.delegate = self
-        
         loadAccountFromServer()
     }
     
@@ -142,6 +141,8 @@ extension TransportViewController {
         ai.center = spinnerView.center
         
         DispatchQueue.main.async {
+//            UIView.transition(with: onView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+//                }, completion: nil)
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
         }
@@ -150,9 +151,11 @@ extension TransportViewController {
     }
     
     func removeSpinner() {
-        DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            UIView.transition(with: self.view, duration: 0.25, options: .transitionCrossDissolve, animations: {
+                    self.vSpinner?.removeFromSuperview()
+                    self.vSpinner = nil
+                }, completion: nil)
         }
     }
 }
