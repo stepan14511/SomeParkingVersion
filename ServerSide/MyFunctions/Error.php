@@ -1,5 +1,7 @@
 <?php
 
+#TODO: create more errors because they contain messages which are easy to display.
+
 function getTotalErrorsAmount(){
     return 6;
 }

@@ -1,8 +1,7 @@
 <?php
-// TODO: check if stmt is checked in right place
 
 function getConnectionToMySql(){
-$con=mysqli_connect("localhost","ios_app","","Parking");
+    $con=mysqli_connect("localhost","ios_app","","Parking");
     mysqli_set_charset($con, 'utf8');
 
     // Check connection.
@@ -32,8 +31,8 @@ function getUserId($con, $email, $passhash){
 
 function getFullAccount($con, $email, $passhash){
     $stmt = $con->prepare("SELECT * FROM users WHERE email = ? AND password_hash = ?");
-    $stmt->bind_param("ss", $email, $passhash);
     if( ! $stmt ){ return -1; }
+    $stmt->bind_param("ss", $email, $passhash);
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows < 1){ return -2; }
@@ -57,10 +56,9 @@ function getFullAccount($con, $email, $passhash){
         $balance = $row['balance'];
     }
 
-    $stmt = $con->prepare("SELECT * FROM (SELECT cars.id, cars.tariff, cars.new_tariff, parking_lots.lot_id, parking_lots.type, cars.plates, cars.payed_till, cars.is_auto_cont, cars.main_card, cars.second_main_card, cars.additional_card_1, cars.additional_card_2, cars.additional_card_3, cars.additional_card_4, cars.additional_card_5 FROM cars, parking_lots WHERE cars.owner_id = ? AND (cars.parking_lot_id = parking_lots.unique_id_for_DB OR (cars.parking_lot_id is NULL AND unique_id_for_DB = 177))) t1 INNER JOIN (SELECT cars.id, parking_lots.lot_id as new_lot_id, parking_lots.type as new_type FROM parking_lots, cars WHERE cars.owner_id = ? AND (cars.new_parking_lot_id = parking_lots.unique_id_for_DB OR (cars.new_parking_lot_id is NULL AND unique_id_for_DB = 177))) t2 ON t1.id = t2.id");
-    $stmt->bind_param("ii", $user_id, $user_id);
-
+    $stmt = $con->prepare("SELECT cars.id, cars.tariff, cars.new_tariff, parking_lots.lot_id, parking_lots.type, cars.plates, cars.payed_till, cars.is_auto_cont, cars.main_card, cars.second_main_card, cars.additional_card_1, cars.additional_card_2, cars.additional_card_3, cars.additional_card_4, cars.additional_card_5 FROM cars, parking_lots WHERE cars.owner_id = ? AND (cars.parking_lot_id = parking_lots.unique_id_for_DB OR (cars.parking_lot_id is NULL AND unique_id_for_DB = 177))");
     if( ! $stmt ){ return -1; }
+    $stmt->bind_param("ii", $user_id, $user_id);
 
     $stmt->execute();
     $result = $stmt->get_result();
@@ -89,8 +87,6 @@ function getFullAccount($con, $email, $passhash){
             "new_tariff" => $row['new_tariff'],
             "parking_lot_type" => $row['type'],
             "parking_lot_id" => $row['lot_id'],
-            "new_parking_lot_type" => $row['new_type'],
-            "new_parking_lot_id" => $row['new_lot_id'],
             "plates" => $row['plates'],
             "payed_till" => $datetime,
             "is_auto_cont" => ($row['is_auto_cont'] == 1),
@@ -154,89 +150,58 @@ function updateTariff($con, $user_id, $car_id, $new_tariff){
     return null;
 }
 
-// TODO: rewrite updating parking lot
 function updateParkingLot($con, $user_id, $car_id, $new_lot){
-    $stmt = $con->prepare("SELECT parking_lot_id, new_parking_lot_id FROM cars WHERE id = ? AND owner_id = ?");
-    if( ! $stmt ){
-        echo returnError(1);
-        mysqli_close($con);
-        exit();
-    }
+    $stmt = $con->prepare("SELECT parking_lot_id FROM cars WHERE id = ? AND owner_id = ?");
+    if( ! $stmt ){ return -1; }
     $stmt->bind_param("ii", $car_id, $user_id);
+
     $stmt->execute();
     $result = $stmt->get_result();
-    if($result->num_rows < 1){
-        echo returnError(1);
-        mysqli_close($con);
-        exit();
-    }
+    if($result->num_rows < 1){ return -1; }
+
     $parking_lot_id = null;
-    $new_parking_lot_id = null;
     while ($row = $result->fetch_assoc())
     {
         $parking_lot_id = $row['parking_lot_id'];
-        $new_parking_lot_id = $row['new_parking_lot_id'];
     }
 
-    if($new_lot === null){
-        if($new_parking_lot_id !== null){
-            $stmt = $con->prepare("SELECT car_id, owner_id FROM parking_lots WHERE unique_id_for_DB = ?");
-            $stmt->bind_param("s", $new_parking_lot_id);
-            if( ! $stmt ){
-                echo returnError(1);
-                mysqli_close($con);
-                exit();
-            }
-            $stmt->execute();
-            $result = $stmt->get_result();
-            if($result->num_rows != 1){
-                echo returnError(1);
-                mysqli_close($con);
-                exit();
-            }
+    if($new_lot === null) {
+        // Firstly we need to check if place really belongs to the car
+        $stmt = $con->prepare("SELECT car_id, owner_id FROM parking_lots WHERE unique_id_for_DB = ?");
+        if (!$stmt) { return -1; }
+        $stmt->bind_param("s", $parking_lot_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows != 1) { return -1; }
 
-            while ($row = $result->fetch_assoc())
-            {
-                $future_car_id = $row['car_id'];
-                $future_owner_id = $row['owner_id'];
-            }
-
-            if(($car_id === $future_car_id) && ($future_owner_id === null)){
-                $stmt = $con->prepare("UPDATE parking_lots SET car_id = NULL WHERE unique_id_for_DB = ?");
-                if( ! $stmt ){
-                    echo returnError(1);
-                    mysqli_close($con);
-                    exit();
-                }
-                $stmt->bind_param("i", $new_parking_lot_id);
-                $stmt->execute();
-
-                $stmt = $con->prepare("UPDATE cars SET new_parking_lot_id = NULL WHERE cars.id = ? AND cars.owner_id = ?");
-                if( ! $stmt ){
-                    echo returnError(1);
-                    mysqli_close($con);
-                    exit();
-                }
-                $stmt->bind_param("ii", $car_id, $user_id);
-                $stmt->execute();
-            }
+        $current_car_id = null;
+        $current_owner_id = null;
+        while ($row = $result->fetch_assoc()) {
+            $current_car_id = $row['car_id'];
+            $current_owner_id = $row['owner_id'];
         }
+
+        // Make changes only if the place is not bought and if it really belongs to the car
+        if (($car_id === $current_car_id) && ($current_owner_id === null)) {
+            $stmt = $con->prepare("UPDATE parking_lots SET car_id = NULL WHERE unique_id_for_DB = ?");
+            if (!$stmt) { return -1; }
+            $stmt->bind_param("i", $parking_lot_id);
+            $stmt->execute();
+
+            $stmt = $con->prepare("UPDATE cars SET parking_lot_id = NULL WHERE cars.id = ? AND cars.owner_id = ?");
+            if (!$stmt) { return -1; }
+            $stmt->bind_param("ii", $car_id, $user_id);
+            $stmt->execute();
+        }
+        else{ return -1; }
     }
     else{
         $stmt = $con->prepare("SELECT car_id, owner_id, unique_id_for_DB FROM parking_lots WHERE lot_id = ?");
-        if( ! $stmt ){
-            echo returnError(1);
-            mysqli_close($con);
-            exit();
-        }
+        if( ! $stmt ){ return -1; }
         $stmt->bind_param("s", $new_lot);
         $stmt->execute();
         $result = $stmt->get_result();
-        if($result->num_rows != 1){
-            echo returnError(1);
-            mysqli_close($con);
-            exit();
-        }
+        if($result->num_rows != 1){ return -1; }
         $picked_lot_car_id = null;
         $picked_lot_owner_id = null;
         $new_lot_id = null;
@@ -247,76 +212,34 @@ function updateParkingLot($con, $user_id, $car_id, $new_lot){
             $new_lot_id = $row['unique_id_for_DB'];
         }
 
-        if(($picked_lot_car_id !== null) || ($picked_lot_owner_id !== null)){
-            echo returnError(1);
-            mysqli_close($con);
-            exit();
-        }
+        // Check if lot is not taken yet.
+        if(($picked_lot_car_id !== null) || ($picked_lot_owner_id !== null)){ return -1; }
 
-        if($parking_lot_id === null) {
+        if($parking_lot_id === null) { // If user did not pick up lot before
+            $stmt = $con->prepare("UPDATE parking_lots SET car_id = ? WHERE unique_id_for_DB = ?");
+            if( ! $stmt ){ return -1; }
+            $stmt->bind_param("ii", $car_id, $new_lot_id);
+            $stmt->execute();
+
             $stmt = $con->prepare("UPDATE cars SET parking_lot_id = ? WHERE cars.id = ? AND cars.owner_id = ?");
-            if( ! $stmt ){
-                echo returnError(1);
-                mysqli_close($con);
-                exit();
-            }
+            if( ! $stmt ){ return -1; }
             $stmt->bind_param("iii", $new_lot_id, $car_id, $user_id);
-            $stmt->execute();
-
-            $stmt = $con->prepare("UPDATE parking_lots SET car_id = ? WHERE unique_id_for_DB = ?");
-            if( ! $stmt ){
-                echo returnError(1);
-                mysqli_close($con);
-                exit();
-            }
-            $stmt->bind_param("ii", $car_id, $new_lot_id);
             $stmt->execute();
         }
-        else if ($new_parking_lot_id === null){
-            $stmt = $con->prepare("UPDATE cars SET new_parking_lot_id = ? WHERE cars.id = ? AND cars.owner_id = ?");
-            if( ! $stmt ){
-                echo returnError(1);
-                mysqli_close($con);
-                exit();
-            }
-            $stmt->bind_param("iii", $new_lot_id, $car_id, $user_id);
-            $stmt->execute();
-
-            $stmt = $con->prepare("UPDATE parking_lots SET car_id = ? WHERE unique_id_for_DB = ?");
-            if( ! $stmt ){
-                echo returnError(1);
-                mysqli_close($con);
-                exit();
-            }
-            $stmt->bind_param("ii", $car_id, $new_lot_id);
-            $stmt->execute();
-        }
-        else{ // new parking lot is NOT null
-            $stmt = $con->prepare("UPDATE cars SET new_parking_lot_id = ? WHERE id = ? AND owner_id = ?");
-            if( ! $stmt ){
-                echo returnError(1);
-                mysqli_close($con);
-                exit();
-            }
-            $stmt->bind_param("iii", $new_lot_id, $car_id, $user_id);
-            $stmt->execute();
-
-            $stmt = $con->prepare("UPDATE parking_lots SET car_id = ? WHERE unique_id_for_DB = ?");
-            if( ! $stmt ){
-                echo returnError(1);
-                mysqli_close($con);
-                exit();
-            }
-            $stmt->bind_param("ii", $car_id, $new_lot_id);
-            $stmt->execute();
-
+        else{ // Parking lot is NOT null
             $stmt = $con->prepare("UPDATE parking_lots SET car_id = NULL WHERE unique_id_for_DB = ?");
-            if( ! $stmt ){
-                echo returnError(1);
-                mysqli_close($con);
-                exit();
-            }
-            $stmt->bind_param("i", $new_parking_lot_id);
+            if( ! $stmt ){ return -1; }
+            $stmt->bind_param("i", $parking_lot_id);
+            $stmt->execute();
+
+            $stmt = $con->prepare("UPDATE parking_lots SET car_id = ? WHERE unique_id_for_DB = ?");
+            if( ! $stmt ){ return -1; }
+            $stmt->bind_param("ii", $car_id, $new_lot_id);
+            $stmt->execute();
+
+            $stmt = $con->prepare("UPDATE cars SET parking_lot_id = ? WHERE id = ? AND owner_id = ?");
+            if( ! $stmt ){ return -1; }
+            $stmt->bind_param("iii", $new_lot_id, $car_id, $user_id);
             $stmt->execute();
         }
 
@@ -327,21 +250,19 @@ function updateParkingLot($con, $user_id, $car_id, $new_lot){
 function updateFIO($con, $user_id, $new_surname, $new_name, $new_patronymic){
     if($new_patronymic === null){
         $stmt = $con->prepare("UPDATE `users` SET `surname` = ?, `name` = ?, `patronymic` = NULL WHERE `users`.`id` = ?");
+        if( ! $stmt ){ return -1; }
         $stmt->bind_param("sss", $new_surname, $new_name, $user_id);
     }
     else{
         $stmt = $con->prepare("UPDATE `users` SET `surname` = ?, `name` = ?, `patronymic` = ? WHERE `users`.`id` = ?");
+        if( ! $stmt ){ return -1; }
         $stmt->bind_param("ssss", $new_surname, $new_name, $new_patronymic, $user_id);
     }
 
-    if( ! $stmt ){
-        return -1;
-    }
-
     $stmt->execute();
-    if($stmt->affected_rows != 1){
-        return -1;
-    }
+    if($stmt->affected_rows != 1){ return -1; }
+
+    return null;
 }
 
 function updateCards($con, $user_id, $car_id, $main_card_1, $main_card_2, $additional_card_1, $additional_card_2, $additional_card_3, $additional_card_4, $additional_card_5){
@@ -395,6 +316,7 @@ function updateCards($con, $user_id, $car_id, $main_card_1, $main_card_2, $addit
     $stmt_string .= " WHERE `cars`.`id` = ? AND `cars`.`owner_id` = ?";
     array_push($params, $car_id, $user_id);
     $stmt = $con->prepare($stmt_string);
+    if( ! $stmt ){ return -1; }
 
     $count = count($params);
     if(($count < 4) || ($count > 9)){ return -1; }
@@ -417,8 +339,6 @@ function updateCards($con, $user_id, $car_id, $main_card_1, $main_card_2, $addit
         $stmt->bind_param("iiiiiiiii", $params[0], $params[1], $params[2], $params[3], $params[4], $params[5], $params[6], $params[7], $params[8]);
     }
 
-    if( ! $stmt ){ return -1; }
-
     $stmt->execute();
     if($stmt->affected_rows != 1){ return -1; }
     return null;
@@ -426,9 +346,8 @@ function updateCards($con, $user_id, $car_id, $main_card_1, $main_card_2, $addit
 
 function updateAutoPay($con, $user_id, $car_id, $autoPay){
     $stmt = $con->prepare("UPDATE `cars` SET `is_auto_cont` = ? WHERE `cars`.`id` = ? AND `cars`.`owner_id` = ?");
-    $stmt->bind_param("iii", $autoPay, $car_id, $user_id);
-
     if( ! $stmt ){ return -1; }
+    $stmt->bind_param("iii", $autoPay, $car_id, $user_id);
 
     $stmt->execute();
     return null;
@@ -437,16 +356,16 @@ function updateAutoPay($con, $user_id, $car_id, $autoPay){
 function accountRegistration($con, $email, $passhash, $phone, $surname, $name, $patronymic){
     // Check email for being not used
     $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
     if( ! $stmt ){ return -1; }
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows >= 1){ return -3; }
 
     // Check phone number for being not used
     $stmt = $con->prepare("SELECT * FROM users WHERE phone = ?");
-    $stmt->bind_param("s", $phone);
     if( ! $stmt ){ return -1; }
+    $stmt->bind_param("s", $phone);
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows >= 1){ return -1; }
@@ -455,22 +374,22 @@ function accountRegistration($con, $email, $passhash, $phone, $surname, $name, $
     $stmt = null;
     if($patronymic === null){
         $stmt = $con->prepare("INSERT INTO `users` (`email`, `phone`, `password_hash`, `surname`, `name`, `balance`) VALUES (?, ?, ?, ?, ?, 0);");
+        if( ! $stmt ){ return -1; }
         $stmt->bind_param("sssss", $email, $phone, $passhash, $surname, $name);
     }
     else{
         $stmt = $con->prepare("INSERT INTO `users` (`email`, `phone`, `password_hash`, `surname`, `name`, `patronymic`, `balance`) VALUES (?, ?, ?, ?, ?, ?, 0);");
+        if( ! $stmt ){ return -1; }
         $stmt->bind_param("ssssss", $email, $phone, $passhash, $surname, $name, $patronymic);
     }
-    if( ! $stmt ){ return -1; }
     $stmt->execute();
     return null;
 }
 
 function processPayment($con, $user_id, $payment_amount){
     $stmt = $con->prepare("UPDATE `users` SET `balance` = `balance` + ? WHERE `users`.`id` = ?");
-    $stmt->bind_param("is", $payment_amount, $user_id);
-
     if( ! $stmt ){ return -1; }
+    $stmt->bind_param("is", $payment_amount, $user_id);
 
     $stmt->execute();
     return null;
@@ -499,9 +418,8 @@ function getAvailableParkingLots($con){
 
 function addCar($con, $user_id, $plates, $main_card, $additional_card){
     $stmt = $con->prepare("SELECT * FROM cars WHERE main_card = ?");
-    $stmt->bind_param("i", $main_card);
-
     if( ! $stmt ){ return -1; }
+    $stmt->bind_param("i", $main_card);
 
     $stmt->execute();
     $result = $stmt->get_result();
@@ -509,9 +427,8 @@ function addCar($con, $user_id, $plates, $main_card, $additional_card){
     if($result->num_rows >= 1){ return -5; }
 
     $stmt = $con->prepare("INSERT INTO cars (owner_id, plates, main_card, additional_card_1) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("isii", $user_id, $plates, $main_card, $additional_card);
-
     if( ! $stmt ){ return -1; }
+    $stmt->bind_param("isii", $user_id, $plates, $main_card, $additional_card);
 
     $stmt->execute();
     if($stmt->affected_rows != 1){ return -1; }
@@ -521,9 +438,8 @@ function addCar($con, $user_id, $plates, $main_card, $additional_card){
 
 function deleteCar($con, $user_id, $car_id){
     $stmt = $con->prepare("DELETE FROM cars WHERE id = ? AND owner_id = ?");
-    $stmt->bind_param("ii", $car_id, $user_id);
-
     if( ! $stmt ){ return -1; }
+    $stmt->bind_param("ii", $car_id, $user_id);
 
     $stmt->execute();
     if($stmt->affected_rows != 1){ return -1; }
