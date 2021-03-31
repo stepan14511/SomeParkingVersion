@@ -39,7 +39,7 @@ function getErrorFromObject($object){
             return returnError($error_num);
         }
         else {
-            return returnError(1);
+            return null;
         }
     }
     else{

@@ -132,7 +132,7 @@
                     <connections>
                         <outlet property="containerView" destination="DZo-Rm-mcY" id="R1I-oj-mig"/>
                         <outlet property="doneButton" destination="OPH-Hi-Pf8" id="aBE-Sz-e3M"/>
-                        <outlet property="imageViewForZooming" destination="NT5-vt-zVr" id="oaj-wH-xOs"/>
+                        <outlet property="imageViewForZooming" destination="NT5-vt-zVr" id="d6g-YG-65N"/>
                         <outlet property="scrollViewForZooming" destination="qtG-lM-PL0" id="WyC-3P-cgV"/>
                         <outlet property="stackView" destination="Fik-re-4eg" id="jdI-TV-wUu"/>
                     </connections>

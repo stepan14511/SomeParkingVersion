@@ -25,7 +25,9 @@ function getUserId($con, $email, $passhash){
         return -2;
     }
     $user_id = -1;
-    while ($row = $result->fetch_assoc()){$user_id = $row['id'];}
+    while ($row = $result->fetch_assoc()){
+        $user_id = $row['id'];
+    }
     return $user_id;
 }
 
@@ -58,7 +60,7 @@ function getFullAccount($con, $email, $passhash){
 
     $stmt = $con->prepare("SELECT cars.id, cars.tariff, cars.new_tariff, parking_lots.lot_id, parking_lots.type, cars.plates, cars.payed_till, cars.is_auto_cont, cars.main_card, cars.second_main_card, cars.additional_card_1, cars.additional_card_2, cars.additional_card_3, cars.additional_card_4, cars.additional_card_5 FROM cars, parking_lots WHERE cars.owner_id = ? AND (cars.parking_lot_id = parking_lots.unique_id_for_DB OR (cars.parking_lot_id is NULL AND unique_id_for_DB = 177))");
     if( ! $stmt ){ return -1; }
-    $stmt->bind_param("ii", $user_id, $user_id);
+    $stmt->bind_param("i", $user_id);
 
     $stmt->execute();
     $result = $stmt->get_result();
