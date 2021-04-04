@@ -91,7 +91,6 @@ extension LoginViewController: Downloadable{
                     password_field.layer.borderWidth = 1
                     password_field.layer.cornerRadius = 5
                     password_field.layer.borderColor = UIColor.red.cgColor
-                    print("wtf")
                 }
                 return
             }

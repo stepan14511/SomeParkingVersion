@@ -134,9 +134,6 @@ class FioChangeViewController: UITableViewController{
         let surname = surnameTextField.text ?? ""
         let name = nameTextField.text ?? ""
         let patronymic = patronymicTextField.text ?? ""
-        print(surname)
-        print(name)
-        print(patronymic)
         
         guard !surname.isEmpty, !name.isEmpty else{
             return

@@ -246,7 +246,6 @@ extension CarLotPickerViewController {
         let ai = UIActivityIndicatorView.init(style: .whiteLarge)
         ai.startAnimating()
         ai.center = CGPoint(x: screenWidth / 2, y: screenHeight * 0.4)
-        print(ai.center)
         
         DispatchQueue.main.async {
             spinnerView.addSubview(ai)
@@ -303,7 +302,6 @@ extension CarLotPickerViewController: Downloadable{
             
             availableLots = lots
             updateUI()
-            print("lmao")
             removeSpinner()
         }
     }

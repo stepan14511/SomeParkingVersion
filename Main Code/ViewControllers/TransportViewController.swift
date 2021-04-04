@@ -26,7 +26,6 @@ class TransportViewController: UITableViewController{
         self.addTransport!.addGestureRecognizer(gesture)
         
         model.delegate = self
-        print(self.view.frame)
         loadAccountFromServer()
     }
     
@@ -139,14 +138,11 @@ extension TransportViewController {
         let spinnerView = UIView.init(frame: onView.bounds)
         let screenWidth = UIScreen.main.bounds.maxX / 2 - spinnerView.frame.minX
         let screenHeight = UIScreen.main.bounds.maxY * 0.4 - spinnerView.frame.minY
-        print(UIScreen.main.bounds)
-        print(spinnerView.frame)
         
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
         let ai = UIActivityIndicatorView.init(style: .whiteLarge)
         ai.startAnimating()
         ai.center = CGPoint(x: screenWidth, y: screenHeight)
-        print(ai.center)
         
         DispatchQueue.main.async {
             spinnerView.addSubview(ai)
