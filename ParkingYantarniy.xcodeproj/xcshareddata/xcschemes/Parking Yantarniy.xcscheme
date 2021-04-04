@@ -14,24 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C4A0A7D8591B67FB75E2E8D215E3735B"
-               BuildableName = "SideMenu.framework"
-               BlueprintName = "SideMenu"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B48A0D21DCB2487002990A1"
                BuildableName = "ParkingApp.app"
                BlueprintName = "ParkingApp"
-               ReferencedContainer = "container:SideMenu.xcodeproj">
+               ReferencedContainer = "container:ParkingYantarniy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,20 +33,10 @@
             BlueprintIdentifier = "7B48A0D21DCB2487002990A1"
             BuildableName = "ParkingApp.app"
             BlueprintName = "ParkingApp"
-            ReferencedContainer = "container:SideMenu.xcodeproj">
+            ReferencedContainer = "container:ParkingYantarniy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8432CC0022FFBCF4003D2BBD"
-               BuildableName = "ExampleTests.xctest"
-               BlueprintName = "ExampleTests"
-               ReferencedContainer = "container:SideMenu.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -80,7 +56,7 @@
             BlueprintIdentifier = "7B48A0D21DCB2487002990A1"
             BuildableName = "ParkingApp.app"
             BlueprintName = "ParkingApp"
-            ReferencedContainer = "container:SideMenu.xcodeproj">
+            ReferencedContainer = "container:ParkingYantarniy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -97,7 +73,7 @@
             BlueprintIdentifier = "7B48A0D21DCB2487002990A1"
             BuildableName = "ParkingApp.app"
             BlueprintName = "ParkingApp"
-            ReferencedContainer = "container:SideMenu.xcodeproj">
+            ReferencedContainer = "container:ParkingYantarniy.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

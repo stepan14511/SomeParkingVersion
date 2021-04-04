@@ -7,9 +7,7 @@
 //
 
 import Foundation
-import var CommonCrypto.CC_MD5_DIGEST_LENGTH
-import func CommonCrypto.CC_MD5
-import typealias CommonCrypto.CC_LONG
+import CommonCrypto
 
 protocol AccountUser: class {
     func accountDownloaded(serverError: ServerError?)
@@ -27,7 +25,7 @@ class AccountController{
     static var password_hash: String?{
         set{ // Just push raw password, it will be hashed itself
             if let pass = newValue{
-                _password_hash = MD5(string: pass)
+                _password_hash = pass.sha256()
             }
             else{
                 _password_hash = nil
@@ -129,24 +127,5 @@ class AccountController{
             }
         }
         return nil
-    }
-    
-    static private func MD5(string: String) -> String {
-        let length = Int(CC_MD5_DIGEST_LENGTH)
-        let messageData = string.data(using:.utf8)!
-        var digestData = Data(count: length)
-        
-        _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
-        messageData.withUnsafeBytes { messageBytes -> UInt8 in
-                if let messageBytesBaseAddress = messageBytes.baseAddress, let digestBytesBlindMemory = digestBytes.bindMemory(to: UInt8.self).baseAddress {
-                    let messageLength = CC_LONG(messageData.count)
-                    CC_MD5(messageBytesBaseAddress, messageLength, digestBytesBlindMemory)
-                }
-                return 0
-            }
-        }
-        
-        // Convert to string and return
-        return digestData.map { String(format: "%02hhx", $0) }.joined()
     }
 }

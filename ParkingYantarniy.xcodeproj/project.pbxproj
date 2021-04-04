@@ -28,9 +28,6 @@
 		849F7BA223210C9A005DEB6A /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F7B9423210C9A005DEB6A /* SideMenuManager.swift */; };
 		849F7BA323210C9A005DEB6A /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F7B9523210C9A005DEB6A /* Protected.swift */; };
 		849F7BA423225F7F005DEB6A /* SideMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 849F7B67232104BD005DEB6A /* SideMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		84B489B51DD469B000D6CB43 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B21DD469B000D6CB43 /* LICENSE */; };
-		84B489B71DD469B000D6CB43 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B41DD469B000D6CB43 /* README.md */; };
-		84B489BA1DD469DA00D6CB43 /* SideMenu.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 84B489B91DD469DA00D6CB43 /* SideMenu.podspec */; };
 		8605311825C4858B00CA3F11 /* CarAutopayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8605311725C4858B00CA3F11 /* CarAutopayViewController.swift */; };
 		861E0B3F258950B30017719B /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E0B3D258950B30017719B /* AccountController.swift */; };
 		861FDE4E258E7D4C0061B565 /* CarEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861FDE4D258E7D4C0061B565 /* CarEditViewController.swift */; };
@@ -53,6 +50,7 @@
 		868F7F432587E468003E68E9 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868F7F412587E468003E68E9 /* CarModel.swift */; };
 		869910AE258A1A8C001B50C1 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869910AC258A1A8C001B50C1 /* ServerError.swift */; };
 		86A2DD3C258FE11200532697 /* CarAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A2DD3B258FE11200532697 /* CarAddViewController.swift */; };
+		86A96849261952FB00892CF7 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A96848261952FB00892CF7 /* DataExtension.swift */; };
 		86B1E6B12576B0AD0019D182 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1E6B02576B0AD0019D182 /* LoginViewController.swift */; };
 		86DD6D732597E03200BFCCFB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD6D712597E03200BFCCFB /* AccountViewController.swift */; };
 		86E190F125DC8A2400BD68AF /* CarLotPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E190F025DC8A2400BD68AF /* CarLotPickerTableViewController.swift */; };
@@ -96,9 +94,6 @@
 		849F7B9323210C9A005DEB6A /* SideMenuPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuPresentationController.swift; path = Pod/Classes/SideMenuPresentationController.swift; sourceTree = "<group>"; };
 		849F7B9423210C9A005DEB6A /* SideMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuManager.swift; path = Pod/Classes/SideMenuManager.swift; sourceTree = "<group>"; };
 		849F7B9523210C9A005DEB6A /* Protected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Pod/Classes/Protected.swift; sourceTree = "<group>"; };
-		84B489B21DD469B000D6CB43 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		84B489B41DD469B000D6CB43 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		84B489B91DD469DA00D6CB43 /* SideMenu.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SideMenu.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		84FFB98523556C1600E241DA /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FFB98723556C4400E241DA /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8605311725C4858B00CA3F11 /* CarAutopayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarAutopayViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +118,7 @@
 		868F7F412587E468003E68E9 /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
 		869910AC258A1A8C001B50C1 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		86A2DD3B258FE11200532697 /* CarAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAddViewController.swift; sourceTree = "<group>"; };
+		86A96848261952FB00892CF7 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		86B1E6B02576B0AD0019D182 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86DD6D712597E03200BFCCFB /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		86E190F025DC8A2400BD68AF /* CarLotPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarLotPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -195,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				65FF1B3F1DE33097007B0845 /* Source */,
-				84B489B81DD469B900D6CB43 /* Podspec Metadata */,
 				7B48A0D41DCB2487002990A1 /* Main Code */,
 				7B48A0D51DCB2487002990A1 /* AppDelegate.swift */,
 				7B9DC9051DC6E8C1000D4007 /* Products */,
@@ -211,16 +206,6 @@
 				7B48A0D31DCB2487002990A1 /* ParkingApp.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		84B489B81DD469B900D6CB43 /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				84B489B21DD469B000D6CB43 /* LICENSE */,
-				84B489B41DD469B000D6CB43 /* README.md */,
-				84B489B91DD469DA00D6CB43 /* SideMenu.podspec */,
-			);
-			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 		84FFB98323556BD900E241DA /* Frameworks */ = {
@@ -280,6 +265,7 @@
 				86E3D3CA2593586B003734D7 /* ServerSuccess.swift */,
 				863FD846258D12F50072FDC0 /* StringExtension.swift */,
 				868F7F342587D810003E68E9 /* Network.swift */,
+				86A96848261952FB00892CF7 /* DataExtension.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -361,7 +347,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = jonkykong;
+				ORGANIZATIONNAME = stepan14511;
 				TargetAttributes = {
 					7B48A0D21DCB2487002990A1 = {
 						CreatedOnToolsVersion = 8.0;
@@ -371,12 +357,13 @@
 					};
 					7B9DC9031DC6E8C1000D4007 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = B3Q94Q4YNJ;
 						LastSwiftMigration = 1030;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 7B9DC8FE1DC6E8C1000D4007 /* Build configuration list for PBXProject "SideMenu" */;
+			buildConfigurationList = 7B9DC8FE1DC6E8C1000D4007 /* Build configuration list for PBXProject "ParkingYantarniy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -414,9 +401,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84B489BA1DD469DA00D6CB43 /* SideMenu.podspec in Resources */,
-				84B489B51DD469B000D6CB43 /* LICENSE in Resources */,
-				84B489B71DD469B000D6CB43 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +457,7 @@
 				8605311825C4858B00CA3F11 /* CarAutopayViewController.swift in Sources */,
 				86A2DD3C258FE11200532697 /* CarAddViewController.swift in Sources */,
 				862838ED25AB206000C982B2 /* CarTariffChangeViewControler.swift in Sources */,
+				86A96849261952FB00892CF7 /* DataExtension.swift in Sources */,
 				867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */,
 				868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */,
 				863FD843258D127A0072FDC0 /* PhoneTextField.swift in Sources */,
@@ -684,8 +669,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = B3Q94Q4YNJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -693,7 +679,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "$(SRCROOT)/SideMenu/module.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jonkykong.SideMenu;
+				PRODUCT_BUNDLE_IDENTIFIER = sidemenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -707,8 +693,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = B3Q94Q4YNJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -716,7 +703,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "$(SRCROOT)/SideMenu/module.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jonkykong.SideMenu;
+				PRODUCT_BUNDLE_IDENTIFIER = sidemenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -737,7 +724,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B9DC8FE1DC6E8C1000D4007 /* Build configuration list for PBXProject "SideMenu" */ = {
+		7B9DC8FE1DC6E8C1000D4007 /* Build configuration list for PBXProject "ParkingYantarniy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B9DC90A1DC6E8C1000D4007 /* Debug */,
