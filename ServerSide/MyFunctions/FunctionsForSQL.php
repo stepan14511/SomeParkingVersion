@@ -355,6 +355,20 @@ function updateAutoPay($con, $user_id, $car_id, $autoPay){
     return null;
 }
 
+function updatePlates($con, $user_id, $car_id, $new_plates){
+    // Check that plates are not null
+    if($new_plates === null){ return -1; }
+
+    // TODO: save previous plates to DB
+
+    $stmt = $con->prepare("UPDATE `cars` SET `plates` = ? WHERE `cars`.`id` = ? AND `cars`.`owner_id` = ?");
+    if( ! $stmt ){ return -1; }
+    $stmt->bind_param("sii", $new_plates, $car_id, $user_id);
+
+    $stmt->execute();
+    return null;
+}
+
 function accountRegistration($con, $email, $passhash, $phone, $surname, $name, $patronymic){
     // Check email for being not used
     $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
@@ -439,6 +453,8 @@ function addCar($con, $user_id, $plates, $main_card, $additional_card){
 }
 
 function deleteCar($con, $user_id, $car_id){
+    // TODO: Save acc to deleted table in DB
+
     $stmt = $con->prepare("DELETE FROM cars WHERE id = ? AND owner_id = ?");
     if( ! $stmt ){ return -1; }
     $stmt->bind_param("ii", $car_id, $user_id);

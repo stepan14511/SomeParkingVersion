@@ -23,6 +23,7 @@ class RegistrationViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.setUpDismissKeyboardOutsideTouch()
         model.delegate = self
     }
     

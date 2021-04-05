@@ -18,6 +18,7 @@ class PopolnitViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpDismissKeyboardOutsideTouch()
         
         model.delegate = self
         

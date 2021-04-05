@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -52,6 +52,7 @@
 		86A2DD3C258FE11200532697 /* CarAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A2DD3B258FE11200532697 /* CarAddViewController.swift */; };
 		86A96849261952FB00892CF7 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A96848261952FB00892CF7 /* DataExtension.swift */; };
 		86B1E6B12576B0AD0019D182 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1E6B02576B0AD0019D182 /* LoginViewController.swift */; };
+		86CFA9A8261A1EB4005A6826 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CFA9A7261A1EB4005A6826 /* ViewControllerExtension.swift */; };
 		86DD6D732597E03200BFCCFB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD6D712597E03200BFCCFB /* AccountViewController.swift */; };
 		86E190F125DC8A2400BD68AF /* CarLotPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E190F025DC8A2400BD68AF /* CarLotPickerTableViewController.swift */; };
 		86E3D3CB2593586B003734D7 /* ServerSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E3D3CA2593586B003734D7 /* ServerSuccess.swift */; };
@@ -120,6 +121,7 @@
 		86A2DD3B258FE11200532697 /* CarAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAddViewController.swift; sourceTree = "<group>"; };
 		86A96848261952FB00892CF7 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		86B1E6B02576B0AD0019D182 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		86CFA9A7261A1EB4005A6826 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		86DD6D712597E03200BFCCFB /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		86E190F025DC8A2400BD68AF /* CarLotPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarLotPickerTableViewController.swift; sourceTree = "<group>"; };
 		86E3D3CA2593586B003734D7 /* ServerSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSuccess.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				863FD846258D12F50072FDC0 /* StringExtension.swift */,
 				868F7F342587D810003E68E9 /* Network.swift */,
 				86A96848261952FB00892CF7 /* DataExtension.swift */,
+				86CFA9A7261A1EB4005A6826 /* ViewControllerExtension.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				7B48A0D01DCB2487002990A1 /* Frameworks */,
 				7B48A0D11DCB2487002990A1 /* Resources */,
 				558DEC0A930F44C17D50F99B /* [CP] Embed Pods Frameworks */,
+				86EBFB46261A92DF00815454 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -425,6 +429,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		86EBFB46261A92DF00815454 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nTAGS=\"TODO:|FIXME:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
+		};
 		B96CD08B77E6CAC7B3180AE2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,6 +488,7 @@
 				86E3D3CB2593586B003734D7 /* ServerSuccess.swift in Sources */,
 				861FDE4E258E7D4C0061B565 /* CarEditViewController.swift in Sources */,
 				8684BDD325DB66DE007A4DD8 /* CarLotPickerViewController.swift in Sources */,
+				86CFA9A8261A1EB4005A6826 /* ViewControllerExtension.swift in Sources */,
 				863FD83F258CDB5C0072FDC0 /* RegistrationViewController.swift in Sources */,
 				86E190F125DC8A2400BD68AF /* CarLotPickerTableViewController.swift in Sources */,
 				863FD847258D12F50072FDC0 /* StringExtension.swift in Sources */,
@@ -517,11 +540,14 @@
 			baseConfigurationReference = 1F17B9D56ADA958C611FAA83 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = B3Q94Q4YNJ;
 				INFOPLIST_FILE = "Main Code/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = stepan.kuznetsov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -534,11 +560,14 @@
 			baseConfigurationReference = C7DA85E73FE6228663AD9236 /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = B3Q94Q4YNJ;
 				INFOPLIST_FILE = "Main Code/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = stepan.kuznetsov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -658,7 +687,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -680,7 +710,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SideMenu/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "$(SRCROOT)/SideMenu/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = sidemenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -705,7 +739,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SideMenu/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MODULEMAP_FILE = "$(SRCROOT)/SideMenu/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = sidemenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";

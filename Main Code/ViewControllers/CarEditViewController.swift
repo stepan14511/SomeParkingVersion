@@ -17,8 +17,6 @@ class CarEditViewController: UITableViewController{
     var openLoginScreenClosure: (() -> Void)?
     var updateAccountClosure: (() -> Void)?
     
-    @IBOutlet var doneButton: UIButton?
-    
     @IBOutlet var platesCell: UITableViewCell?
     let platesTextField = UITextField()
     @IBOutlet var tariffCell: UITableViewCell?
@@ -29,11 +27,11 @@ class CarEditViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpDismissKeyboardOutsideTouch()
         model.delegate = self
         
         setupCells()
         updateRowsText()
-        checkDoneButtonState()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -114,11 +112,12 @@ class CarEditViewController: UITableViewController{
         let textFieldWidth = (UIScreen.main.bounds.width) * 0.5
         
         platesTextField.frame = CGRect(x: 0, y: 480, width: textFieldWidth, height: 40)
-        platesTextField.placeholder = "А 123 БВ 456"
+        platesTextField.placeholder = "A123BC456"
         platesTextField.layer.cornerRadius = 10.0
         platesTextField.textAlignment = .right
         platesTextField.addTarget(self, action: #selector(platesTextFieldChanged), for: .editingChanged)
         platesTextField.addTarget(self, action: #selector(platesTextFieldChanged), for: .editingDidBegin)
+        platesTextField.addTarget(self, action: #selector(platesTextFieldEditingEnded), for: .editingDidEnd)
         platesCell?.accessoryView = platesTextField
     }
     
@@ -148,30 +147,58 @@ class CarEditViewController: UITableViewController{
         if text.count > 12{
             text = String(text.prefix(12))
         }
+        
+        // TODO: Check if valid plates https://ru.stackoverflow.com/questions/824896/%D0%A0%D0%B5%D0%B3%D1%83%D0%BB%D1%8F%D1%80%D0%BD%D0%BE%D0%B5-%D0%B2%D1%8B%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B4%D0%BB%D1%8F-%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B3%D0%BE-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%D0%B0
         //text = text.applyPatternOnNumbers(pattern: kPlatesPattern, replacementCharacter: kPlatesPatternReplaceChar, numbersRE: "[^a-zA-Zа-яА-Я0-9]") //TODO: FIX THIS SHIT
         platesTextField.text = text
-        
-        checkDoneButtonState()
     }
     
     @objc func platesTextFieldEditingEnded(){
-        //TODO: Check for possible plates
-    }
-    
-    func checkDoneButtonState(){
-        guard let _ = doneButton else { return }
-        
-        guard let plates = AccountController.getCarById(id: car_id)?.plates, !plates.isEmpty else{
-            doneButton?.isEnabled = false
+        guard checkPlatesChangedAndLegal() else{
             return
         }
         
+        if let view = platesCell{
+            showSpinner(onView: view)
+        }
+        
+        
+        guard let email = AccountController.email,
+              let passhash = AccountController.password_hash,
+              let car_id = AccountController.getCarById(id: car_id)?.id,
+              let new_plates = platesTextField.text
+              else{
+            return
+        }
+        
+        // Send data to server
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unable to get app version"
+        
+        let param =
+                [
+                    "ios_app_ver": appVersion,
+                    "email": email,
+                    "passhash": passhash,
+                    "car_id": car_id,
+                    "new_plates": new_plates
+                ] as [String : Any]
+        
+        model.downloadAccountData(parameters: param, url: URLServices.updatePlates)
+    }
+    
+    func checkPlatesChangedAndLegal() -> Bool{
+        guard let plates = AccountController.getCarById(id: car_id)?.plates, !plates.isEmpty else{
+            return false
+        }
+        
         if plates == platesTextField.text{
-            doneButton?.isEnabled = false
+            return false
         }
         else{
-            doneButton?.isEnabled = true
+            return true
         }
+        
+        // TODO: Check if plates are legal
     }
     
     @IBAction func dismissButtonPressed(){
@@ -253,7 +280,7 @@ extension CarEditViewController: Downloadable{
                 return
             }
             
-            guard let _ = data as? ServerSuccess else{
+            guard let account = data as? Account else{
                 guard let error = data as? ServerError else{
                     // This is literally impossible, but why not to leave it here)
                     return
@@ -266,9 +293,11 @@ extension CarEditViewController: Downloadable{
                 }
                 return
             }
-
+            
+            AccountController.account = account
+            AccountController.saveDataToMemory()
+            updateRowsText()
             removeSpinner()
-            dismiss(animated: true, completion: updateAccountClosure)
         }
     }
 }
