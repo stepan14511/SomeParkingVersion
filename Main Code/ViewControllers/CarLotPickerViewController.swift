@@ -34,7 +34,7 @@ class CarLotPickerViewController: UIViewController{
         checkDoneButtonState()
         
         // Fix zoom buttons size
-        stackView?.bounds = CGRect(x: 10, y: 0, width: 50, height: 120)
+        stackView?.bounds = CGRect(x: 0, y: 0, width: 50, height: 120)
         
         // Setup tableview
         let controller = self.children[0] as! CarLotPickerTableViewController

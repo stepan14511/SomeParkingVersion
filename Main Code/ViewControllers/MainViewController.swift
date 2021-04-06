@@ -62,53 +62,6 @@ class MainViewController: UIViewController {
             let formattedBalance = formater.string(from: NSNumber(value: account.balance))
             balanceShower.setTitle(String(formattedBalance ?? "0,00 ₽"), for: .normal)
         }
-        
-        updateMapUI()
-    }
-    
-    public func updateMapUI(){
-        guard let container = imageViewForZooming else{
-            return
-        }
-        
-        // Remove all extra layers
-        for (index, imageView) in container.subviews.enumerated(){
-            if index == 0{
-                continue
-            }
-            if let _ = imageView as? UIImageView{
-                imageView.removeFromSuperview()
-            }
-        }
-        
-        
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "g_2")
-        imageView.contentMode = .topLeft
-        imageView.isOpaque = true
-        imageView.clipsToBounds = true
-        if container.subviews.count >= 1{
-            imageView.frame = container.subviews[0].frame
-        }
-        container.addSubview(imageView)
-        
-        // Add needed layers
-        /*if let account = AccountController.account,
-           let cars = account.cars{
-            for car in cars{
-                if let lot_id = car.parking_lot_id{
-                    let imageView = UIImageView()
-                    imageView.image = UIImage(named: "g_\(lot_id)")
-                    imageView.contentMode = .scaleAspectFit
-                    imageView.isOpaque = true
-                    imageView.clipsToBounds = true
-                    if container.subviews.count >= 1{
-                        imageView.frame = container.subviews[0].frame
-                    }
-                    container.addSubview(imageView)
-                }
-            }
-        }*/
     }
     
     private func setupSideMenu() {
