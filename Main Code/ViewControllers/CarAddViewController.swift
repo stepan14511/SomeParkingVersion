@@ -15,6 +15,7 @@ class CarAddViewController: UIViewController{
     
     var openLoginScreenClosure: (() -> Void)?
     var updateAccountClosure: (() -> Void)?
+    
     @IBOutlet weak var doneButton: UIButton?
     @IBOutlet weak var platesTextField: UITextField?
     @IBOutlet weak var mainCardTextField: UITextField?
@@ -26,6 +27,30 @@ class CarAddViewController: UIViewController{
         model.delegate = self
         
         doneButton?.isEnabled = false
+    }
+    
+    @IBAction func platesAreChangin(_ sender: Any){
+        platesTextField?.layer.borderWidth = 0
+        
+        guard var text = platesTextField?.text else{
+            return
+        }
+        if text.count > 9{
+            text = String(text.prefix(9))
+        }
+        
+        platesTextField?.text = text
+    }
+    
+    @IBAction func platesFinishedChanging(_ sender: Any){
+        guard let plates = platesTextField?.text,
+              plates.isLegalPlates else{
+            
+            platesTextField?.layer.borderWidth = 1
+            platesTextField?.layer.cornerRadius = 5
+            platesTextField?.layer.borderColor = UIColor.red.cgColor
+            return
+        }
     }
     
     @IBAction func dismissButtonPressed(_ sender: Any){
@@ -42,13 +67,17 @@ class CarAddViewController: UIViewController{
             return
         }
         
-        guard let plates = platesTextField?.text, !plates.isEmpty,
+        guard var plates = platesTextField?.text, plates.isLegalPlates,
            let mainCard = mainCardTextField?.text, !mainCard.isEmpty,
            let additionalCard = additionalCardTextField?.text, !additionalCard.isEmpty
         else{
             doneButton?.isEnabled = false
             return
         }
+        
+        plates = plates.removingWhitespaces()
+        plates = plates.lowercased()
+        plates = plates.translatePlatesToRus()
         
         showSpinner(onView: self.view)
         
@@ -75,7 +104,7 @@ class CarAddViewController: UIViewController{
             return
         }
         
-        if let plates = platesTextField?.text, !plates.isEmpty,
+        if let plates = platesTextField?.text, plates.isLegalPlates,
            let mainCard = mainCardTextField?.text, !mainCard.isEmpty,
            let additionalCard = additionalCardTextField?.text, !additionalCard.isEmpty{
             doneButton?.isEnabled = true

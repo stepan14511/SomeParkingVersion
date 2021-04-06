@@ -11,9 +11,6 @@ import Foundation
 let kPhonePattern = "+# (###) ###-##-##"
 let kPhonePatternReplaceChar: Character = "#"
 
-let kPlatesPattern = "# ### ## ###"
-let kPlatesPatternReplaceChar: Character = "#"
-
 let kCardNumbersPattern = "######"
 let kCardNumbersPatternReplaceChar: Character = "#"
 
@@ -38,8 +35,33 @@ extension String {
         return Int(self) != nil
     }
     
+    var isLegalPlates: Bool {
+        let plates = self.removingWhitespaces()
+        let regex = try! NSRegularExpression(pattern: "^[АВЕКМНОРСТУХABEKMHOPCTYX]{1}\\d{3}(?<!000)[АВЕКМНОРСТУХABEKMHOPCTYX]{2}\\d{2,3}(?<!000|00|0\\d\\d)$", options: .caseInsensitive)
+        let range = NSRange(location: 0, length: plates.utf16.count)
+        return regex.firstMatch(in: plates, options: [], range: range) != nil
+    }
+    
+    func translatePlatesToRus() -> String {
+        let engChars = ["a", "b", "e", "k", "m", "h", "o", "p", "c", "t", "y", "x"]
+        let rusChars = ["а", "в", "е", "к", "м", "н", "о", "р", "с", "т", "у", "х"]
+        var result: String = ""
+        for character in self{
+            if let index = engChars.firstIndex(of: String(character)){
+                result += rusChars[index]
+                continue
+            }
+            result += String(character)
+        }
+        return result
+    }
+    
+    func removingWhitespaces() -> String {
+        return components(separatedBy: .whitespaces).joined()
+    }
+    
     // For data hashing
-    func sha256() -> String{
+    func sha256() -> String {
         if let stringData = self.data(using: String.Encoding.utf8) {
             return stringData.sha256()
         }

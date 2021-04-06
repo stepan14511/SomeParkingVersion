@@ -115,19 +115,19 @@ extension RegistrationViewController: Downloadable{
         DispatchQueue.main.sync{
             guard let data = param else{
                 // Smthing strange, not server error
-                email_field.text = "Not server error"
+                //email_field.text = "Not server error"
                 return
             }
             
             guard let account = data as? Account else{
-                guard let error = data as? ServerError else{
+                guard let _ = data as? ServerError else{
                     // This is literally impossible, but why not to leave it here)
-                    email_field.text = "Not server error"
+                    //email_field.text = "Not server error"
                     return
                 }
                 
                 // Server error
-                email_field.text = error.message
+                //email_field.text = error.message
                 return
             }
             
