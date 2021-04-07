@@ -11,7 +11,10 @@ import UIKit
 
 class CarEditViewController: UITableViewController{
     let model = AccountModel()
+    
+    // Spinner vars
     var vSpinner : UIView?
+    private var spinnerStartTime: Date = Date()
     
     var car_id: Int? // Set up by caller
     var openLoginScreenClosure: (() -> Void)?
@@ -21,9 +24,6 @@ class CarEditViewController: UITableViewController{
     let platesTextField = UITextField()
     @IBOutlet var tariffCell: UITableViewCell?
     @IBOutlet var cardsCell: UITableViewCell?
-    
-    
-    private var spinnerStartTime: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,6 +139,10 @@ class CarEditViewController: UITableViewController{
             tariffCell?.detailTextLabel?.text = "не выбрано"
         }
     }
+}
+
+// Reaction to user input
+extension CarEditViewController {
     
     @objc func platesTextFieldChanged(){
         guard var text = platesTextField.text else{
@@ -195,19 +199,6 @@ class CarEditViewController: UITableViewController{
                 ] as [String : Any]
         
         model.downloadAccountData(parameters: param, url: URLServices.updatePlates)
-    }
-    
-    func checkPlatesChanged() -> Bool{
-        guard let plates = AccountController.getCarById(id: car_id)?.plates, !plates.isEmpty else{
-            return false
-        }
-        
-        if plates == platesTextField.text{
-            return false
-        }
-        else{
-            return true
-        }
     }
     
     @IBAction func dismissButtonPressed(){

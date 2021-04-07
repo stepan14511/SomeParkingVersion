@@ -40,6 +40,7 @@ class FioChangeViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         var textField: UITextField?
+        
         switch indexPath.row {
         case 0:
             textField = surnameTextField
@@ -63,12 +64,18 @@ class FioChangeViewController: UITableViewController{
         surnameTextField.placeholder = "обязательно"
         surnameTextField.layer.cornerRadius = 10.0
         surnameTextField.addTarget(self, action: #selector(checkForDoneButton), for: .editingChanged)
+        surnameTextField.addTarget(self, action: #selector(surnameTextFieldChanging), for: .editingChanged)
+        surnameTextField.addTarget(self, action: #selector(surnameTextFieldChanging), for: .editingDidBegin)
+        surnameTextField.addTarget(self, action: #selector(surnameTextFieldEditingEnded), for: .editingDidEnd)
         surnameCell?.accessoryView = surnameTextField
         
         nameTextField.frame = CGRect(x: 0, y: 480, width: textFieldWidth, height: 40)
         nameTextField.placeholder = "обязательно"
         nameTextField.layer.cornerRadius = 10.0
         nameTextField.addTarget(self, action: #selector(checkForDoneButton), for: .editingChanged)
+        nameTextField.addTarget(self, action: #selector(nameTextFieldChanging), for: .editingChanged)
+        nameTextField.addTarget(self, action: #selector(nameTextFieldChanging), for: .editingDidBegin)
+        nameTextField.addTarget(self, action: #selector(nameTextFieldEditingEnded), for: .editingDidEnd)
         nameCell?.accessoryView = nameTextField
         
         patronymicTextField.frame = CGRect(x: 0, y: 480, width: textFieldWidth, height: 40)
@@ -95,8 +102,8 @@ class FioChangeViewController: UITableViewController{
         
         button.isEnabled = false
         
-        if !surname.isEmpty,
-           !name.isEmpty
+        if surname.isValidName,
+           name.isValidName
         {
             if name != account.name ||
                surname != account.surname ||
@@ -136,7 +143,7 @@ class FioChangeViewController: UITableViewController{
         let name = nameTextField.text ?? ""
         let patronymic = patronymicTextField.text ?? ""
         
-        guard !surname.isEmpty, !name.isEmpty else{
+        guard surname.isValidName, name.isValidName else{
             return
         }
         
@@ -154,6 +161,38 @@ class FioChangeViewController: UITableViewController{
         }
         
         model.downloadAccountData(parameters: param, url: URLServices.updateFIO)
+    }
+}
+
+// Reaction to user input
+extension FioChangeViewController{
+    
+    @objc func nameTextFieldChanging(){
+        nameCell?.textLabel?.textColor = .black
+    }
+
+    @objc func nameTextFieldEditingEnded(){
+        guard let name = nameTextField.text,
+              name.isValidName
+              else {
+            
+            nameCell?.textLabel?.textColor = .red
+            return
+        }
+    }
+    
+    @objc func surnameTextFieldChanging(){
+        surnameCell?.textLabel?.textColor = .black
+    }
+
+    @objc func surnameTextFieldEditingEnded(){
+        guard let surname = surnameTextField.text,
+              surname.isValidName
+              else {
+            
+            surnameCell?.textLabel?.textColor = .red
+            return
+        }
     }
 }
 

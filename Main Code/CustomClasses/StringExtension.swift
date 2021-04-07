@@ -35,6 +35,23 @@ extension String {
         return Int(self) != nil
     }
     
+    var isValidName: Bool{
+        let regex = try! NSRegularExpression(pattern: "^[А-ЯЁA-Z \\-]{2,}$", options: .caseInsensitive)
+        let range = NSRange(location: 0, length: self.utf16.count)
+        return regex.firstMatch(in: self, options: [], range: range) != nil
+    }
+    
+    var isValidPassword: Bool{
+        let regex = try! NSRegularExpression(pattern: "^(?=.*[A-Z])(?=.*\\d)[A-Z\\d@$!%*#?&]{8,}$", options: .caseInsensitive)
+        let range = NSRange(location: 0, length: self.utf16.count)
+        return regex.firstMatch(in: self, options: [], range: range) != nil
+    }
+    
+    var isEmail: Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: self)
+    }
+    
     var isLegalPlates: Bool {
         let plates = self.removingWhitespaces()
         let regex = try! NSRegularExpression(pattern: "^[АВЕКМНОРСТУХABEKMHOPCTYX]{1}\\d{3}(?<!000)[АВЕКМНОРСТУХABEKMHOPCTYX]{2}\\d{2,3}(?<!000|00|0\\d\\d)$", options: .caseInsensitive)

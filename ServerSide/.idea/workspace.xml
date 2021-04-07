@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="407d63a4-a691-457e-8235-922026fb7177" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Main Code/Assets/Assets.xcassets/map.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/Assets/Assets.xcassets/map.imageset/Contents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main Code/Storyboards/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/Storyboards/Main.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main Code/Storyboards/Tariffs.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/Storyboards/Tariffs.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main Code/ViewControllers/CarLotPickerViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/ViewControllers/CarLotPickerViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main Code/ViewControllers/MainViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/ViewControllers/MainViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main Code/CustomClasses/StringExtension.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/CustomClasses/StringExtension.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main Code/Storyboards/Login.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/Storyboards/Login.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main Code/ViewControllers/RegistrationViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/ViewControllers/RegistrationViewController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.xcworkspace/xcuserdata/stepankuznetsov.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.xcworkspace/xcuserdata/stepankuznetsov.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +68,9 @@
       <workItem from="1617581158784" duration="501000" />
       <workItem from="1617581663016" duration="680000" />
       <workItem from="1617680726163" duration="20000" />
+      <workItem from="1617686555174" duration="21000" />
+      <workItem from="1617690385015" duration="21000" />
+      <workItem from="1617705668706" duration="357000" />
     </task>
     <servers />
   </component>

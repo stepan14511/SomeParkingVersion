@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4ua-tV-Xx9">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -79,6 +79,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
+                                <connections>
+                                    <action selector="emailTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingChanged" id="17o-U5-oGf"/>
+                                    <action selector="emailTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="Od2-uW-6Dz"/>
+                                    <action selector="emailTextFieldEditingEnded:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="KPY-ID-jxg"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Отчество (необязательно)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n58-wQ-pC8">
                                 <rect key="frame" x="48" y="298" width="319" height="34"/>
@@ -91,30 +96,52 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="family-name"/>
+                                <connections>
+                                    <action selector="surnameTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingChanged" id="RoK-QR-07n"/>
+                                    <action selector="surnameTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="dYn-qF-sYb"/>
+                                    <action selector="surnameTextFieldEditingEnded:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="Eop-CW-3Y9"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mV4-Z6-RXf">
                                 <rect key="frame" x="48" y="241" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="name"/>
+                                <connections>
+                                    <action selector="nameTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="9GG-Gj-80Y"/>
+                                    <action selector="nameTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingChanged" id="w8E-jN-xMw"/>
+                                    <action selector="nameTextFieldEditingEnded:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="EzN-JG-NZJ"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0FE-c3-m8A">
                                 <rect key="frame" x="48" y="469" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <connections>
+                                    <action selector="passwordTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="AZQ-VG-eKJ"/>
+                                    <action selector="passwordTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingChanged" id="jL2-Dw-Onj"/>
+                                    <action selector="passwordTextFieldEditingEnded:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="lPA-7Z-whR"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+7 (123) 456-78-90" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXt-0F-MAQ">
-                                <rect key="frame" x="48" y="412" width="319" height="34"/>
+                                <rect key="frame" x="50" y="412" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                 <connections>
-                                    <action selector="phoneFieldTextChanged:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="GTi-G9-t7S"/>
-                                    <action selector="phoneFieldTextChanged:" destination="5vK-tK-n5x" eventType="editingChanged" id="YVc-62-rSm"/>
-                                    <action selector="phoneFieldTextIsEmpty:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="HPc-aB-fQu"/>
+                                    <action selector="phoneTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="GTi-G9-t7S"/>
+                                    <action selector="phoneTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingChanged" id="YVc-62-rSm"/>
+                                    <action selector="phoneTextFieldEditingEnded:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="HPc-aB-fQu"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Минимальная длина: 8 символов. Должна быть хотя бы 1 буква и 1 цифра. Дополнительно можно использовать символы @$!%*#?&amp;" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrZ-Et-JqQ">
+                                <rect key="frame" x="48" y="511" width="319" height="42"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2s-Ig-EhQ">
                                 <rect key="frame" x="48" y="561" width="319" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -127,6 +154,22 @@
                                     <action selector="registrationButtonPressed:" destination="5vK-tK-n5x" eventType="touchUpInside" id="fQD-3c-DVR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdA-Tg-ebO" userLabel="Eye">
+                                <rect key="frame" x="335" y="469" width="26" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemGray2Color"/>
+                                <state key="normal" image="eye.slash" catalog="system"/>
+                                <connections>
+                                    <action selector="passwordEyePressed:" destination="5vK-tK-n5x" eventType="touchUpInside" id="MGb-ce-Wrr"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8K-OU-2MM">
+                                <rect key="frame" x="48" y="114" width="319" height="62"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8WJ-mf-sMb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -134,7 +177,7 @@
                     <navigationItem key="navigationItem" title="Регистрация" id="Jjf-TJ-cqq">
                         <barButtonItem key="leftBarButtonItem" id="Azu-mE-xAQ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="KWu-Gb-Ccv">
-                                <rect key="frame" x="20" y="7" width="83" height="30"/>
+                                <rect key="frame" x="20" y="6" width="83" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Отмена">
@@ -148,7 +191,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="email_field" destination="0ya-sQ-kEE" id="AML-oq-Hlz"/>
+                        <outlet property="errorLabel" destination="O8K-OU-2MM" id="H7Q-Xb-7bb"/>
                         <outlet property="name_field" destination="mV4-Z6-RXf" id="2Ao-0w-eCc"/>
+                        <outlet property="passwordEye" destination="wdA-Tg-ebO" id="r95-PC-RgZ"/>
                         <outlet property="password_field" destination="0FE-c3-m8A" id="oh7-3m-Lqh"/>
                         <outlet property="patronymic_field" destination="n58-wQ-pC8" id="ofe-c0-gkv"/>
                         <outlet property="phone_field" destination="gXt-0F-MAQ" id="khl-4m-eve"/>
@@ -157,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQu-pv-LBG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-615" y="1066"/>
+            <point key="canvasLocation" x="-615.94202898550725" y="1065.4017857142858"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SNX-aM-4qR">
@@ -177,11 +222,18 @@
         </scene>
     </scenes>
     <resources>
+        <image name="eye.slash" catalog="system" width="128" height="86"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
