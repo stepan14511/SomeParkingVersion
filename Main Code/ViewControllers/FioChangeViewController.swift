@@ -67,6 +67,8 @@ class FioChangeViewController: UITableViewController{
         surnameTextField.addTarget(self, action: #selector(surnameTextFieldChanging), for: .editingChanged)
         surnameTextField.addTarget(self, action: #selector(surnameTextFieldChanging), for: .editingDidBegin)
         surnameTextField.addTarget(self, action: #selector(surnameTextFieldEditingEnded), for: .editingDidEnd)
+        surnameTextField.delegate = self
+        surnameTextField.returnKeyType = .next
         surnameCell?.accessoryView = surnameTextField
         
         nameTextField.frame = CGRect(x: 0, y: 480, width: textFieldWidth, height: 40)
@@ -76,12 +78,16 @@ class FioChangeViewController: UITableViewController{
         nameTextField.addTarget(self, action: #selector(nameTextFieldChanging), for: .editingChanged)
         nameTextField.addTarget(self, action: #selector(nameTextFieldChanging), for: .editingDidBegin)
         nameTextField.addTarget(self, action: #selector(nameTextFieldEditingEnded), for: .editingDidEnd)
+        nameTextField.delegate = self
+        nameTextField.returnKeyType = .next
         nameCell?.accessoryView = nameTextField
         
         patronymicTextField.frame = CGRect(x: 0, y: 480, width: textFieldWidth, height: 40)
         patronymicTextField.placeholder = "необязательно"
         patronymicTextField.layer.cornerRadius = 10.0
         patronymicTextField.addTarget(self, action: #selector(checkForDoneButton), for: .editingChanged)
+        patronymicTextField.delegate = self
+        patronymicTextField.returnKeyType = .next
         patronymicCell?.accessoryView = patronymicTextField
     }
     
@@ -193,6 +199,19 @@ extension FioChangeViewController{
             surnameCell?.textLabel?.textColor = .red
             return
         }
+    }
+}
+
+extension FioChangeViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == surnameTextField{
+            nameTextField.becomeFirstResponder()
+        }
+        if textField == nameTextField{
+            patronymicTextField.becomeFirstResponder()
+        }
+        return true
     }
 }
 

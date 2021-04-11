@@ -484,36 +484,45 @@
                                 <rect key="frame" x="47" y="106" width="333" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="email"/>
                                 <connections>
                                     <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="B33-ab-1Pt"/>
                                     <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="IaM-aO-lPu"/>
                                     <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingChanged" id="YBu-xP-LXx"/>
-                                    <action selector="platesAreChangin:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="2FN-fC-wAe"/>
-                                    <action selector="platesAreChangin:" destination="W8P-ZL-xPE" eventType="editingChanged" id="ixG-JJ-6b9"/>
-                                    <action selector="platesFinishedChanging:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="eSf-pc-GTK"/>
+                                    <action selector="platesTextFieldChanging:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="2FN-fC-wAe"/>
+                                    <action selector="platesTextFieldChanging:" destination="W8P-ZL-xPE" eventType="editingChanged" id="ixG-JJ-6b9"/>
+                                    <action selector="platesTextFieldEditingEnded:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="eSf-pc-GTK"/>
+                                    <outlet property="delegate" destination="W8P-ZL-xPE" id="l4W-0n-3E1"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Карта от ворот" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0r0-n8-IeV">
                                 <rect key="frame" x="47" y="165" width="333" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next" textContentType="email"/>
                                 <connections>
                                     <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingChanged" id="Bft-dc-wFL"/>
                                     <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="HtD-R6-O6l"/>
                                     <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="dfD-XA-uzM"/>
+                                    <action selector="mainCardTextFieldChanging:" destination="W8P-ZL-xPE" eventType="editingChanged" id="1MM-nW-nSJ"/>
+                                    <action selector="mainCardTextFieldChanging:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="OGZ-xr-fQ4"/>
+                                    <action selector="mainCardTextFieldEditingEnded:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="1Jl-l5-Bdw"/>
+                                    <outlet property="delegate" destination="W8P-ZL-xPE" id="IGt-Sr-0Kz"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Карта от дверей" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QbK-4l-SVg">
                                 <rect key="frame" x="47" y="224" width="333" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next" textContentType="email"/>
                                 <connections>
+                                    <action selector="additionalCardTextFieldChanging:" destination="W8P-ZL-xPE" eventType="editingChanged" id="lBI-kk-PeN"/>
+                                    <action selector="additionalCardTextFieldChanging:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="oTo-my-A6c"/>
+                                    <action selector="additionalCardTextFieldEditingEnded:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="kda-Ts-k8d"/>
                                     <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingChanged" id="Iud-P5-aXV"/>
                                     <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="ecS-bF-fw1"/>
                                     <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="wGc-7M-46i"/>
+                                    <outlet property="delegate" destination="W8P-ZL-xPE" id="3F3-C3-ewo"/>
                                 </connections>
                             </textField>
                         </subviews>

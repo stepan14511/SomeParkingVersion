@@ -21,13 +21,19 @@
                                 <rect key="frame" x="48" y="355" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4ua-tV-Xx9" id="6DW-Vl-Gsk"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jcJ-t5-1Ua">
                                 <rect key="frame" x="48" y="412" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4ua-tV-Xx9" id="5X3-eb-da4"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1Y-uf-AoD">
                                 <rect key="frame" x="48" y="501" width="319" height="40"/>
@@ -59,6 +65,7 @@
                     </view>
                     <connections>
                         <outlet property="email_field" destination="2cH-wl-7Jw" id="IZB-Q2-fz7"/>
+                        <outlet property="loginButton" destination="a1Y-uf-AoD" id="RBs-v3-R5f"/>
                         <outlet property="password_field" destination="jcJ-t5-1Ua" id="i8b-hE-zgQ"/>
                     </connections>
                 </viewController>
@@ -78,61 +85,69 @@
                                 <rect key="frame" x="48" y="355" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                 <connections>
                                     <action selector="emailTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingChanged" id="17o-U5-oGf"/>
                                     <action selector="emailTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="Od2-uW-6Dz"/>
                                     <action selector="emailTextFieldEditingEnded:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="KPY-ID-jxg"/>
+                                    <outlet property="delegate" destination="5vK-tK-n5x" id="YG0-wa-sgD"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Отчество (необязательно)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n58-wQ-pC8">
                                 <rect key="frame" x="48" y="298" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="additional-name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next" textContentType="additional-name"/>
+                                <connections>
+                                    <outlet property="delegate" destination="5vK-tK-n5x" id="4us-eV-Rd4"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Фамилия" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTm-SU-bNg">
                                 <rect key="frame" x="48" y="184" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="family-name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next" textContentType="family-name"/>
                                 <connections>
                                     <action selector="surnameTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingChanged" id="RoK-QR-07n"/>
                                     <action selector="surnameTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="dYn-qF-sYb"/>
                                     <action selector="surnameTextFieldEditingEnded:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="Eop-CW-3Y9"/>
+                                    <outlet property="delegate" destination="5vK-tK-n5x" id="Mar-EI-a6w"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mV4-Z6-RXf">
                                 <rect key="frame" x="48" y="241" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next" textContentType="name"/>
                                 <connections>
                                     <action selector="nameTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="9GG-Gj-80Y"/>
                                     <action selector="nameTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingChanged" id="w8E-jN-xMw"/>
                                     <action selector="nameTextFieldEditingEnded:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="EzN-JG-NZJ"/>
+                                    <outlet property="delegate" destination="5vK-tK-n5x" id="jSf-2T-caW"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0FE-c3-m8A">
                                 <rect key="frame" x="48" y="469" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                 <connections>
                                     <action selector="passwordTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="AZQ-VG-eKJ"/>
                                     <action selector="passwordTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingChanged" id="jL2-Dw-Onj"/>
                                     <action selector="passwordTextFieldEditingEnded:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="lPA-7Z-whR"/>
+                                    <outlet property="delegate" destination="5vK-tK-n5x" id="kXS-VG-zDz"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+7 (123) 456-78-90" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXt-0F-MAQ">
                                 <rect key="frame" x="50" y="412" width="319" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" textContentType="tel"/>
                                 <connections>
                                     <action selector="phoneTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingDidBegin" id="GTi-G9-t7S"/>
                                     <action selector="phoneTextFieldChanging:" destination="5vK-tK-n5x" eventType="editingChanged" id="YVc-62-rSm"/>
                                     <action selector="phoneTextFieldEditingEnded:" destination="5vK-tK-n5x" eventType="editingDidEnd" id="HPc-aB-fQu"/>
+                                    <outlet property="delegate" destination="5vK-tK-n5x" id="cZA-vw-LpE"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Минимальная длина: 8 символов. Должна быть хотя бы 1 буква и 1 цифра. Дополнительно можно использовать символы @$!%*#?&amp;" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrZ-Et-JqQ">

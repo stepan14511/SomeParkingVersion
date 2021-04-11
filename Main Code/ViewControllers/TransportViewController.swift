@@ -53,7 +53,7 @@ class TransportViewController: UITableViewController{
             cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "reuseIdentifier")
         }
         
-        if let cars = AccountController.account?.cars{
+        if let cars = AccountController.account?.cars?.sorted(by: {$0.id < $1.id}){
             cell?.textLabel?.text = cars[indexPath.row].plates
             
             if let parking_lot_id = cars[indexPath.row].parking_lot_id{
@@ -73,12 +73,11 @@ class TransportViewController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let row = indexPath.row
+        let cell = tableView.cellForRow(at: indexPath)
         
         self.tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let account = AccountController.account,
-              let car_id = account.cars?[row].id else{
+        guard let car_id = AccountController.getCarByPlates(plates: cell?.textLabel?.text)?.id else{
             return
         }
         

@@ -29,30 +29,6 @@ class CarAddViewController: UIViewController{
         doneButton?.isEnabled = false
     }
     
-    @IBAction func platesAreChangin(_ sender: Any){
-        platesTextField?.layer.borderWidth = 0
-        
-        guard var text = platesTextField?.text else{
-            return
-        }
-        if text.count > 9{
-            text = String(text.prefix(9))
-        }
-        
-        platesTextField?.text = text
-    }
-    
-    @IBAction func platesFinishedChanging(_ sender: Any){
-        guard let plates = platesTextField?.text,
-              plates.isLegalPlates else{
-            
-            platesTextField?.layer.borderWidth = 1
-            platesTextField?.layer.cornerRadius = 5
-            platesTextField?.layer.borderColor = UIColor.red.cgColor
-            return
-        }
-    }
-    
     @IBAction func dismissButtonPressed(_ sender: Any){
         dismiss(animated: true, completion: nil)
     }
@@ -114,6 +90,84 @@ class CarAddViewController: UIViewController{
         }
         
         return
+    }
+}
+
+// Reaction to user input
+extension CarAddViewController{
+    @IBAction func platesTextFieldChanging(_ sender: Any){
+        platesTextField?.layer.borderWidth = 0
+        
+        guard var text = platesTextField?.text else{
+            return
+        }
+        if text.count > 9{
+            text = String(text.prefix(9))
+        }
+        
+        platesTextField?.text = text
+    }
+    
+    @IBAction func platesTextFieldEditingEnded(_ sender: Any){
+        guard let plates = platesTextField?.text,
+              plates.isLegalPlates else{
+            
+            platesTextField?.layer.borderWidth = 1
+            platesTextField?.layer.cornerRadius = 5
+            platesTextField?.layer.borderColor = UIColor.red.cgColor
+            return
+        }
+    }
+    
+    @IBAction func mainCardTextFieldChanging(_ sender: Any){
+        mainCardTextField?.layer.borderWidth = 0
+        
+        var mainCard = mainCardTextField?.text ?? ""
+        
+        // Apply text formatting.
+        mainCard = mainCard.applyPatternOnNumbers(pattern: kCardNumbersPattern, replacementCharacter: kCardNumbersPatternReplaceChar)
+        if mainCard.count > 6 { mainCard = String(mainCard.prefix(6)) }
+        mainCardTextField?.text = mainCard
+    }
+    
+    @IBAction func mainCardTextFieldEditingEnded(_ sender: Any){
+        if mainCardTextField?.text?.count ?? 0 < 1{
+            mainCardTextField?.layer.borderWidth = 1
+            mainCardTextField?.layer.cornerRadius = 5
+            mainCardTextField?.layer.borderColor = UIColor.red.cgColor
+        }
+    }
+    
+    @IBAction func additionalCardTextFieldChanging(_ sender: Any){
+        additionalCardTextField?.layer.borderWidth = 0
+        
+        var additionalCard = additionalCardTextField?.text ?? ""
+        
+        // Apply text formatting.
+        additionalCard = additionalCard.applyPatternOnNumbers(pattern: kCardNumbersPattern, replacementCharacter: kCardNumbersPatternReplaceChar)
+        if additionalCard.count > 6 { additionalCard = String(additionalCard.prefix(6)) }
+        additionalCardTextField?.text = additionalCard
+    }
+    
+    @IBAction func additionalCardTextFieldEditingEnded(_ sender: Any){
+        if additionalCardTextField?.text?.count ?? 0 < 1{
+            additionalCardTextField?.layer.borderWidth = 1
+            additionalCardTextField?.layer.cornerRadius = 5
+            additionalCardTextField?.layer.borderColor = UIColor.red.cgColor
+        }
+    }
+}
+
+extension CarAddViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == platesTextField, platesTextField != nil{
+            mainCardTextField?.becomeFirstResponder()
+        }
+        if textField == mainCardTextField, mainCardTextField != nil{
+            additionalCardTextField?.becomeFirstResponder()
+        }
+        return true
     }
 }
 

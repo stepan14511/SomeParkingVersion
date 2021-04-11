@@ -12,8 +12,13 @@ import UIKit
 class LoginViewController: UIViewController{
     private let model = AccountModel() // Needed for downloading Account
     
+    // Spinner vars
+    var vSpinner : UIView?
+    private var spinnerStartTime: Date = Date()
+    
     @IBOutlet weak var email_field: UITextField!
     @IBOutlet weak var password_field: UITextField!
+    @IBOutlet var loginButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +29,9 @@ class LoginViewController: UIViewController{
         email_field.text = AccountController.email
     }
     
-    @IBAction func loginButtonPressed(_ sender: UIButton){
-        guard let email = email_field.text, !email.isEmpty else {
+    @IBAction func loginButtonPressed(_ sender: UIButton? = nil){
+        
+        guard let email = email_field.text, email.isEmail else {
             return
         }
         AccountController.email = email
@@ -53,6 +59,8 @@ class LoginViewController: UIViewController{
     }
     
     func loadAccountFromServer(){
+        if loginButton != nil { showSpinner(onView: loginButton!) }
+        
         //Get version number
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unable to get app version"
         
@@ -69,11 +77,66 @@ class LoginViewController: UIViewController{
     }
 }
 
+extension LoginViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == email_field{
+            password_field.becomeFirstResponder()
+        }
+        if textField == password_field{
+            loginButtonPressed()
+        }
+        return true
+    }
+}
+
+extension LoginViewController {
+    
+    func showSpinner(onView : UIView) {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+            self.spinnerStartTime = Date()
+        }
+        
+        self.vSpinner = spinnerView
+    }
+    
+    func removeSpinner() {
+        let timeNow = Date()
+        let secondMore = timeNow.addingTimeInterval(1.0)
+        let interval = DateInterval(start: spinnerStartTime, end: timeNow)
+        let second = DateInterval(start: timeNow, end: secondMore)
+        
+        if interval >= second{
+            DispatchQueue.main.async {
+                self.vSpinner?.removeFromSuperview()
+                self.vSpinner = nil
+            }
+        }
+        else{
+            let difference: Double = Double(second.compare(interval).rawValue)
+            DispatchQueue.main.asyncAfter(deadline: .now() + difference) {
+                self.vSpinner?.removeFromSuperview()
+                self.vSpinner = nil
+            }
+        }
+    }
+}
+
 extension LoginViewController: Downloadable{
     func didReceiveData(data param: Any?) {
         // The data model has been dowloaded at this point
         // Now, pass the data model to the Holidays table view controller
         DispatchQueue.main.sync{
+            removeSpinner()
+            
             guard let data = param else{
                 // Smthing strange, not server error
                 email_field.text = "Not server error"

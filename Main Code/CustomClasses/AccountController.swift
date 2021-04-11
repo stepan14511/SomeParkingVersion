@@ -128,4 +128,19 @@ class AccountController{
         }
         return nil
     }
+    
+    static func getCarByPlates(plates: String?) -> Car?{
+        guard let plates = plates else{ return nil }
+        
+        guard let cars = AccountController.account?.cars else{
+            return nil
+        }
+        
+        for car in cars{
+            if car.plates == plates{
+                return car
+            }
+        }
+        return nil
+    }
 }

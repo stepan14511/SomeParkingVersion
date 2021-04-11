@@ -35,7 +35,7 @@ class RegistrationViewController: UIViewController{
         errorLabel?.isHidden = true
     }
     
-    @IBAction func registrationButtonPressed(_ sender: UIButton){
+    @IBAction func registrationButtonPressed(_ sender: UIButton?){
         let charset = CharacterSet.lowercaseLetters
         
         guard let surname = surname_field.text, surname.isValidName else {
@@ -233,6 +233,31 @@ extension RegistrationViewController{
                 }
             }
         }
+    }
+}
+
+extension RegistrationViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField == surname_field{
+            name_field.becomeFirstResponder()
+        }
+        if textField == name_field{
+            patronymic_field.becomeFirstResponder()
+        }
+        if textField == patronymic_field{
+            email_field.becomeFirstResponder()
+        }
+        if textField == email_field{
+            phone_field.becomeFirstResponder()
+        }
+        if textField == phone_field{
+            password_field.becomeFirstResponder()
+        }
+        if textField == password_field{
+            registrationButtonPressed(nil)
+        }
+        return true
     }
 }
 

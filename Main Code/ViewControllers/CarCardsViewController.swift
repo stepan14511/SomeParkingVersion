@@ -71,6 +71,7 @@ class CarCardsViewController: UITableViewController{
         mainCard1TextField.placeholder = "обязательно"
         mainCard1TextField.layer.cornerRadius = 10.0
         mainCard1TextField.textAlignment = .right
+        mainCard1TextField.keyboardType = .numberPad
         mainCard1TextField.addTarget(self, action: #selector(cardsTextFieldChanged), for: .editingChanged)
         mainCard1TextField.addTarget(self, action: #selector(cardsTextFieldChanged), for: .editingDidBegin)
         mainCards[0].accessoryView = mainCard1TextField
@@ -79,6 +80,7 @@ class CarCardsViewController: UITableViewController{
         mainCard2TextField.placeholder = "необязательно"
         mainCard2TextField.layer.cornerRadius = 10.0
         mainCard2TextField.textAlignment = .right
+        mainCard2TextField.keyboardType = .numberPad
         mainCard2TextField.addTarget(self, action: #selector(cardsTextFieldChanged), for: .editingChanged)
         mainCard2TextField.addTarget(self, action: #selector(cardsTextFieldChanged), for: .editingDidBegin)
         mainCards[1].accessoryView = mainCard2TextField
@@ -89,6 +91,7 @@ class CarCardsViewController: UITableViewController{
             textField.placeholder = index == 0 ? "обязательно" : "необязательно"
             textField.layer.cornerRadius = 10.0
             textField.textAlignment = .right
+            textField.keyboardType = .numberPad
             textField.addTarget(self, action: #selector(cardsTextFieldChanged), for: .editingChanged)
             textField.addTarget(self, action: #selector(cardsTextFieldChanged), for: .editingDidBegin)
             additionalCards[index].accessoryView = textField
