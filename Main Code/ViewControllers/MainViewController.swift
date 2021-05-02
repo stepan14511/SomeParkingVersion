@@ -70,6 +70,10 @@ class MainViewController: UIViewController {
         SideMenuManager.default.leftMenuNavigationController = storyboard.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
         
     }
+    
+    @IBAction func balanceButtonPressed(){
+        openPopolnitViewController()
+    }
 }
 
 // Closures, opening other views
