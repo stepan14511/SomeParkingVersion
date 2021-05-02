@@ -60,7 +60,7 @@ class MainViewController: UIViewController {
             formater.numberStyle = .currency
             formater.currencySymbol = "₽"
             let formattedBalance = formater.string(from: NSNumber(value: account.balance))
-            balanceShower.setTitle(String(formattedBalance ?? "0,00 ₽"), for: .normal)
+            balanceShower.setTitle("Баланс: " + String(formattedBalance ?? "0,00 ₽"), for: .normal)
         }
     }
     
