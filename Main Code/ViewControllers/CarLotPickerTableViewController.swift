@@ -23,6 +23,7 @@ class CarLotPickerTableViewController: UITableViewController{
     var pickerViewToggledClosure: ((Bool) -> Void)?
     var responseOnInputFromPickerViewClosure: ((String) -> Void)?
     var availableParkingLots: [ParkingLot]?
+    var currentParkingLot: ParkingLot?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class CarLotPickerTableViewController: UITableViewController{
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "picker")! as! PickerViewCustomCell
             
             cell.availableParkingLots = availableParkingLots
+            cell.currentParkingLot = currentParkingLot
             cell.userInputResponceClosure = responseOnUserInputFromPickerView(lot:)
 
             return cell
@@ -76,47 +78,5 @@ class CarLotPickerTableViewController: UITableViewController{
     func responseOnUserInputFromPickerView(lot: String){
         tableView.cellForRow(at: [0, 0])?.detailTextLabel?.text = lot
         responseOnInputFromPickerViewClosure?(lot)
-    }
-}
-
-
-class PickerViewCustomCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
-    var availableParkingLots: [ParkingLot]?
-    var userInputResponceClosure: ((String) -> Void)?
-    
-    override func prepareForReuse() {}
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return availableParkingLots?.count ?? 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        
-        if row == 0{
-            return NSAttributedString(string: "-", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
-        }
-        
-        let parkingLot = availableParkingLots?[row - 1]
-        var typePostfix: String? = (parkingLot?.type ?? 1 == 2) ? (" (увеличенное)") : nil
-        typePostfix = (parkingLot?.type ?? 1 == 3) ? (" (на 2 машины)") : typePostfix
-        let text = (parkingLot?.id ?? "") + (typePostfix ?? "")
-        
-        // Define color of text
-        var color = UIColor.black
-        color = (parkingLot?.type ?? 1 == 2) ? .orange : color
-        color = (parkingLot?.type ?? 1 == 3) ? .systemGreen : color
-        return NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: color])
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if row == 0 {
-            userInputResponceClosure?("-")
-            return
-        }
-        userInputResponceClosure?(availableParkingLots?[row - 1].id ?? "-")
     }
 }

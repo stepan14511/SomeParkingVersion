@@ -22,6 +22,7 @@ class CarLotPickerViewController: UIViewController{
     @IBOutlet var scrollViewForZooming: UIScrollView?
     @IBOutlet var stackView: UIStackView?
     @IBOutlet var containerView: UIView?
+    var carLotPickerTableViewController: CarLotPickerTableViewController?
 
     var openLoginScreenClosure: (() -> Void)?
     var updateViewAfterDataChangeClosure: (() -> Void)?
@@ -37,10 +38,14 @@ class CarLotPickerViewController: UIViewController{
         stackView?.bounds = CGRect(x: 0, y: 0, width: 50, height: 120)
         
         // Setup tableview
-        let controller = self.children[0] as! CarLotPickerTableViewController
-        controller.pickerViewToggledClosure = pickerViewToggled(isHidden:)
-        controller.responseOnInputFromPickerViewClosure = responseToUserInputFromPickerView(lot:)
-        
+        carLotPickerTableViewController = self.children[0] as? CarLotPickerTableViewController
+        guard carLotPickerTableViewController != nil else{
+            dismiss(animated: true, completion: nil)
+            return
+        }
+        carLotPickerTableViewController!.pickerViewToggledClosure = pickerViewToggled(isHidden:)
+        carLotPickerTableViewController!.responseOnInputFromPickerViewClosure = responseToUserInputFromPickerView(lot:)
+            
         // Setup tableview size
         pickerViewToggled(isHidden: true)
         
@@ -65,60 +70,11 @@ class CarLotPickerViewController: UIViewController{
     func updateUI(){
         let controller = self.children[0] as! CarLotPickerTableViewController
         controller.availableParkingLots = availableLots
-      
-        updateMapUI()
-    }
-    
-    func updateMapUI(){
-        guard let container = imageViewForZooming as? UIImageView else{
-            return
-        }
-        
-        guard let image: UIImage = UIImage(named: "map") else{
-            return
-        }
-        container.image = image
-        
-        // Add needed layers
-        /*if let lots = availableLots{
-           
-            for lot in lots[0..<7]{
-                container.image = drawParkingLot(image: container.image, lot_id: lot.id)
-            }
-            /*for lot in lots[7..<10]{
-                var image = container.image
-                container.image = nil
-                container.image = drawParkingLot(image: image!, lot_id: lot.id)
-                image = nil
-            }*/
-        }*/
-    }
-    
-    func drawParkingLot(image: UIImage?, lot_id: String?) -> UIImage?{
-        
-        return autoreleasepool { () -> UIImage? in
-            if let lot_id = lot_id{
-                var currLayer = UIImage(named: "g_\(lot_id)")
-                if currLayer == nil{
-                    return image
-                }
-                
-                if image == nil{
-                    return image
-                }
-                
-                let size = image!.size
-                
-                UIGraphicsBeginImageContext(size)
-                let areaSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-                image!.draw(in: areaSize)
-                currLayer!.draw(in: areaSize, blendMode: .normal, alpha: 1)
-                let newImage = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-                currLayer = nil
-                return newImage
-            }
-            return image
+        if let car = AccountController.getCarById(id: car_id),
+           let lot_id = car.parking_lot_id,
+           let lot_type = car.parking_lot_type{
+            let currLot = ParkingLot(id: lot_id, type: lot_type)
+            controller.currentParkingLot = currLot
         }
     }
     
@@ -137,12 +93,30 @@ class CarLotPickerViewController: UIViewController{
     }
     
     func checkDoneButtonState(){
-        if let pickedLot = usersPickedLot,
-           pickedLot != "-"{
-            doneButton?.isEnabled = true
+        var currentLot: ParkingLot?
+        if let car = AccountController.getCarById(id: car_id),
+           let lot_id = car.parking_lot_id,
+           let lot_type = car.parking_lot_type{
+            let currLot = ParkingLot(id: lot_id, type: lot_type)
+            currentLot = currLot
+        }
+        if currentLot == nil{
+            if let pickedLot = usersPickedLot,
+               pickedLot != "-"{
+                doneButton?.isEnabled = true
+            }
+            else{
+                doneButton?.isEnabled = false
+            }
         }
         else{
-            doneButton?.isEnabled = false
+            if let pickedLot = usersPickedLot,
+               pickedLot != currentLot?.id{
+                doneButton?.isEnabled = true
+            }
+            else{
+                doneButton?.isEnabled = false
+            }
         }
     }
     
@@ -301,8 +275,59 @@ extension CarLotPickerViewController: Downloadable{
             }
             
             availableLots = lots
+            if let car = AccountController.getCarById(id: car_id),
+               let lot_id = car.parking_lot_id,
+               let lot_type = car.parking_lot_type{
+                let currLot = ParkingLot(id: lot_id, type: lot_type)
+                carLotPickerTableViewController?.responseOnUserInputFromPickerView(lot: currLot.id ?? "-")
+            }
             updateUI()
             removeSpinner()
         }
+    }
+    
+    // DO NOT TOUCH PLS. It works for now, but may be broken easily in the future.
+    func sortAvailableLots(left: ParkingLot, right: ParkingLot) -> Bool{
+        guard left.id != nil else{
+            return false
+        }
+        guard right.id != nil else{
+            return true
+        }
+        var left_id = Int(left.id!)
+        var right_id = Int(right.id!)
+        if left_id != nil{
+            left_id = left_id! * 10
+        }
+        else{
+            left_id = Int(left.id![...String.Index(encodedOffset: left.id!.count - 2)])
+            guard left_id != nil else {
+                return false
+            }
+            left_id = left_id! * 10
+            if left.id!.last == "а"{
+                left_id! += 1
+            }
+            else{
+                left_id! += 2
+            }
+        }
+        if right_id != nil{
+            right_id = right_id! * 10
+        }
+        else{
+            right_id = Int(right.id![...String.Index(encodedOffset: right.id!.count - 2)])
+            guard right_id != nil else {
+                return true
+            }
+            right_id = right_id! * 10
+            if right.id!.last == "а"{
+                right_id! += 1
+            }
+            else{
+                right_id! += 2
+            }
+        }
+        return left_id! < right_id!
     }
 }
