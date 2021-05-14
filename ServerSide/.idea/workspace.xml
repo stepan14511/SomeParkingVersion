@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="407d63a4-a691-457e-8235-922026fb7177" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Main Code/Storyboards/Tariffs.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/Storyboards/Tariffs.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Main Code/ViewControllers/CarLotPickerTableViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/ViewControllers/CarLotPickerTableViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.xcworkspace/xcuserdata/stepankuznetsov.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.xcworkspace/xcuserdata/stepankuznetsov.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyFunctions/FunctionsForSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/MyFunctions/FunctionsForSQL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addCar.php" beforeDir="false" afterPath="$PROJECT_DIR$/addCar.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +72,7 @@
       <workItem from="1617705668706" duration="357000" />
       <workItem from="1619464965612" duration="1000" />
       <workItem from="1619970196875" duration="22000" />
+      <workItem from="1620991490107" duration="906000" />
     </task>
     <servers />
   </component>

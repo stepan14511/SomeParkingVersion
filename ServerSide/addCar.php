@@ -30,12 +30,14 @@ if(($error = getErrorFromObject($user_id)) !== null){
     exit();
 }
 
-$insertionResult = addCar($con, $user_id, $plates, $main_card, $additional_card);
-if(($error = getErrorFromObject($insertionResult)) !== null){
+$car_id = addCar($con, $user_id, $plates, $main_card, $additional_card);
+if(($error = getErrorFromObject($car_id)) !== null){
     echo $error;
     mysqli_close($con);
     exit();
 }
+
+updateTariff($con, $user_id, $car_id, 1);
 
 // Send data to app.
 $success_return = array(

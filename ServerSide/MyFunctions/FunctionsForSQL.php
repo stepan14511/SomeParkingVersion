@@ -449,7 +449,19 @@ function addCar($con, $user_id, $plates, $main_card, $additional_card){
     $stmt->execute();
     if($stmt->affected_rows != 1){ return -1; }
 
-    return null;
+    // Get car id to return from function
+    $stmt = $con->prepare("SELECT id FROM cars WHERE plates = ?");
+    if( ! $stmt ){ return -1; }
+    $stmt->bind_param("s", $plates);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $car_id = -1;
+    while ($row = $result->fetch_assoc())
+    {
+        $car_id = $row['id'];
+    }
+
+    return $car_id;
 }
 
 function deleteCar($con, $user_id, $car_id){

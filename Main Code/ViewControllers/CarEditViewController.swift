@@ -130,10 +130,14 @@ class CarEditViewController: UITableViewController{
         platesTextField.text = car.plates
         
         if let tariff = car.tariff,
-           tariffName.keys.contains(tariff),
-           let lot_id = car.parking_lot_id
+           tariffName.keys.contains(tariff)
            {
-            tariffCell?.detailTextLabel?.text = tariffName[tariff]! + " - " + String(lot_id)
+            if let lot_id = car.parking_lot_id{
+                tariffCell?.detailTextLabel?.text = tariffName[tariff]! + " - " + String(lot_id)
+            }
+            else{
+                tariffCell?.detailTextLabel?.text = tariffName[tariff]!
+            }
         }
         else{
             tariffCell?.detailTextLabel?.text = "не выбрано"
