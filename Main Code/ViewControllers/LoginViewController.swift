@@ -20,6 +20,8 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var password_field: UITextField!
     @IBOutlet var loginButton: UIButton?
     
+    var openMainViewClosure: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpDismissKeyboardOutsideTouch()
@@ -47,17 +49,6 @@ class LoginViewController: UIViewController{
         loadAccountFromServer()
     }
     
-    @IBAction func registrationButtonPressed(_ sender: UIButton){
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        guard let registrationNavigationViewController = storyboard.instantiateViewController(withIdentifier: "registration_nav") as? UINavigationController else { return }
-        
-        guard let registrationViewController = registrationNavigationViewController.children[0] as? RegistrationViewController else{ return }
-        
-        registrationViewController.openMainViewClosure = openMainView
-        
-        self.present(registrationNavigationViewController, animated: true, completion: nil)
-    }
-    
     func loadAccountFromServer(){
         if loginButton != nil { showSpinner(onView: loginButton!) }
         
@@ -66,14 +57,6 @@ class LoginViewController: UIViewController{
         
         let param = ["ios_app_ver": appVersion, "email": AccountController.email!, "passhash": AccountController.password_hash!]
         model.downloadAccountData(parameters: param, url: URLServices.login)
-    }
-    
-    func openMainView(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondViewController = storyboard.instantiateViewController(withIdentifier: "main") as! MainViewController
-        secondViewController.modalPresentationStyle = .fullScreen
-        secondViewController.modalTransitionStyle = .flipHorizontal
-        self.present(secondViewController, animated: true, completion: nil)
     }
 }
 
@@ -162,7 +145,7 @@ extension LoginViewController: Downloadable{
             AccountController.account = account
             AccountController.saveDataToMemory()
             
-            openMainView()
+            dismiss(animated: true, completion: openMainViewClosure)
         }
     }
 }

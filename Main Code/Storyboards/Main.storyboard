@@ -614,10 +614,11 @@
             </objects>
             <point key="canvasLocation" x="2836" y="-378"/>
         </scene>
-        <!--Пополнение-->
+        <!--Баланс-->
         <scene sceneID="Ccs-ob-6gI">
             <objects>
-                <viewController storyboardIdentifier="payment" id="ND4-TG-qyO" customClass="PopolnitViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kuy-ml-KVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="payment" id="ND4-TG-qyO" customClass="BalanceViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0Q-J8-Slx">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -672,7 +673,7 @@
                         <viewLayoutGuide key="safeArea" id="UYm-Zh-ONi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Пополнение" id="mch-Iu-hWb">
+                    <navigationItem key="navigationItem" title="Баланс" id="mch-Iu-hWb">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="zIb-tm-amb">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="b06-NR-7bf">
                                 <rect key="frame" x="20" y="5" width="75" height="34"/>
@@ -692,7 +693,6 @@
                         <outlet property="paymentAmountTextField" destination="IRv-pB-VBO" id="UjD-qw-hBi"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kuy-ml-KVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3758" y="-378"/>
         </scene>

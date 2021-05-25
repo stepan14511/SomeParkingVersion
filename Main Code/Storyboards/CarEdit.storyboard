@@ -105,7 +105,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Удалить" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oat-gs-gG2">
-                                                    <rect key="frame" x="-2" y="-3" width="428" height="45"/>
+                                                    <rect key="frame" x="-3" y="-4" width="428" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemRedColor"/>
@@ -194,95 +194,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Двери" footerTitle="Дополнительные карты можно купить в отделе продаж" id="bav-zT-OJH">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="7D1-I8-UfT" style="IBUITableViewCellStyleDefault" id="ygE-lG-RkJ">
-                                        <rect key="frame" x="0.0" y="215.33333206176758" width="428" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ygE-lG-RkJ" id="DXa-DX-f1d">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Карта 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7D1-I8-UfT">
-                                                    <rect key="frame" x="20" y="0.0" width="388" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="mKK-UQ-Uiq" style="IBUITableViewCellStyleDefault" id="CkN-BK-vk9">
-                                        <rect key="frame" x="0.0" y="258.83333206176758" width="428" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CkN-BK-vk9" id="E7h-1l-Jj7">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Карта 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mKK-UQ-Uiq">
-                                                    <rect key="frame" x="20" y="0.0" width="388" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="0mx-R5-pk7" style="IBUITableViewCellStyleDefault" id="RGA-0F-405">
-                                        <rect key="frame" x="0.0" y="302.33333206176758" width="428" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RGA-0F-405" id="c51-tJ-1oG">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Карта 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0mx-R5-pk7">
-                                                    <rect key="frame" x="20" y="0.0" width="388" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="zNJ-Bt-Gsf" style="IBUITableViewCellStyleDefault" id="P10-EB-L8r">
-                                        <rect key="frame" x="0.0" y="345.83333206176758" width="428" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P10-EB-L8r" id="XZw-my-m8a">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Карта 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zNJ-Bt-Gsf">
-                                                    <rect key="frame" x="20" y="0.0" width="388" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="7Bx-g2-SJX" style="IBUITableViewCellStyleDefault" id="DoP-UO-cgo">
-                                        <rect key="frame" x="0.0" y="389.33333206176758" width="428" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DoP-UO-cgo" id="g8C-Al-4Tw">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Карта 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Bx-g2-SJX">
-                                                    <rect key="frame" x="20" y="0.0" width="388" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="6Mf-wd-Rfc" id="sqI-Fn-6ax"/>
@@ -324,11 +235,6 @@
                         <outlet property="doneButton" destination="YUi-Kc-ftW" id="PzT-Ae-Ia8"/>
                         <outletCollection property="mainCardsCells" destination="wK9-O5-9nj" collectionClass="NSMutableArray" id="qGi-Tg-dCf"/>
                         <outletCollection property="mainCardsCells" destination="u8d-eO-jTC" collectionClass="NSMutableArray" id="bV8-vb-zJf"/>
-                        <outletCollection property="additionalCardsCells" destination="ygE-lG-RkJ" collectionClass="NSMutableArray" id="8GB-bn-oj1"/>
-                        <outletCollection property="additionalCardsCells" destination="CkN-BK-vk9" collectionClass="NSMutableArray" id="1fn-Om-TEG"/>
-                        <outletCollection property="additionalCardsCells" destination="RGA-0F-405" collectionClass="NSMutableArray" id="fxF-fG-jlb"/>
-                        <outletCollection property="additionalCardsCells" destination="P10-EB-L8r" collectionClass="NSMutableArray" id="0ZN-OB-EjO"/>
-                        <outletCollection property="additionalCardsCells" destination="DoP-UO-cgo" collectionClass="NSMutableArray" id="PCJ-ME-0FH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTa-Yo-rf0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

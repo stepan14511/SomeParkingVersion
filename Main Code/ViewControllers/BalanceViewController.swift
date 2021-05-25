@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class PopolnitViewController: UIViewController{
+class BalanceViewController: UIViewController{
     private let model = AccountModel() // Needed for downloading Account
     
     @IBOutlet weak var changePaymentSystemView: UIView?
@@ -62,7 +62,7 @@ class PopolnitViewController: UIViewController{
     
 }
 
-extension PopolnitViewController: Downloadable{
+extension BalanceViewController: Downloadable{
     func didReceiveData(data param: Any?) {
         // The data model has been dowloaded at this point
         // Now, pass the data model to the Holidays table view controller

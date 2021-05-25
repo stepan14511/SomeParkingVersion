@@ -85,7 +85,7 @@ extension MainViewController{
         AccountController.saveDataToMemory()
         
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let secondViewController = storyboard.instantiateViewController(withIdentifier: "login") as! LoginViewController
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "first_page") as! FirstPageViewController
         secondViewController.modalPresentationStyle = .fullScreen
         secondViewController.modalTransitionStyle = .flipHorizontal
         self.present(secondViewController, animated: true, completion: nil)
@@ -106,7 +106,7 @@ extension MainViewController{
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let popolnitNavigationViewController = storyboard.instantiateViewController(withIdentifier: "payment_nav") as? UINavigationController else { return }
         
-        guard let popolnitViewController = popolnitNavigationViewController.children[0] as? PopolnitViewController else{ return }
+        guard let popolnitViewController = popolnitNavigationViewController.children[0] as? BalanceViewController else{ return }
         
         popolnitViewController.openLoginScreenClosure = openLoginScreen
         popolnitViewController.updateDataClosure = updateAccountDataUI

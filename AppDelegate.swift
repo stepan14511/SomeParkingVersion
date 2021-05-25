@@ -77,7 +77,7 @@ extension AppDelegate{
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         
-        let loginViewController: LoginViewController = mainStoryboard.instantiateViewController(withIdentifier: "login") as! LoginViewController
+        let loginViewController: FirstPageViewController = mainStoryboard.instantiateViewController(withIdentifier: "first_page") as! FirstPageViewController
 
         self.window?.rootViewController = loginViewController
 

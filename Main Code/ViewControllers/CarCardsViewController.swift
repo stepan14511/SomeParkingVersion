@@ -18,10 +18,8 @@ class CarCardsViewController: UITableViewController{
     var updateUIClosure: (() -> Void)?
     
     @IBOutlet var mainCardsCells: [UITableViewCell]?
-    @IBOutlet var additionalCardsCells: [UITableViewCell]?
     let mainCard1TextField = UITextField()
     let mainCard2TextField = UITextField()
-    let additionalCardsTextFields = [UITextField(), UITextField(), UITextField(), UITextField(), UITextField()]
     @IBOutlet var doneButton: UIButton?
     
     override func viewDidLoad() {
@@ -50,16 +48,11 @@ class CarCardsViewController: UITableViewController{
                 return
             }
         }
-        if indexPath.section == 1, indexPath.row < 5{
-            additionalCardsTextFields[indexPath.row].becomeFirstResponder()
-        }
     }
     
     func setupCells(){
         guard let mainCards = mainCardsCells,
-              mainCards.count == 2,
-              let additionalCards = additionalCardsCells,
-              additionalCards.count == 5
+              mainCards.count == 2
         else {
             dismiss(animated: true, completion: nil)
             return
@@ -84,18 +77,6 @@ class CarCardsViewController: UITableViewController{
         mainCard2TextField.addTarget(self, action: #selector(cardsTextFieldChanged), for: .editingChanged)
         mainCard2TextField.addTarget(self, action: #selector(cardsTextFieldChanged), for: .editingDidBegin)
         mainCards[1].accessoryView = mainCard2TextField
-        
-        for (index, textField) in additionalCardsTextFields.enumerated() {
-            
-            textField.frame = CGRect(x: 0, y: 480, width: textFieldWidth, height: 40)
-            textField.placeholder = index == 0 ? "обязательно" : "необязательно"
-            textField.layer.cornerRadius = 10.0
-            textField.textAlignment = .right
-            textField.keyboardType = .numberPad
-            textField.addTarget(self, action: #selector(cardsTextFieldChanged), for: .editingChanged)
-            textField.addTarget(self, action: #selector(cardsTextFieldChanged), for: .editingDidBegin)
-            additionalCards[index].accessoryView = textField
-        }
     }
     
     func updateRowsText(){

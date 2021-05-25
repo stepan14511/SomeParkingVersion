@@ -36,9 +36,10 @@
 		863FD83F258CDB5C0072FDC0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */; };
 		863FD843258D127A0072FDC0 /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD842258D127A0072FDC0 /* PhoneTextField.swift */; };
 		863FD847258D12F50072FDC0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD846258D12F50072FDC0 /* StringExtension.swift */; };
+		864590B2265D49C000E284B6 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864590B1265D49C000E284B6 /* FirstPageViewController.swift */; };
 		8665B2BD2599E4DD00FEADFB /* FioChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665B2BC2599E4DD00FEADFB /* FioChangeViewController.swift */; };
 		8673B21D25A1168F008294BF /* CarCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8673B21C25A1168F008294BF /* CarCardsViewController.swift */; };
-		867BC4B5254C6EE60066F565 /* PopolnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */; };
+		867BC4B5254C6EE60066F565 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867BC4B4254C6EE60066F565 /* BalanceViewController.swift */; };
 		867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867BC4BC254C93D20066F565 /* TransportViewController.swift */; };
 		8684BDCD25DB6496007A4DD8 /* HowToOwnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684BDCC25DB6495007A4DD8 /* HowToOwnerViewController.swift */; };
 		8684BDD325DB66DE007A4DD8 /* CarLotPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8684BDD225DB66DE007A4DD8 /* CarLotPickerViewController.swift */; };
@@ -106,9 +107,10 @@
 		863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		863FD842258D127A0072FDC0 /* PhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextField.swift; sourceTree = "<group>"; };
 		863FD846258D12F50072FDC0 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		864590B1265D49C000E284B6 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		8665B2BC2599E4DD00FEADFB /* FioChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FioChangeViewController.swift; sourceTree = "<group>"; };
 		8673B21C25A1168F008294BF /* CarCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCardsViewController.swift; sourceTree = "<group>"; };
-		867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopolnitViewController.swift; sourceTree = "<group>"; };
+		867BC4B4254C6EE60066F565 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
 		867BC4BC254C93D20066F565 /* TransportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
 		8684BDCC25DB6495007A4DD8 /* HowToOwnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToOwnerViewController.swift; sourceTree = "<group>"; };
 		8684BDD225DB66DE007A4DD8 /* CarLotPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarLotPickerViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				86DD6D712597E03200BFCCFB /* AccountViewController.swift */,
+				867BC4B4254C6EE60066F565 /* BalanceViewController.swift */,
 				86A2DD3B258FE11200532697 /* CarAddViewController.swift */,
 				8605311725C4858B00CA3F11 /* CarAutopayViewController.swift */,
 				8673B21C25A1168F008294BF /* CarCardsViewController.swift */,
@@ -249,11 +252,11 @@
 				8684BDCC25DB6495007A4DD8 /* HowToOwnerViewController.swift */,
 				86B1E6B02576B0AD0019D182 /* LoginViewController.swift */,
 				7B48A0F31DCB2518002990A1 /* MainViewController.swift */,
-				867BC4B4254C6EE60066F565 /* PopolnitViewController.swift */,
+				862AC45B263EFFD600D9F481 /* PickerViewCustomCell.swift */,
 				863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */,
 				7B48A0F51DCB2518002990A1 /* SideMenuTableViewController.swift */,
 				867BC4BC254C93D20066F565 /* TransportViewController.swift */,
-				862AC45B263EFFD600D9F481 /* PickerViewCustomCell.swift */,
+				864590B1265D49C000E284B6 /* FirstPageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */,
 				863FD843258D127A0072FDC0 /* PhoneTextField.swift in Sources */,
 				7B48A0F61DCB2518002990A1 /* MainViewController.swift in Sources */,
+				864590B2265D49C000E284B6 /* FirstPageViewController.swift in Sources */,
 				86DD6D732597E03200BFCCFB /* AccountViewController.swift in Sources */,
 				86E3D3CB2593586B003734D7 /* ServerSuccess.swift in Sources */,
 				861FDE4E258E7D4C0061B565 /* CarEditViewController.swift in Sources */,
@@ -497,7 +501,7 @@
 				86E190F125DC8A2400BD68AF /* CarLotPickerTableViewController.swift in Sources */,
 				863FD847258D12F50072FDC0 /* StringExtension.swift in Sources */,
 				868F7F432587E468003E68E9 /* CarModel.swift in Sources */,
-				867BC4B5254C6EE60066F565 /* PopolnitViewController.swift in Sources */,
+				867BC4B5254C6EE60066F565 /* BalanceViewController.swift in Sources */,
 				868F7F362587D810003E68E9 /* Network.swift in Sources */,
 				8673B21D25A1168F008294BF /* CarCardsViewController.swift in Sources */,
 				8684BDCD25DB6496007A4DD8 /* HowToOwnerViewController.swift in Sources */,
