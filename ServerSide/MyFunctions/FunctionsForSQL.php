@@ -58,7 +58,7 @@ function getFullAccount($con, $email, $passhash){
         $balance = $row['balance'];
     }
 
-    $stmt = $con->prepare("SELECT cars.id, cars.tariff, cars.new_tariff, parking_lots.lot_id, parking_lots.type, cars.plates, cars.payed_till, cars.is_auto_cont, cars.main_card, cars.second_main_card, cars.additional_card_1, cars.additional_card_2, cars.additional_card_3, cars.additional_card_4, cars.additional_card_5 FROM cars, parking_lots WHERE cars.owner_id = ? AND (cars.parking_lot_id = parking_lots.unique_id_for_DB OR (cars.parking_lot_id is NULL AND unique_id_for_DB = 177))");
+    $stmt = $con->prepare("SELECT cars.id, cars.tariff, parking_lots.lot_id, parking_lots.type, cars.plates, cars.payed_till, cars.is_auto_cont, cars.main_card, cars.second_main_card FROM cars, parking_lots WHERE cars.owner_id = ? AND (cars.parking_lot_id = parking_lots.unique_id_for_DB OR (cars.parking_lot_id is NULL AND unique_id_for_DB = 177))");
     if( ! $stmt ){ return -1; }
     $stmt->bind_param("i", $user_id);
 
@@ -69,13 +69,6 @@ function getFullAccount($con, $email, $passhash){
 
     while ($row = $result->fetch_assoc())
     {
-        $additional_card_1 = $row['additional_card_1'];
-        $additional_card_2 = $row['additional_card_2'];
-        $additional_card_3 = $row['additional_card_3'];
-        $additional_card_4 = $row['additional_card_4'];
-        $additional_card_5 = $row['additional_card_5'];
-        $additional_cards = array($additional_card_1, $additional_card_2, $additional_card_3, $additional_card_4, $additional_card_5);
-
         // Format time for applications
         $datetime = new DateTime($row['payed_till']);
         $datetime = $datetime->format(DateTime::ATOM);
@@ -86,15 +79,13 @@ function getFullAccount($con, $email, $passhash){
         $car_data = array(
             "id" => $row['id'],
             "tariff" => $row['tariff'],
-            "new_tariff" => $row['new_tariff'],
             "parking_lot_type" => $row['type'],
             "parking_lot_id" => $row['lot_id'],
             "plates" => $row['plates'],
             "payed_till" => $datetime,
             "is_auto_cont" => ($row['is_auto_cont'] == 1),
             "main_card" => $row['main_card'],
-            "second_main_card" => $row['second_main_card'],
-            "additional_cards" => $additional_cards,
+            "second_main_card" => $row['second_main_card']
         );
         array_push($cars, $car_data);
     }
@@ -267,9 +258,9 @@ function updateFIO($con, $user_id, $new_surname, $new_name, $new_patronymic){
     return null;
 }
 
-function updateCards($con, $user_id, $car_id, $main_card_1, $main_card_2, $additional_card_1, $additional_card_2, $additional_card_3, $additional_card_4, $additional_card_5){
-    $params = array($main_card_1, $additional_card_1);
-    $stmt_string = "UPDATE `cars` SET `main_card` = ?, `additional_card_1` = ?";
+function updateCards($con, $user_id, $car_id, $main_card_1, $main_card_2){
+    $params = array($main_card_1);
+    $stmt_string = "UPDATE `cars` SET `main_card` = ?";
 
     $stmt_string .= ", `second_main_card` = ";
     if($main_card_2 === null) {
@@ -280,65 +271,18 @@ function updateCards($con, $user_id, $car_id, $main_card_1, $main_card_2, $addit
         array_push($params, $main_card_2);
     }
 
-    $stmt_string .= ", `additional_card_2` = ";
-    if($additional_card_2 === null) {
-        $stmt_string .= "NULL";
-    }
-    else {
-        $stmt_string .= "?";
-        array_push($params, $additional_card_2);
-    }
-
-    $stmt_string .= ", `additional_card_3` = ";
-    if($additional_card_3 === null) {
-        $stmt_string .= "NULL";
-    }
-    else {
-        $stmt_string .= "?";
-        array_push($params, $additional_card_3);
-    }
-
-    $stmt_string .= ", `additional_card_4` = ";
-    if($additional_card_4 === null) {
-        $stmt_string .= "NULL";
-    }
-    else {
-        $stmt_string .= "?";
-        array_push($params, $additional_card_4);
-    }
-
-    $stmt_string .= ", `additional_card_5` = ";
-    if($additional_card_5 === null) {
-        $stmt_string .= "NULL";
-    }
-    else {
-        $stmt_string .= "?";
-        array_push($params, $additional_card_5);
-    }
     $stmt_string .= " WHERE `cars`.`id` = ? AND `cars`.`owner_id` = ?";
     array_push($params, $car_id, $user_id);
     $stmt = $con->prepare($stmt_string);
     if( ! $stmt ){ return -1; }
 
     $count = count($params);
-    if(($count < 4) || ($count > 9)){ return -1; }
+    if(($count < 3) || ($count > 4)){ return -1; }
+    if($count == 3){
+        $stmt->bind_param("iii", $params[0], $params[1], $params[2]);
+    }
     if($count == 4){
         $stmt->bind_param("iiii", $params[0], $params[1], $params[2], $params[3]);
-    }
-    if($count == 5){
-        $stmt->bind_param("iiiii", $params[0], $params[1], $params[2], $params[3], $params[4]);
-    }
-    if($count == 6){
-        $stmt->bind_param("iiiiii", $params[0], $params[1], $params[2], $params[3], $params[4], $params[5]);
-    }
-    if($count == 7){
-        $stmt->bind_param("iiiiiii", $params[0], $params[1], $params[2], $params[3], $params[4], $params[5], $params[6]);
-    }
-    if($count == 8){
-        $stmt->bind_param("iiiiiiii", $params[0], $params[1], $params[2], $params[3], $params[4], $params[5], $params[6], $params[7]);
-    }
-    if($count == 9){
-        $stmt->bind_param("iiiiiiiii", $params[0], $params[1], $params[2], $params[3], $params[4], $params[5], $params[6], $params[7], $params[8]);
     }
 
     $stmt->execute();
@@ -432,7 +376,7 @@ function getAvailableParkingLots($con){
     return $lots;
 }
 
-function addCar($con, $user_id, $plates, $main_card, $additional_card){
+function addCar($con, $user_id, $plates, $main_card){
     $stmt = $con->prepare("SELECT * FROM cars WHERE main_card = ?");
     if( ! $stmt ){ return -1; }
     $stmt->bind_param("i", $main_card);
@@ -442,9 +386,9 @@ function addCar($con, $user_id, $plates, $main_card, $additional_card){
 
     if($result->num_rows >= 1){ return -5; }
 
-    $stmt = $con->prepare("INSERT INTO cars (owner_id, plates, main_card, additional_card_1) VALUES (?, ?, ?, ?)");
+    $stmt = $con->prepare("INSERT INTO cars (owner_id, plates, main_card) VALUES (?, ?, ?)");
     if( ! $stmt ){ return -1; }
-    $stmt->bind_param("isii", $user_id, $plates, $main_card, $additional_card);
+    $stmt->bind_param("isi", $user_id, $plates, $main_card);
 
     $stmt->execute();
     if($stmt->affected_rows != 1){ return -1; }

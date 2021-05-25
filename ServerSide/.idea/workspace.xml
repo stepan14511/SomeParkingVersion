@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="407d63a4-a691-457e-8235-922026fb7177" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Main Code/CustomClasses/CarModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/CustomClasses/CarModel.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main Code/Storyboards/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/Storyboards/Main.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main Code/ViewControllers/CarAddViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/ViewControllers/CarAddViewController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.xcworkspace/xcuserdata/stepankuznetsov.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.xcworkspace/xcuserdata/stepankuznetsov.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyFunctions/FunctionsForSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/MyFunctions/FunctionsForSQL.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addCar.php" beforeDir="false" afterPath="$PROJECT_DIR$/addCar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/updateCards.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateCards.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +21,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1piKhG09mrOb4zfmbA5TQKGjOTl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -73,6 +85,9 @@
       <workItem from="1619464965612" duration="1000" />
       <workItem from="1619970196875" duration="22000" />
       <workItem from="1620991490107" duration="906000" />
+      <workItem from="1621959314423" duration="523000" />
+      <workItem from="1621959842552" duration="94000" />
+      <workItem from="1621960487070" duration="119000" />
     </task>
     <servers />
   </component>

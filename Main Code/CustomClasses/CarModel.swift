@@ -11,7 +11,6 @@ import Foundation
 struct Car: Codable {
     var id: Int
     var tariff: Int8?
-    var new_tariff: Int8?
     var parking_lot_type: Int8? // 1 - standart, 2 - extended, 3 - 2-cars.
     var parking_lot_id: String?
     var plates: String
@@ -19,7 +18,6 @@ struct Car: Codable {
     var is_auto_cont: Bool
     var main_card: Int
     var second_main_card: Int?
-    var additional_cards: [Int?]
 }
 
 let tariffName: [Int8: String] = [0: "ежедневно", 1: "помесячно", 2: "собственник"]

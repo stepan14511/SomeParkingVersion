@@ -20,12 +20,7 @@ $email = $con->real_escape_string($_POST['email']);
 $passhash = strtolower($con->real_escape_string($_POST['passhash']));
 $car_id = (int)$_POST['car_id'];
 $main_card_1 = (int)$_POST['main_card_1'];
-$additional_card_1 = (int)$_POST['additional_card_1'];
 $main_card_2 = isset($_POST['main_card_2']) ? (int)$_POST['main_card_2'] : null;
-$additional_card_2 = isset($_POST['additional_card_2']) ? (int)$_POST['additional_card_2'] : null;
-$additional_card_3 = isset($_POST['additional_card_3']) ? (int)$_POST['additional_card_3'] : null;
-$additional_card_4 = isset($_POST['additional_card_4']) ? (int)$_POST['additional_card_4'] : null;
-$additional_card_5 = isset($_POST['additional_card_5']) ? (int)$_POST['additional_card_5'] : null;
 #endregion
 
 $user_id = getUserId($con, $email, $passhash);
@@ -35,7 +30,7 @@ if(($error = getErrorFromObject($user_id)) !== null){
     exit();
 }
 
-$updateResult = updateCards($con, $user_id, $car_id, $main_card_1, $main_card_2, $additional_card_1, $additional_card_2, $additional_card_3, $additional_card_4, $additional_card_5);
+$updateResult = updateCards($con, $user_id, $car_id, $main_card_1, $main_card_2);
 if(($error = getErrorFromObject($updateResult)) !== null){
     echo $error;
     mysqli_close($con);

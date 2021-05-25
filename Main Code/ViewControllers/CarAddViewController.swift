@@ -19,7 +19,6 @@ class CarAddViewController: UIViewController{
     @IBOutlet weak var doneButton: UIButton?
     @IBOutlet weak var platesTextField: UITextField?
     @IBOutlet weak var mainCardTextField: UITextField?
-    @IBOutlet weak var additionalCardTextField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +43,7 @@ class CarAddViewController: UIViewController{
         }
         
         guard var plates = platesTextField?.text, plates.isLegalPlates,
-           let mainCard = mainCardTextField?.text, !mainCard.isEmpty,
-           let additionalCard = additionalCardTextField?.text, !additionalCard.isEmpty
+           let mainCard = mainCardTextField?.text, !mainCard.isEmpty
         else{
             doneButton?.isEnabled = false
             return
@@ -64,8 +62,7 @@ class CarAddViewController: UIViewController{
             "email": email,
             "passhash": passhash,
             "plates": plates,
-            "main_card": mainCard,
-            "additional_card": additionalCard
+            "main_card": mainCard
         ]
         model.downloadAccountData(parameters: param, url: URLServices.addCar)
         
@@ -73,16 +70,14 @@ class CarAddViewController: UIViewController{
     
     @IBAction func checkForEnablingDoneButton(_ sender: Any){
         guard let _ = platesTextField,
-              let _ = mainCardTextField,
-              let _ = additionalCardTextField
+              let _ = mainCardTextField
         else{
             doneButton?.isEnabled = false
             return
         }
         
         if let plates = platesTextField?.text, plates.isLegalPlates,
-           let mainCard = mainCardTextField?.text, !mainCard.isEmpty,
-           let additionalCard = additionalCardTextField?.text, !additionalCard.isEmpty{
+           let mainCard = mainCardTextField?.text, !mainCard.isEmpty{
             doneButton?.isEnabled = true
         }
         else{
@@ -137,25 +132,6 @@ extension CarAddViewController{
             mainCardTextField?.layer.borderColor = UIColor.red.cgColor
         }
     }
-    
-    @IBAction func additionalCardTextFieldChanging(_ sender: Any){
-        additionalCardTextField?.layer.borderWidth = 0
-        
-        var additionalCard = additionalCardTextField?.text ?? ""
-        
-        // Apply text formatting.
-        additionalCard = additionalCard.applyPatternOnNumbers(pattern: kCardNumbersPattern, replacementCharacter: kCardNumbersPatternReplaceChar)
-        if additionalCard.count > 6 { additionalCard = String(additionalCard.prefix(6)) }
-        additionalCardTextField?.text = additionalCard
-    }
-    
-    @IBAction func additionalCardTextFieldEditingEnded(_ sender: Any){
-        if additionalCardTextField?.text?.count ?? 0 < 1{
-            additionalCardTextField?.layer.borderWidth = 1
-            additionalCardTextField?.layer.cornerRadius = 5
-            additionalCardTextField?.layer.borderColor = UIColor.red.cgColor
-        }
-    }
 }
 
 extension CarAddViewController: UITextFieldDelegate{
@@ -163,9 +139,6 @@ extension CarAddViewController: UITextFieldDelegate{
         textField.resignFirstResponder()
         if textField == platesTextField, platesTextField != nil{
             mainCardTextField?.becomeFirstResponder()
-        }
-        if textField == mainCardTextField, mainCardTextField != nil{
-            additionalCardTextField?.becomeFirstResponder()
         }
         return true
     }

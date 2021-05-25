@@ -20,7 +20,6 @@ $email = $con->real_escape_string($_POST['email']);
 $passhash = strtolower($con->real_escape_string($_POST['passhash']));
 $plates = $con->real_escape_string($_POST['plates']);
 $main_card = (int)$_POST['main_card'];
-$additional_card = (int)$_POST['additional_card'];
 #endregion
 
 $user_id = getUserId($con, $email, $passhash);
@@ -30,7 +29,7 @@ if(($error = getErrorFromObject($user_id)) !== null){
     exit();
 }
 
-$car_id = addCar($con, $user_id, $plates, $main_card, $additional_card);
+$car_id = addCar($con, $user_id, $plates, $main_card);
 if(($error = getErrorFromObject($car_id)) !== null){
     echo $error;
     mysqli_close($con);

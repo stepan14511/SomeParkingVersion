@@ -394,7 +394,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="yRN-5z-SQ5">
-                            <rect key="frame" x="0.0" y="104.33333622325551" width="428" height="44"/>
+                            <rect key="frame" x="0.0" y="104" width="428" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wOM-Ft-laS">
@@ -520,21 +520,6 @@
                                     <outlet property="delegate" destination="W8P-ZL-xPE" id="IGt-Sr-0Kz"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Карта от дверей" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QbK-4l-SVg">
-                                <rect key="frame" x="47" y="224" width="333" height="34"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next" textContentType="email"/>
-                                <connections>
-                                    <action selector="additionalCardTextFieldChanging:" destination="W8P-ZL-xPE" eventType="editingChanged" id="lBI-kk-PeN"/>
-                                    <action selector="additionalCardTextFieldChanging:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="oTo-my-A6c"/>
-                                    <action selector="additionalCardTextFieldEditingEnded:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="kda-Ts-k8d"/>
-                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingChanged" id="Iud-P5-aXV"/>
-                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidEnd" id="ecS-bF-fw1"/>
-                                    <action selector="checkForEnablingDoneButton:" destination="W8P-ZL-xPE" eventType="editingDidBegin" id="wGc-7M-46i"/>
-                                    <outlet property="delegate" destination="W8P-ZL-xPE" id="3F3-C3-ewo"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FNa-3a-MLg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -572,7 +557,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="additionalCardTextField" destination="QbK-4l-SVg" id="KAb-9d-mUO"/>
                         <outlet property="doneButton" destination="V0Z-41-g0l" id="yiy-zC-Nwe"/>
                         <outlet property="mainCardTextField" destination="0r0-n8-IeV" id="Pmu-Vj-A1B"/>
                         <outlet property="platesTextField" destination="ghH-Zf-d4N" id="PGu-uU-3Rl"/>
@@ -617,7 +601,6 @@
         <!--Баланс-->
         <scene sceneID="Ccs-ob-6gI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kuy-ml-KVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="payment" id="ND4-TG-qyO" customClass="BalanceViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0Q-J8-Slx">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
@@ -693,6 +676,7 @@
                         <outlet property="paymentAmountTextField" destination="IRv-pB-VBO" id="UjD-qw-hBi"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kuy-ml-KVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3758" y="-378"/>
         </scene>
