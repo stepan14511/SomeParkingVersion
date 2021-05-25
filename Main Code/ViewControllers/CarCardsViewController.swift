@@ -99,11 +99,6 @@ class CarCardsViewController: UITableViewController{
             }
         }
         
-        for (index, card) in car.additional_cards.enumerated(){
-            if index >= 5 { break }
-            additionalCardsTextFields[index].text = card != nil ? String(card!) : nil
-        }
-        
         cardsTextFieldChanged()
     }
     
@@ -114,22 +109,15 @@ class CarCardsViewController: UITableViewController{
     @IBAction func doneButtonPressed(){
         guard let email = AccountController.email,
               let passhash = AccountController.password_hash,
-              let car_id = AccountController.getCarById(id: car_id)?.id,
-              additionalCardsTextFields.count >= 5 else{
+              let car_id = AccountController.getCarById(id: car_id)?.id else{
             return
         }
         
         // Get data from text fields
         let mainCard1 = Int(mainCard1TextField.text ?? "")
         let mainCard2 = Int(mainCard2TextField.text ?? "")
-        var additionalCards: [Int?] = []
-        for (index, card) in additionalCardsTextFields.enumerated(){
-            if index >= 5 {break}
-            
-            additionalCards.append(Int(card.text ?? ""))
-        }
         
-        guard mainCard1 != nil, additionalCards.count == 5, additionalCards[0] != nil else{ return }
+        guard mainCard1 != nil else{ return }
         
         showSpinner(onView: self.view)
         
@@ -142,20 +130,11 @@ class CarCardsViewController: UITableViewController{
                     "email": email,
                     "passhash": passhash,
                     "car_id": car_id,
-                    "main_card_1": mainCard1!,
-                    "additional_card_1": additionalCards[0]!
+                    "main_card_1": mainCard1!
                 ] as [String : Any]
         
         if mainCard2 != nil{
             param["main_card_2"] = mainCard2!
-        }
-        for (index, card) in additionalCards.enumerated(){
-            if index == 0 { continue }
-            if index >= 5 { break }
-            
-            if card != nil{
-                param["additional_card_\(index + 1)"] = card!
-            }
         }
         
         model.downloadAccountData(parameters: param, url: URLServices.updateCards)
@@ -163,19 +142,12 @@ class CarCardsViewController: UITableViewController{
     
     @objc func cardsTextFieldChanged(){
         // Get all texts
-        guard let car = AccountController.getCarById(id: car_id),
-            additionalCardsTextFields.count >= 5 else {
+        guard let car = AccountController.getCarById(id: car_id) else {
             doneButton?.isEnabled = false
             return
         }
         var mainCard1 = mainCard1TextField.text ?? ""
         var mainCard2 = mainCard2TextField.text ?? ""
-        var additionalCards: [String] = []
-        for (index, card) in additionalCardsTextFields.enumerated(){
-            if index >= 5 {break}
-            
-            additionalCards.append(card.text ?? "")
-        }
         
         // Apply text formatting.
         mainCard1 = mainCard1.applyPatternOnNumbers(pattern: kCardNumbersPattern, replacementCharacter: kCardNumbersPatternReplaceChar)
@@ -184,17 +156,10 @@ class CarCardsViewController: UITableViewController{
         mainCard2 = mainCard2.applyPatternOnNumbers(pattern: kCardNumbersPattern, replacementCharacter: kCardNumbersPatternReplaceChar)
         if mainCard2.count > 6 { mainCard2 = String(mainCard2.prefix(6)) }
         mainCard2TextField.text = mainCard2
-        for (index, card) in additionalCards.enumerated(){
-            if index >= additionalCardsTextFields.count { break }
-            
-            var card = card.applyPatternOnNumbers(pattern: kCardNumbersPattern, replacementCharacter: kCardNumbersPatternReplaceChar)
-            if card.count > 6 { card = String(card.prefix(6)) }
-            additionalCardsTextFields[index].text = card
-        }
         
         // Check for done button enabling possibility
         // Check for required fields
-        guard !mainCard1.isEmpty, !additionalCards[0].isEmpty, mainCard1.isInt, additionalCards[0].isInt else{
+        guard !mainCard1.isEmpty, mainCard1.isInt else{
             doneButton?.isEnabled = false
             return
         }
@@ -204,24 +169,6 @@ class CarCardsViewController: UITableViewController{
         if mainCard1 != String(car.main_card) ||
             mainCard2 != (car.second_main_card != nil ? String(car.second_main_card!) : "")
             {
-            doneButton?.isEnabled = true
-            return
-        }
-        
-        // Create an array of additional cards in car object
-        var car_additionalCards: [String] = []
-        for (index, card) in car.additional_cards.enumerated(){
-            if index >= 5 { break }
-            
-            car_additionalCards.append(card != nil ? String(card!) : "")
-        }
-        // If there is not enough cards in it, add empty ones
-        for _ in car_additionalCards.count ..< 5{
-            car_additionalCards.append("")
-        }
-        
-        // Check for equality of additional cards
-        if !additionalCards.elementsEqual(car_additionalCards){
             doneButton?.isEnabled = true
             return
         }
