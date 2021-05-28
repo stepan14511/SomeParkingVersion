@@ -22,8 +22,11 @@ class CarEditViewController: UITableViewController{
     
     @IBOutlet var platesCell: UITableViewCell?
     let platesTextField = UITextField()
+    @IBOutlet var mainCardCell: UITableViewCell?
+    let mainCardTextField = UITextField()
+    @IBOutlet var mainCard2Cell: UITableViewCell?
+    let mainCard2TextField = UITextField()
     @IBOutlet var tariffCell: UITableViewCell?
-    @IBOutlet var cardsCell: UITableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,22 +61,12 @@ class CarEditViewController: UITableViewController{
             self.present(tariffChangeNavigationViewController, animated: true, completion: nil)
         }
         
-        if indexPath == [0, 2]{ // Change cards view
-            guard let car = AccountController.getCarById(id: car_id) else{
-                dismiss(animated: true, completion: updateAccountClosure)
-                return
-            }
-            
-            let storyboard = UIStoryboard(name: "CarEdit", bundle: nil)
-            guard let cardsNavigationViewController = storyboard.instantiateViewController(withIdentifier: "cards_nav") as? UINavigationController else { return }
-            
-            guard let cardsViewController = cardsNavigationViewController.children[0] as? CarCardsViewController else{ return }
-            
-            cardsViewController.car_id = car.id
-            cardsViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
-            cardsViewController.updateUIClosure = updateRowsText
-            
-            self.present(cardsNavigationViewController, animated: true, completion: nil)
+        if indexPath == [0, 2]{
+            mainCardTextField.becomeFirstResponder()
+        }
+        
+        if indexPath == [0, 3]{
+            mainCard2TextField.becomeFirstResponder()
         }
         
         if indexPath == [1, 0]{ // Delete button
@@ -88,6 +81,16 @@ class CarEditViewController: UITableViewController{
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath == [0, 3] {
+            if AccountController.getCarById(id: car_id)?.parking_lot_type != 3{
+                return 0
+            }
+        }
+            
+        return tableView.rowHeight
+    }
+    
     func setupCells(){
         if #available(iOS 13.0, *) {
             // Forward arrow for tariff
@@ -96,13 +99,6 @@ class CarEditViewController: UITableViewController{
             chevronImage1.tintColor = .lightGray
             tariffCell?.accessoryView = chevronImage1
             tariffCell?.accessoryView?.frame = CGRect(x: 0, y: 0, width: 10, height: 15)
-            
-            // Forward arrow for cards
-            let chevronImage2 = UIImageView()
-            chevronImage2.image = UIImage(systemName: "chevron.forward")
-            chevronImage2.tintColor = .lightGray
-            cardsCell?.accessoryView = chevronImage2
-            cardsCell?.accessoryView?.frame = CGRect(x: 0, y: 0, width: 10, height: 15)
         }
         else{
             //TODO: SET FOR OTHER IOS VERSIONS
@@ -119,6 +115,24 @@ class CarEditViewController: UITableViewController{
         platesTextField.addTarget(self, action: #selector(platesTextFieldChanged), for: .editingDidBegin)
         platesTextField.addTarget(self, action: #selector(platesTextFieldEditingEnded), for: .editingDidEnd)
         platesCell?.accessoryView = platesTextField
+        
+        mainCardTextField.frame = CGRect(x: 0, y: 480, width: textFieldWidth, height: 40)
+        mainCardTextField.placeholder = "обязательно"
+        mainCardTextField.layer.cornerRadius = 10.0
+        mainCardTextField.textAlignment = .right
+        mainCardTextField.addTarget(self, action: #selector(platesTextFieldChanged), for: .editingChanged)
+        mainCardTextField.addTarget(self, action: #selector(platesTextFieldChanged), for: .editingDidBegin)
+        mainCardTextField.addTarget(self, action: #selector(platesTextFieldEditingEnded), for: .editingDidEnd)
+        mainCardCell?.accessoryView = mainCardTextField
+        
+        mainCard2TextField.frame = CGRect(x: 0, y: 480, width: textFieldWidth, height: 40)
+        mainCard2TextField.placeholder = "необязательно"
+        mainCard2TextField.layer.cornerRadius = 10.0
+        mainCard2TextField.textAlignment = .right
+        mainCard2TextField.addTarget(self, action: #selector(platesTextFieldChanged), for: .editingChanged)
+        mainCard2TextField.addTarget(self, action: #selector(platesTextFieldChanged), for: .editingDidBegin)
+        mainCard2TextField.addTarget(self, action: #selector(platesTextFieldEditingEnded), for: .editingDidEnd)
+        mainCard2Cell?.accessoryView = mainCard2TextField
     }
     
     func updateRowsText(){
@@ -142,6 +156,9 @@ class CarEditViewController: UITableViewController{
         else{
             tariffCell?.detailTextLabel?.text = "не выбрано"
         }
+        
+        mainCardTextField.text = String(car.main_card)
+        mainCard2TextField.text = car.second_main_card != nil ? String(car.second_main_card!) : nil
     }
 }
 
@@ -285,7 +302,7 @@ extension CarEditViewController: Downloadable{
             }
             
             guard let account = data as? Account else{
-                guard let serverSuccess = data as? ServerSuccess else{
+                guard let _ = data as? ServerSuccess else{
                     guard let error = data as? ServerError else{
                         // This is literally impossible, but why not to leave it here)
                         return

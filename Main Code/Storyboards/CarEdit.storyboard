@@ -83,7 +83,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Карты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IrK-dZ-vAV">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Номер карты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IrK-dZ-vAV">
+                                                    <rect key="frame" x="20" y="0.0" width="388" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" textLabel="Umj-CP-dXY" style="IBUITableViewCellStyleDefault" id="5hc-eA-Pe3">
+                                        <rect key="frame" x="0.0" y="149" width="428" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5hc-eA-Pe3" id="nJ2-3c-ZdZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Доп. карта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Umj-CP-dXY">
                                                     <rect key="frame" x="20" y="0.0" width="388" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -98,7 +115,7 @@
                             <tableViewSection id="Cex-tQ-anE">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ALE-Gm-zP5">
-                                        <rect key="frame" x="0.0" y="185" width="428" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="228.5" width="428" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ALE-Gm-zP5" id="9Xr-nh-0eK">
                                             <rect key="frame" x="0.0" y="0.0" width="428" height="43.5"/>
@@ -138,7 +155,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cardsCell" destination="Wec-yK-vse" id="ZV5-ne-WBp"/>
+                        <outlet property="mainCard2Cell" destination="5hc-eA-Pe3" id="MBy-F8-S1d"/>
+                        <outlet property="mainCardCell" destination="Wec-yK-vse" id="TEJ-yE-ehz"/>
                         <outlet property="platesCell" destination="5Ou-3d-1cR" id="kGV-tY-kHh"/>
                         <outlet property="tariffCell" destination="DZN-cQ-H56" id="jYY-3g-Pz7"/>
                     </connections>
