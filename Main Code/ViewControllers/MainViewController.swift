@@ -72,7 +72,15 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func balanceButtonPressed(){
-        openPopolnitViewController()
+        openBalanceViewController()
+    }
+    
+    @IBAction func myCarsButtonPressed(){
+        openTransportViewController()
+    }
+    
+    @IBAction func addCarButtonPressed(){
+        openAddCarViewController()
     }
 }
 
@@ -102,7 +110,7 @@ extension MainViewController{
         self.present(accountNavigationViewController, animated: true, completion: nil)
     }
     
-    func openPopolnitViewController(){
+    func openBalanceViewController(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let popolnitNavigationViewController = storyboard.instantiateViewController(withIdentifier: "payment_nav") as? UINavigationController else { return }
         
@@ -134,6 +142,19 @@ extension MainViewController{
         
         self.present(transportNavigationViewController, animated: true, completion: nil)
     }
+    
+    func openAddCarViewController(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let transportNavigationViewController = storyboard.instantiateViewController(withIdentifier: "carAdd_nav") as? UINavigationController else { return }
+            
+        guard let transportViewController = transportNavigationViewController.children[0] as? CarAddViewController else{
+            return
+        }
+            
+        transportViewController.successCallBackClosure = openTransportViewController
+            
+        self.present(transportNavigationViewController, animated: true, completion: nil)
+    }
 }
 
 extension MainViewController: SideMenuNavigationControllerDelegate {
@@ -146,7 +167,7 @@ extension MainViewController: SideMenuNavigationControllerDelegate {
         sideMenuTableViewController.callbackClosure = updateAccountDataUI
         sideMenuTableViewController.openLoginScreenClosure = openLoginScreen
         sideMenuTableViewController.openAccountViewControllerClosure = openAccountViewController
-        sideMenuTableViewController.openPopolnitViewControllerClosure = openPopolnitViewController
+        sideMenuTableViewController.openPopolnitViewControllerClosure = openBalanceViewController
         sideMenuTableViewController.openTransportViewControllerClosure = openTransportViewController
         sideMenuTableViewController.openHowToOwnerViewControllerClosure = openHowToOwnerViewController
     }

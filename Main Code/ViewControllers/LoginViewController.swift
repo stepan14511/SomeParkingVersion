@@ -58,6 +58,10 @@ class LoginViewController: UIViewController{
         let param = ["ios_app_ver": appVersion, "email": AccountController.email!, "passhash": AccountController.password_hash!]
         model.downloadAccountData(parameters: param, url: URLServices.login)
     }
+    
+    @IBAction func cancelButtonPressed(){
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension LoginViewController: UITextFieldDelegate{

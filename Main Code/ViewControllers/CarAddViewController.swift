@@ -14,7 +14,7 @@ class CarAddViewController: UIViewController{
     var vSpinner : UIView?
     
     var openLoginScreenClosure: (() -> Void)?
-    var updateAccountClosure: (() -> Void)?
+    var successCallBackClosure: (() -> Void)?
     
     @IBOutlet weak var doneButton: UIButton?
     @IBOutlet weak var platesTextField: UITextField?
@@ -193,7 +193,7 @@ extension CarAddViewController: Downloadable{
             }
             
             removeSpinner()
-            dismiss(animated: true, completion: updateAccountClosure)
+            dismiss(animated: true, completion: successCallBackClosure)
         }
     }
 }

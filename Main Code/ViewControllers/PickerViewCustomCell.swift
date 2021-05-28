@@ -39,7 +39,11 @@ class PickerViewCustomCell: UITableViewCell, UIPickerViewDataSource, UIPickerVie
         let parkingLot = availableParkingLots?[row - 1]
         var typePostfix: String? = (parkingLot?.type ?? 1 == 2) ? (" (увеличенное)") : nil
         typePostfix = (parkingLot?.type ?? 1 == 3) ? (" (на 2 машины)") : typePostfix
-        let text = (parkingLot?.id ?? "") + (typePostfix ?? "")
+        
+        var pricePostfix: String = " - 3.000₽"
+        pricePostfix = (parkingLot?.type ?? 1 == 2) ? (" - 4.000₽") : pricePostfix
+        pricePostfix = (parkingLot?.type ?? 1 == 3) ? (" - 5.000₽") : pricePostfix
+        let text = (parkingLot?.id ?? "") + (typePostfix ?? "") + pricePostfix
         
         // Define color of text
         var color = UIColor.black

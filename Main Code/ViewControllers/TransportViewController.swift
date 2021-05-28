@@ -25,6 +25,8 @@ class TransportViewController: UITableViewController{
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.addTransportPressed))
         self.addTransport!.addGestureRecognizer(gesture)
         
+        self.registerTableViewCells()
+        
         model.delegate = self
         loadAccountFromServer()
     }
@@ -46,29 +48,35 @@ class TransportViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create a new cell if needed or reuse an old one
         
-        var cell = self.tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier") as UITableViewCell?
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "TransportTableViewCell") as! TransportTableViewCell?
         
-        if cell == nil{
-            
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "reuseIdentifier")
-        }
-        
+//        if cell == nil{
+//            //cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "CustomTableViewCell")
+//            if let cars = AccountController.account?.cars?.sorted(by: {$0.id < $1.id}){
+//                cell?.textLabel?.text = cars[indexPath.row].plates
+//
+//                if let parking_lot_id = cars[indexPath.row].parking_lot_id{
+//                    cell?.detailTextLabel?.text = "Парковочное место: " + String(parking_lot_id)
+//                }
+//                else{
+//                    cell?.detailTextLabel?.text = ""
+//                }
+//
+//            }
+//            else{
+//                cell?.textLabel?.text = ""
+//                cell?.detailTextLabel?.text = ""
+//            }
+//            //cell?.detailTextLabel?.textColor = .systemGray
+//            return cell!
+//        }
         if let cars = AccountController.account?.cars?.sorted(by: {$0.id < $1.id}){
-            cell?.textLabel?.text = cars[indexPath.row].plates
-            
-            if let parking_lot_id = cars[indexPath.row].parking_lot_id{
-                cell?.detailTextLabel?.text = "Парковочное место: " + String(parking_lot_id)
-            }
-            else{
-                cell?.detailTextLabel?.text = ""
-            }
-            
+            cell?.car_id = cars[indexPath.row].id
+            cell?.updateUI()
+            cell?.platesButtonFunction = platesButtonPressed(_:)
+            cell?.lotButtonFunction = lotButtonPressed(_:)
+            cell?.balanceButtonFunction = balanceButtonPressed(_:)
         }
-        else{
-            cell?.textLabel?.text = ""
-            cell?.detailTextLabel?.text = ""
-        }
-        cell?.detailTextLabel?.textColor = .systemGray
         return cell!
     }
     
@@ -93,6 +101,13 @@ class TransportViewController: UITableViewController{
         carEditViewController.car_id = car_id
         
         self.present(secondViewController, animated: true, completion: nil)
+    }
+    
+    private func registerTableViewCells() {
+        let textFieldCell = UINib(nibName: "TransportTableViewCell",
+                                  bundle: nil)
+        self.tableView.register(textFieldCell,
+                                forCellReuseIdentifier: "TransportTableViewCell")
     }
     
     func loadAccountFromServer(){
@@ -120,7 +135,7 @@ class TransportViewController: UITableViewController{
         }
         
         carAddViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
-        carAddViewController.updateAccountClosure = loadAccountFromServer
+        carAddViewController.successCallBackClosure = loadAccountFromServer
         
         self.present(secondViewController, animated: true, completion: nil)
     }
@@ -129,6 +144,58 @@ class TransportViewController: UITableViewController{
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+// Funcs for cells
+extension TransportViewController{
+    func platesButtonPressed(_ car_id: Int?){
+        guard let car_id = AccountController.getCarById(id: car_id)?.id else{
+            return
+        }
+        
+        let storyboard = UIStoryboard(name: "CarEdit", bundle: nil)
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "carEdit_nav") as! UINavigationController
+        
+        guard let carEditViewController = secondViewController.children[0] as? CarEditViewController else{
+            return
+        }
+        
+        carEditViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
+        carEditViewController.updateAccountClosure = loadAccountFromServer
+        carEditViewController.car_id = car_id
+        
+        self.present(secondViewController, animated: true, completion: nil)
+    }
+    
+    func lotButtonPressed(_ car_id: Int?){
+        let storyboard = UIStoryboard(name: "Tariffs", bundle: nil)
+        
+        guard let accountNavigationViewController = storyboard.instantiateViewController(withIdentifier: "car_lot_nav") as? UINavigationController else { return }
+        
+        guard let accountViewController = accountNavigationViewController.children[0] as? CarLotPickerViewController else{ return }
+        
+        accountViewController.car_id = car_id
+        accountViewController.updateViewAfterDataChangeClosure = loadAccountFromServer
+        
+        self.present(accountNavigationViewController, animated: true, completion: nil)
+    }
+    
+    func balanceButtonPressed(_ car_id: Int?){
+        guard let car = AccountController.getCarById(id: car_id) else {
+            dismiss(animated: true, completion: openLoginScreenClosure)
+            return
+        }
+        let storyboard = UIStoryboard(name: "CarEdit", bundle: nil)
+        guard let autopayNavigationViewController = storyboard.instantiateViewController(withIdentifier: "autopay_nav") as? UINavigationController else { return }
+        
+        guard let autopayViewController = autopayNavigationViewController.children[0] as? CarAutopayViewController else{ return }
+        
+        autopayViewController.car_id = car.id
+        /*autopayViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
+        autopayViewController.updateUIClosure = updateRowsText*/
+        
+        self.present(autopayNavigationViewController, animated: true, completion: nil)
+    }
 }
  
 extension TransportViewController {

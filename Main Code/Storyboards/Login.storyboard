@@ -104,6 +104,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Отмена"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed" destination="4ua-tV-Xx9" eventType="touchUpInside" id="f0d-6O-SQD"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
