@@ -233,12 +233,12 @@
 		8684BDD825DB698A007A4DD8 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				7B552D5C1DCC65830010301C /* Launch Screen.storyboard */,
-				7B5FA9B51DCB269700278DF6 /* Main.storyboard */,
-				8684BDDB25DB69D3007A4DD8 /* Login.storyboard */,
-				8684BDE125DB72F0007A4DD8 /* CarEdit.storyboard */,
-				8684BDE525DB7391007A4DD8 /* Tariffs.storyboard */,
 				8684BDE925DB741E007A4DD8 /* Account.storyboard */,
+				8684BDE125DB72F0007A4DD8 /* CarEdit.storyboard */,
+				7B552D5C1DCC65830010301C /* Launch Screen.storyboard */,
+				8684BDDB25DB69D3007A4DD8 /* Login.storyboard */,
+				7B5FA9B51DCB269700278DF6 /* Main.storyboard */,
+				8684BDE525DB7391007A4DD8 /* Tariffs.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";

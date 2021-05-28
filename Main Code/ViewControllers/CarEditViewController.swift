@@ -285,16 +285,22 @@ extension CarEditViewController: Downloadable{
             }
             
             guard let account = data as? Account else{
-                guard let error = data as? ServerError else{
-                    // This is literally impossible, but why not to leave it here)
+                guard let serverSuccess = data as? ServerSuccess else{
+                    guard let error = data as? ServerError else{
+                        // This is literally impossible, but why not to leave it here)
+                        return
+                    }
+                    
+                    // Server error
+                    if error.code == 2{
+                        dismiss(animated: true, completion: openLoginScreenClosure)
+                        return
+                    }
                     return
                 }
                 
-                // Server error
-                if error.code == 2{
-                    dismiss(animated: true, completion: openLoginScreenClosure)
-                    return
-                }
+                removeSpinner()
+                dismiss(animated: true, completion: updateAccountClosure)
                 return
             }
             
