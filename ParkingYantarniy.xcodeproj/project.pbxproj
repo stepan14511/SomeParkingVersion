@@ -56,6 +56,7 @@
 		86B1E6B12576B0AD0019D182 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1E6B02576B0AD0019D182 /* LoginViewController.swift */; };
 		86BAE17E26601B7F00BF07B1 /* TransportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAE17C26601B7F00BF07B1 /* TransportTableViewCell.swift */; };
 		86BAE17F26601B7F00BF07B1 /* TransportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BAE17D26601B7F00BF07B1 /* TransportTableViewCell.xib */; };
+		86BAE1812660EB2000BF07B1 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BAE1802660EB2000BF07B1 /* DateExtension.swift */; };
 		86CFA9A8261A1EB4005A6826 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CFA9A7261A1EB4005A6826 /* ViewControllerExtension.swift */; };
 		86DD6D732597E03200BFCCFB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DD6D712597E03200BFCCFB /* AccountViewController.swift */; };
 		86E190F125DC8A2400BD68AF /* CarLotPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E190F025DC8A2400BD68AF /* CarLotPickerTableViewController.swift */; };
@@ -129,6 +130,7 @@
 		86B1E6B02576B0AD0019D182 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86BAE17C26601B7F00BF07B1 /* TransportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportTableViewCell.swift; sourceTree = "<group>"; };
 		86BAE17D26601B7F00BF07B1 /* TransportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportTableViewCell.xib; sourceTree = "<group>"; };
+		86BAE1802660EB2000BF07B1 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		86CFA9A7261A1EB4005A6826 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		86DD6D712597E03200BFCCFB /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		86E190F025DC8A2400BD68AF /* CarLotPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarLotPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				868F7F342587D810003E68E9 /* Network.swift */,
 				86A96848261952FB00892CF7 /* DataExtension.swift */,
 				86CFA9A7261A1EB4005A6826 /* ViewControllerExtension.swift */,
+				86BAE1802660EB2000BF07B1 /* DateExtension.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				862838ED25AB206000C982B2 /* CarTariffChangeViewControler.swift in Sources */,
 				86A96849261952FB00892CF7 /* DataExtension.swift in Sources */,
 				867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */,
+				86BAE1812660EB2000BF07B1 /* DateExtension.swift in Sources */,
 				868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */,
 				863FD843258D127A0072FDC0 /* PhoneTextField.swift in Sources */,
 				7B48A0F61DCB2518002990A1 /* MainViewController.swift in Sources */,

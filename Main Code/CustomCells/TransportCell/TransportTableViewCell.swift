@@ -42,13 +42,31 @@ class TransportTableViewCell: UITableViewCell {
     }
     
     func updateUI(){
+        // Button borders are made in storyboards.
+        // Here only border colors
+        platesButton?.layer.borderColor = UIColor.systemGray.cgColor
+        lotButton?.layer.borderColor = UIColor.systemGray.cgColor
+        balanceButton?.layer.borderColor = UIColor.systemGray.cgColor
         guard let car = AccountController.getCarById(id: car_id) else{
             return
         }
         
         platesButton?.setTitle(car.plates, for: .normal)
         lotButton?.setTitle(car.parking_lot_id ?? "Выбрать место", for: .normal)
-        balanceButton?.setTitle("Осталось оплачено: 24д.", for: .normal)
+        if let due_time = car.payed_till,
+           due_time.minutes(from: Date()) > 0{
+            if due_time.weeks(from: Date()) < 1{
+                balanceButton?.setTitleColor(.systemRed, for: .normal)
+            }
+            else{
+                balanceButton?.setTitleColor(.systemGreen, for: .normal)
+            }
+            balanceButton?.setTitle("Осталось оплачено: " + (due_time.offset(from: Date())), for: .normal)
+        }
+        else{
+            balanceButton?.setTitleColor(.systemRed, for: .normal)
+            balanceButton?.setTitle("Не оплачено", for: .normal)
+        }
     }
     
 }
