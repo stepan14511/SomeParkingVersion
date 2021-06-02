@@ -38,11 +38,14 @@ if(($error = getErrorFromObject($car_id)) !== null){
 
 updateTariff($con, $user_id, $car_id, 1);
 
-// Send data to app.
-$success_return = array(
-    "success" => true,
-);
-echo json_encode($success_return);
+$full_account = getFullAccount($con, $email, $passhash);
+if(($error = getErrorFromObject($full_account)) !== null){
+    echo $error;
+    mysqli_close($con);
+    exit();
+}
+
+echo json_encode($full_account);
 mysqli_close($con);
 exit();
 ?>

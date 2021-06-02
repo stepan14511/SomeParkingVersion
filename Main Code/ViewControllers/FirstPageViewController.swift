@@ -11,6 +11,8 @@ import UIKit
 
 class FirstPageViewController: UIViewController{
     
+    var isRegOpenedLast: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,6 +24,7 @@ class FirstPageViewController: UIViewController{
         guard let loginViewController = loginNavigationViewController.children[0] as? LoginViewController else{ return }
         
         loginViewController.openMainViewClosure = openMainView
+        isRegOpenedLast = true
         
         self.present(loginNavigationViewController, animated: true, completion: nil)
     }
@@ -33,6 +36,7 @@ class FirstPageViewController: UIViewController{
         guard let registrationViewController = registrationNavigationViewController.children[0] as? RegistrationViewController else{ return }
         
         registrationViewController.openMainViewClosure = openMainView
+        isRegOpenedLast = true
         
         self.present(registrationNavigationViewController, animated: true, completion: nil)
     }
@@ -42,7 +46,7 @@ class FirstPageViewController: UIViewController{
         let secondViewController = storyboard.instantiateViewController(withIdentifier: "main") as! MainViewController
         secondViewController.modalPresentationStyle = .fullScreen
         secondViewController.modalTransitionStyle = .flipHorizontal
+        secondViewController.justRegistered = isRegOpenedLast
         self.present(secondViewController, animated: true, completion: nil)
     }
 }
-

@@ -9,7 +9,7 @@
 import Foundation
 import CommonCrypto
 
-protocol AccountUser: class {
+protocol AccountUser: AnyObject {
     func accountDownloaded(serverError: ServerError?)
 }
 

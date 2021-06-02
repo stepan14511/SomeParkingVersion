@@ -44,9 +44,13 @@ class TransportTableViewCell: UITableViewCell {
     func updateUI(){
         // Button borders are made in storyboards.
         // Here only border colors
-        platesButton?.layer.borderColor = UIColor.systemGray.cgColor
-        lotButton?.layer.borderColor = UIColor.systemGray.cgColor
-        balanceButton?.layer.borderColor = UIColor.systemGray.cgColor
+        if #available(iOS 13.0, *) {
+            platesButton?.layer.borderColor = UIColor.systemGray4.cgColor
+            lotButton?.layer.borderColor = UIColor.systemGray4.cgColor
+            balanceButton?.layer.borderColor = UIColor.systemGray4.cgColor
+        } else {
+            //TODO Fallback on earlier versions
+        }
         guard let car = AccountController.getCarById(id: car_id) else{
             return
         }

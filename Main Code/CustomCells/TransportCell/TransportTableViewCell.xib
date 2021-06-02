@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bku-yh-MBq">
-                        <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Button">
                             <color key="titleColor" systemColor="labelColor"/>
@@ -34,7 +34,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCe-L4-Xpt">
-                        <rect key="frame" x="160" y="0.0" width="160" height="40"/>
+                        <rect key="frame" x="160" y="0.0" width="160" height="44"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Button">
                             <color key="titleColor" systemColor="systemGray2Color"/>
@@ -49,7 +49,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B08-Ze-fCU">
-                        <rect key="frame" x="0.0" y="40" width="320" height="40"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="48"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <state key="normal" title="Button">
                             <color key="titleColor" systemColor="systemGreenColor"/>
@@ -64,6 +64,11 @@
                         </connections>
                     </button>
                 </subviews>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                        <integer key="value" value="1"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

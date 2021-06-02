@@ -10,6 +10,7 @@ import SideMenu
 class MainViewController: UIViewController {
     private var menuSettings: SideMenuSettings = SideMenuSettings()
     var model = AccountModel()
+    var justRegistered: Bool = false
 
     @IBOutlet weak var balanceShower: UIButton?
     @IBOutlet weak var imageViewForZooming: UIView?
@@ -23,15 +24,23 @@ class MainViewController: UIViewController {
             return
         }
         
+        // Fix buttons size cause I ❤️ storyboards.
+        stackView?.bounds = CGRect(x: 0, y: 0, width: 50, height: 120)
+
+        
         setupSideMenu()
         model.delegate = self
         
         loadAccountFromServer()
         
         updateAccountDataUI()
-        
-        // Fix buttons size cause I ❤️ storyboards.
-        stackView?.bounds = CGRect(x: 0, y: 0, width: 50, height: 120)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if justRegistered{
+            justRegistered = false
+            addCarButtonPressed()
+        }
     }
     
     func loadAccountFromServer(){
@@ -146,7 +155,7 @@ extension MainViewController{
     func openAddCarViewController(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let transportNavigationViewController = storyboard.instantiateViewController(withIdentifier: "carAdd_nav") as? UINavigationController else { return }
-            
+        
         guard let transportViewController = transportNavigationViewController.children[0] as? CarAddViewController else{
             return
         }

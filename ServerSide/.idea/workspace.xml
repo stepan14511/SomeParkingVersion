@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="407d63a4-a691-457e-8235-922026fb7177" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Main Code/CustomClasses/CarModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/CustomClasses/CarModel.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main Code/CustomCells/TransportCell/TransportTableViewCell.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/CustomCells/TransportCell/TransportTableViewCell.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main Code/CustomCells/TransportCell/TransportTableViewCell.xib" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/CustomCells/TransportCell/TransportTableViewCell.xib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main Code/CustomClasses/AccountController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/CustomClasses/AccountController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Main Code/Storyboards/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/Storyboards/Main.storyboard" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Main Code/ViewControllers/CarAddViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/ViewControllers/CarAddViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main Code/ViewControllers/MainViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../Main Code/ViewControllers/MainViewController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.xcworkspace/xcuserdata/stepankuznetsov.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../ParkingYantarniy.xcodeproj/project.xcworkspace/xcuserdata/stepankuznetsov.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyFunctions/FunctionsForSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/MyFunctions/FunctionsForSQL.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addCar.php" beforeDir="false" afterPath="$PROJECT_DIR$/addCar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/updateCards.php" beforeDir="false" afterPath="$PROJECT_DIR$/updateCards.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +90,9 @@
       <workItem from="1621959314423" duration="523000" />
       <workItem from="1621959842552" duration="94000" />
       <workItem from="1621960487070" duration="355000" />
+      <workItem from="1622206132436" duration="343000" />
+      <workItem from="1622208563193" duration="544000" />
+      <workItem from="1622633397595" duration="76000" />
     </task>
     <servers />
   </component>

@@ -328,7 +328,7 @@ function accountRegistration($con, $email, $passhash, $phone, $surname, $name, $
     $stmt->bind_param("s", $phone);
     $stmt->execute();
     $result = $stmt->get_result();
-    if($result->num_rows >= 1){ return -1; }
+    if($result->num_rows >= 1){ return -4; }
 
     // Insert new user into DB
     $stmt = null;

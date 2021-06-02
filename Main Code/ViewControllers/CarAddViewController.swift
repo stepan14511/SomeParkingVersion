@@ -52,6 +52,7 @@ class CarAddViewController: UIViewController{
         plates = plates.removingWhitespaces()
         plates = plates.lowercased()
         plates = plates.translatePlatesToRus()
+        platesTextField?.text = plates
         
         showSpinner(onView: self.view)
         
@@ -85,6 +86,12 @@ class CarAddViewController: UIViewController{
         }
         
         return
+    }
+    
+    func successfulAdding(car_id: Int){
+        let newViewController = CarLotPickerViewController()
+        newViewController.car_id = car_id
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
 
@@ -179,7 +186,7 @@ extension CarAddViewController: Downloadable{
                 return
             }
             
-            guard let _ = data as? ServerSuccess else{
+            guard let account = data as? Account else{
                 guard let error = data as? ServerError else{
                     return
                 }
@@ -192,8 +199,18 @@ extension CarAddViewController: Downloadable{
                 return
             }
             
+            AccountController.account = account
+            AccountController.saveDataToMemory()
+            
+            let plates = platesTextField?.text
+            
             removeSpinner()
-            dismiss(animated: true, completion: successCallBackClosure)
+            if let car = AccountController.getCarByPlates(plates: plates){
+                successfulAdding(car_id: car.id)
+            }
+            else{
+                dismiss(animated: true, completion: successCallBackClosure)
+            }
         }
     }
 }

@@ -110,7 +110,7 @@
                                 <color key="tintColor" systemColor="labelColor"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOa-Rn-Gge">
-                                <rect key="frame" x="227" y="792" width="181" height="50"/>
+                                <rect key="frame" x="228" y="792" width="180" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <state key="normal" title="Добавить машину">
@@ -576,7 +576,7 @@
                                 <rect key="frame" x="325" y="6" width="83" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="Готово">
+                                <state key="normal" title="Далее">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
                                 <state key="disabled">
@@ -665,7 +665,7 @@
                                 </subviews>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="10" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRv-pB-VBO">
-                                <rect key="frame" x="182" y="117" width="60" height="34"/>
+                                <rect key="frame" x="183" y="117" width="60" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
