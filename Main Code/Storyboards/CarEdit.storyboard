@@ -122,7 +122,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Удалить" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oat-gs-gG2">
-                                                    <rect key="frame" x="0.0" y="-1" width="428" height="45"/>
+                                                    <rect key="frame" x="-2" y="-4" width="430" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemRedColor"/>
@@ -421,7 +421,7 @@
             </objects>
             <point key="canvasLocation" x="7601" y="-862"/>
         </scene>
-        <!--Автопродление-->
+        <!--Оплата-->
         <scene sceneID="64H-VF-tnu">
             <objects>
                 <tableViewController storyboardIdentifier="autopay" id="5Yn-tp-2zZ" customClass="CarAutopayViewController" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -495,13 +495,13 @@
                             <outlet property="delegate" destination="5Yn-tp-2zZ" id="hrB-2a-3wq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Автопродление" id="zxx-Su-19m">
+                    <navigationItem key="navigationItem" title="Оплата" id="zxx-Su-19m">
                         <barButtonItem key="leftBarButtonItem" id="QxA-X5-2oD">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="qzC-i9-Pj6">
                                 <rect key="frame" x="20" y="6" width="83" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Назад">
+                                <state key="normal" title="Отмена">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
                                 <connections>

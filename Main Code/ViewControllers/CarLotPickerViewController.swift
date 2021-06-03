@@ -150,6 +150,14 @@ class CarLotPickerViewController: UIViewController{
         modelAccount.downloadAccountData(parameters: param, url: URLServices.updateParkingLot)
     }
     
+    func openPayScreen(){
+        let storyboard = UIStoryboard(name: "CarEdit", bundle: nil)
+        guard let newViewController = storyboard.instantiateViewController(withIdentifier: "autopay") as? CarAutopayViewController else { dismiss(animated: true, completion: updateViewAfterDataChangeClosure)
+            return
+        }
+        newViewController.car_id = car_id
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
 }
 
 // Zoom and scroll of parking scheme
@@ -272,12 +280,16 @@ extension CarLotPickerViewController: Downloadable{
                 }
                 
                 
+                // Successful payment
+                
                 AccountController.account = account
                 AccountController.saveDataToMemory()
-                dismiss(animated: true, completion: updateViewAfterDataChangeClosure)
+                openPayScreen()
+                //dismiss(animated: true, completion: updateViewAfterDataChangeClosure)
                 return
             }
             
+            // Just got parking lots
             availableLots = lots
             if let car = AccountController.getCarById(id: car_id),
                let lot_id = car.parking_lot_id,

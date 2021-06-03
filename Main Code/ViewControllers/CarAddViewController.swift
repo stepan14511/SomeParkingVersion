@@ -93,12 +93,6 @@ class CarAddViewController: UIViewController{
     }
     
     func successfulAdding(car_id: Int){
-//        let newViewController = CarLotPickerViewController()
-//        newViewController.car_id = car_id
-//        newViewController.isSkippable = true
-//        self.navigationController?.pushViewController(newViewController, animated: true)
-        
-        
         let storyboard = UIStoryboard(name: "Tariffs", bundle: nil)
         guard let newViewController = storyboard.instantiateViewController(withIdentifier: "car_lot") as? CarLotPickerViewController else { dismiss(animated: true, completion: successCallBackClosure)
             return
