@@ -15,8 +15,10 @@ class CarAddViewController: UIViewController{
     
     var openLoginScreenClosure: (() -> Void)?
     var successCallBackClosure: (() -> Void)?
+    var isSkippable: Bool = false
     
     @IBOutlet weak var doneButton: UIButton?
+    @IBOutlet weak var cancelButton: UIButton?
     @IBOutlet weak var platesTextField: UITextField?
     @IBOutlet weak var mainCardTextField: UITextField?
     
@@ -26,6 +28,8 @@ class CarAddViewController: UIViewController{
         model.delegate = self
         
         doneButton?.isEnabled = false
+        
+        cancelButton?.setTitle(isSkippable ? "Пропустить" : "Отменить", for: .normal)
     }
     
     @IBAction func dismissButtonPressed(_ sender: Any){
@@ -89,8 +93,18 @@ class CarAddViewController: UIViewController{
     }
     
     func successfulAdding(car_id: Int){
-        let newViewController = CarLotPickerViewController()
+//        let newViewController = CarLotPickerViewController()
+//        newViewController.car_id = car_id
+//        newViewController.isSkippable = true
+//        self.navigationController?.pushViewController(newViewController, animated: true)
+        
+        
+        let storyboard = UIStoryboard(name: "Tariffs", bundle: nil)
+        guard let newViewController = storyboard.instantiateViewController(withIdentifier: "car_lot") as? CarLotPickerViewController else { dismiss(animated: true, completion: successCallBackClosure)
+            return
+        }
         newViewController.car_id = car_id
+        newViewController.isSkippable = true
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }

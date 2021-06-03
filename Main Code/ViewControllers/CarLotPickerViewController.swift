@@ -15,9 +15,11 @@ class CarLotPickerViewController: UIViewController{
     var vSpinner : UIView?
     var usersPickedLot: String?
     var car_id: Int?
+    var isSkippable: Bool = false
     var availableLots: [ParkingLot]?
     
     @IBOutlet var doneButton: UIButton?
+    @IBOutlet var cancelButton: UIButton?
     @IBOutlet var imageViewForZooming: UIView?
     @IBOutlet var scrollViewForZooming: UIScrollView?
     @IBOutlet var stackView: UIStackView?
@@ -30,12 +32,14 @@ class CarLotPickerViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Fix zoom buttons size
+        stackView?.bounds = CGRect(x: 0, y: 0, width: 50, height: 120)
+        
+        cancelButton?.setTitle(isSkippable ? "Пропустить" : "Отменить", for: .normal)
+        
         modelParking.delegate = self
         modelAccount.delegate = self
         checkDoneButtonState()
-        
-        // Fix zoom buttons size
-        stackView?.bounds = CGRect(x: 0, y: 0, width: 50, height: 120)
         
         // Setup tableview
         carLotPickerTableViewController = self.children[0] as? CarLotPickerTableViewController

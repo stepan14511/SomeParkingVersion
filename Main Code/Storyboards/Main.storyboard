@@ -557,13 +557,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Добавить ТС" largeTitleDisplayMode="never" id="C7P-He-VsA">
-                        <barButtonItem key="backBarButtonItem" title="Отменить" id="lfo-cW-iY5"/>
                         <barButtonItem key="leftBarButtonItem" id="42r-qC-QmH">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9Md-SU-DpZ">
-                                <rect key="frame" x="20" y="6" width="83" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9Md-SU-DpZ">
+                                <rect key="frame" x="20" y="6" width="90" height="32"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Отменить">
+                                <state key="normal" title="Пропустить">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
                                 <connections>
@@ -589,6 +588,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="9Md-SU-DpZ" id="U2R-Mh-Wke"/>
                         <outlet property="doneButton" destination="V0Z-41-g0l" id="yiy-zC-Nwe"/>
                         <outlet property="mainCardTextField" destination="0r0-n8-IeV" id="Pmu-Vj-A1B"/>
                         <outlet property="platesTextField" destination="ghH-Zf-d4N" id="PGu-uU-3Rl"/>

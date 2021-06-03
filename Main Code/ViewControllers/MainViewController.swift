@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if justRegistered{
             justRegistered = false
-            addCarButtonPressed()
+            openAddCarViewController(isForced: true)
         }
     }
     
@@ -152,7 +152,7 @@ extension MainViewController{
         self.present(transportNavigationViewController, animated: true, completion: nil)
     }
     
-    func openAddCarViewController(){
+    func openAddCarViewController(isForced: Bool = false){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let transportNavigationViewController = storyboard.instantiateViewController(withIdentifier: "carAdd_nav") as? UINavigationController else { return }
         
@@ -161,6 +161,9 @@ extension MainViewController{
         }
             
         transportViewController.successCallBackClosure = openTransportViewController
+        if isForced{
+            transportViewController.isSkippable = true
+        }
             
         self.present(transportNavigationViewController, animated: true, completion: nil)
     }
