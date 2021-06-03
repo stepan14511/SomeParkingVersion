@@ -97,6 +97,7 @@ class CarAddViewController: UIViewController{
         guard let newViewController = storyboard.instantiateViewController(withIdentifier: "car_lot") as? CarLotPickerViewController else { dismiss(animated: true, completion: successCallBackClosure)
             return
         }
+        newViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
         newViewController.car_id = car_id
         newViewController.isSkippable = true
         self.navigationController?.pushViewController(newViewController, animated: true)

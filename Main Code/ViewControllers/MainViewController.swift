@@ -160,6 +160,7 @@ extension MainViewController{
             return
         }
             
+        transportViewController.openLoginScreenClosure = openLoginScreen
         transportViewController.successCallBackClosure = openTransportViewController
         if isForced{
             transportViewController.isSkippable = true

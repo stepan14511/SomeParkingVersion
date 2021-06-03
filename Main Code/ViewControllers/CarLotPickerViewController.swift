@@ -44,7 +44,7 @@ class CarLotPickerViewController: UIViewController{
         // Setup tableview
         carLotPickerTableViewController = self.children[0] as? CarLotPickerTableViewController
         guard carLotPickerTableViewController != nil else{
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: updateViewAfterDataChangeClosure)
             return
         }
         carLotPickerTableViewController!.pickerViewToggledClosure = pickerViewToggled(isHidden:)
@@ -156,6 +156,7 @@ class CarLotPickerViewController: UIViewController{
             return
         }
         newViewController.car_id = car_id
+        newViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
@@ -173,7 +174,8 @@ extension CarLotPickerViewController: UIScrollViewDelegate, UIGestureRecognizerD
         if (scrollView.zoomScale > scrollView.minimumZoomScale) {
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
         }
-        else {            let zoomRect = zoomRectForScale(scale: scrollView.maximumZoomScale / 2.0, center: recognizer.location(in: recognizer.view))
+        else {
+            let zoomRect = zoomRectForScale(scale: scrollView.maximumZoomScale / 2.0, center: recognizer.location(in: recognizer.view))
             scrollView.zoom(to: zoomRect, animated: true)
         }
     }

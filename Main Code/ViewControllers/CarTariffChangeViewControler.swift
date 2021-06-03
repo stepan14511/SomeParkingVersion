@@ -43,6 +43,7 @@ class CarTariffChangeViewController: UITableViewController{
                 
                 accountViewController.car_id = car_id
                 accountViewController.updateViewAfterDataChangeClosure = setupPageAfterDataChange
+                accountViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
                 
                 self.present(accountNavigationViewController, animated: true, completion: nil)
             }
@@ -58,8 +59,8 @@ class CarTariffChangeViewController: UITableViewController{
                 guard let autopayViewController = autopayNavigationViewController.children[0] as? CarAutopayViewController else{ return }
                 
                 autopayViewController.car_id = car.id
-                /*autopayViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
-                autopayViewController.updateUIClosure = updateRowsText*/
+                autopayViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
+                //autopayViewController.updateUIClosure = updateRowsText
                 
                 self.present(autopayNavigationViewController, animated: true, completion: nil)
             }

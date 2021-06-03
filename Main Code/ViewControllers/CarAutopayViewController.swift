@@ -103,6 +103,7 @@ class CarAutopayViewController: UITableViewController{
               let passhash = AccountController.password_hash,
               let car_id = AccountController.getCarById(id: car_id)?.id
               else{
+            dismiss(animated: true, completion: openLoginScreenClosure)
             return
         }
     

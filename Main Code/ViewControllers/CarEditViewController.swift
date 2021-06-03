@@ -83,6 +83,7 @@ class CarEditViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath == [0, 3] {
+            // Remove 2nd card when unnecessary
             if AccountController.getCarById(id: car_id)?.parking_lot_type != 3{
                 return 0
             }

@@ -175,6 +175,7 @@ extension TransportViewController{
         guard let accountViewController = accountNavigationViewController.children[0] as? CarLotPickerViewController else{ return }
         
         accountViewController.car_id = car_id
+        accountViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
         accountViewController.updateViewAfterDataChangeClosure = loadAccountFromServer
         
         self.present(accountNavigationViewController, animated: true, completion: nil)
@@ -191,8 +192,8 @@ extension TransportViewController{
         guard let autopayViewController = autopayNavigationViewController.children[0] as? CarAutopayViewController else{ return }
         
         autopayViewController.car_id = car.id
-        /*autopayViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
-        autopayViewController.updateUIClosure = updateRowsText*/
+        autopayViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
+        //autopayViewController.updateUIClosure = updateRowsText
         
         self.present(autopayNavigationViewController, animated: true, completion: nil)
     }
