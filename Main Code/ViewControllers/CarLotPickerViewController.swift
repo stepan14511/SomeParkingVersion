@@ -125,7 +125,12 @@ class CarLotPickerViewController: UIViewController{
     }
     
     @IBAction func cancelButtonPressed(){
-        dismiss(animated: true, completion: nil)
+        if isSkippable{
+            dismiss(animated: true, completion: updateViewAfterDataChangeClosure)
+        }
+        else{
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func doneButtonPressed(){
@@ -157,6 +162,7 @@ class CarLotPickerViewController: UIViewController{
         }
         newViewController.car_id = car_id
         newViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
+        newViewController.successCallBackClosure = updateViewAfterDataChangeClosure
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
@@ -282,7 +288,7 @@ extension CarLotPickerViewController: Downloadable{
                 }
                 
                 
-                // Successful payment
+                // Successful lot picking
                 
                 AccountController.account = account
                 AccountController.saveDataToMemory()

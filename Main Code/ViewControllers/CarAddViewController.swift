@@ -98,6 +98,7 @@ class CarAddViewController: UIViewController{
             return
         }
         newViewController.openLoginScreenClosure = {self.dismiss(animated: true, completion: self.openLoginScreenClosure)}
+        newViewController.updateViewAfterDataChangeClosure = successCallBackClosure
         newViewController.car_id = car_id
         newViewController.isSkippable = true
         self.navigationController?.pushViewController(newViewController, animated: true)

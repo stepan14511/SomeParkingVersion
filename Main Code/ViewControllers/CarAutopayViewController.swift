@@ -14,6 +14,7 @@ class CarAutopayViewController: UITableViewController{
     var vSpinner : UIView?
     
     var openLoginScreenClosure: (() -> Void)?
+    var successCallBackClosure: (() -> Void)?
     var car_id: Int?
     
     @IBOutlet var doneButton: UIButton?
@@ -95,7 +96,7 @@ class CarAutopayViewController: UITableViewController{
     }
     
     @IBAction func cancelButtonPressed(){
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: successCallBackClosure)
     }
     
     @IBAction func doneButtonPressed(){
