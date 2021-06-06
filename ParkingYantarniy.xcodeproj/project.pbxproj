@@ -576,7 +576,7 @@
 			baseConfigurationReference = 1F17B9D56ADA958C611FAA83 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = B3Q94Q4YNJ;
 				INFOPLIST_FILE = "Main Code/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -587,7 +587,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = stepan.kuznetsov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -596,7 +596,7 @@
 			baseConfigurationReference = C7DA85E73FE6228663AD9236 /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = B3Q94Q4YNJ;
 				INFOPLIST_FILE = "Main Code/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -607,7 +607,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = stepan.kuznetsov;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

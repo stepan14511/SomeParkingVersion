@@ -24,7 +24,7 @@ class FirstPageViewController: UIViewController{
         guard let loginViewController = loginNavigationViewController.children[0] as? LoginViewController else{ return }
         
         loginViewController.openMainViewClosure = openMainView
-        isRegOpenedLast = true
+        isRegOpenedLast = false
         
         self.present(loginNavigationViewController, animated: true, completion: nil)
     }
