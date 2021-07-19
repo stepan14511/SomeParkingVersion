@@ -36,7 +36,7 @@ class FirstPageViewController: UIViewController{
         guard let registrationViewController = registrationNavigationViewController.children[0] as? RegistrationViewController else{ return }
         
         registrationViewController.openMainViewClosure = openMainView
-        isRegOpenedLast = true
+        isRegOpenedLast = true 
         
         self.present(registrationNavigationViewController, animated: true, completion: nil)
     }
