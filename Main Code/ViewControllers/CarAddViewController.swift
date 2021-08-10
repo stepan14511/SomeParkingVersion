@@ -21,10 +21,14 @@ class CarAddViewController: UIViewController{
     @IBOutlet weak var cancelButton: UIButton?
     @IBOutlet weak var platesTextField: UITextField?
     @IBOutlet weak var mainCardTextField: UITextField?
+    @IBOutlet weak var additionalCardTextField: UITextField?
+    @IBOutlet var movingCardObjects: [UIView]?
+    var lastKeyboardHeight: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpDismissKeyboardOutsideTouch()
+        setupMovingCard()
         model.delegate = self
         
         doneButton?.isEnabled = false
@@ -75,14 +79,16 @@ class CarAddViewController: UIViewController{
     
     @IBAction func checkForEnablingDoneButton(_ sender: Any){
         guard let _ = platesTextField,
-              let _ = mainCardTextField
+              let _ = mainCardTextField,
+              let _ = additionalCardTextField
         else{
             doneButton?.isEnabled = false
             return
         }
         
         if let plates = platesTextField?.text, plates.isLegalPlates,
-           let mainCard = mainCardTextField?.text, !mainCard.isEmpty{
+           let mainCard = mainCardTextField?.text, !mainCard.isEmpty,
+           let additionalCard = additionalCardTextField?.text, !additionalCard.isEmpty{
             doneButton?.isEnabled = true
         }
         else{
@@ -102,6 +108,32 @@ class CarAddViewController: UIViewController{
         newViewController.car_id = car_id
         newViewController.isSkippable = true
         self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+}
+
+// Moving card to be above keyboard
+extension CarAddViewController{
+    func setupMovingCard(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if lastKeyboardHeight == nil{
+                lastKeyboardHeight = keyboardSize.height - 20
+                for object in movingCardObjects ?? []{
+                    object.frame.origin.y -= lastKeyboardHeight ?? 0
+                }
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        for object in movingCardObjects ?? []{
+            object.frame.origin.y += lastKeyboardHeight ?? 0
+        }
+        lastKeyboardHeight = nil
     }
 }
 
@@ -149,6 +181,25 @@ extension CarAddViewController{
             mainCardTextField?.layer.borderColor = UIColor.red.cgColor
         }
     }
+    
+    @IBAction func additionalCardTextFieldChanging(_ sender: Any){
+        additionalCardTextField?.layer.borderWidth = 0
+        
+        var additionalCard = additionalCardTextField?.text ?? ""
+        
+        // Apply text formatting.
+        additionalCard = additionalCard.applyPatternOnNumbers(pattern: kCardNumbersPattern, replacementCharacter: kCardNumbersPatternReplaceChar)
+        if additionalCard.count > 6 { additionalCard = String(additionalCard.prefix(6)) }
+        additionalCardTextField?.text = additionalCard
+    }
+    
+    @IBAction func additionalCardTextFieldEditingEnded(_ sender: Any){
+        if additionalCardTextField?.text?.count ?? 0 < 1{
+            additionalCardTextField?.layer.borderWidth = 1
+            additionalCardTextField?.layer.cornerRadius = 5
+            additionalCardTextField?.layer.borderColor = UIColor.red.cgColor
+        }
+    }
 }
 
 extension CarAddViewController: UITextFieldDelegate{
@@ -156,6 +207,9 @@ extension CarAddViewController: UITextFieldDelegate{
         textField.resignFirstResponder()
         if textField == platesTextField, platesTextField != nil{
             mainCardTextField?.becomeFirstResponder()
+        }
+        if textField == mainCardTextField, mainCardTextField != nil{
+            additionalCardTextField?.becomeFirstResponder()
         }
         return true
     }

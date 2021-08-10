@@ -24,7 +24,7 @@ class TransportViewController: UITableViewController{
         // Setting changePaymentSystem tap recogniser
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.addTransportPressed))
         self.addTransport!.addGestureRecognizer(gesture)
-        
+
         self.registerTableViewCells()
         
         model.delegate = self

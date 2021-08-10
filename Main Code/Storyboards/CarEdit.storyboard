@@ -122,7 +122,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Удалить" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oat-gs-gG2">
-                                                    <rect key="frame" x="-1" y="1" width="428" height="44"/>
+                                                    <rect key="frame" x="-4" y="-2" width="428" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemRedColor"/>
@@ -146,7 +146,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Назад">
-                                    <color key="titleColor" systemColor="linkColor"/>
+                                    <color key="titleColor" red="1" green="0.62745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="dismissButtonPressed" destination="C48-0E-Vo0" eventType="touchUpInside" id="UHX-zz-skE"/>
@@ -225,7 +225,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Назад">
-                                    <color key="titleColor" systemColor="linkColor"/>
+                                    <color key="titleColor" red="1" green="0.62745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="cancelButtonPressed" destination="6Mf-wd-Rfc" eventType="touchUpInside" id="uH5-qj-xHx"/>
@@ -238,7 +238,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Готово">
-                                    <color key="titleColor" systemColor="linkColor"/>
+                                    <color key="titleColor" red="1" green="0.62745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="disabled">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -402,7 +402,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Назад">
-                                    <color key="titleColor" systemColor="linkColor"/>
+                                    <color key="titleColor" red="1" green="0.62745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="cancelButtonPressed" destination="qzD-gJ-jeK" eventType="touchUpInside" id="Fnn-Rg-0Wo"/>
@@ -502,7 +502,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Отмена">
-                                    <color key="titleColor" systemColor="linkColor"/>
+                                    <color key="titleColor" red="1" green="0.62745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="cancelButtonPressed" destination="5Yn-tp-2zZ" eventType="touchUpInside" id="80b-dn-pDA"/>
@@ -515,7 +515,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Готово">
-                                    <color key="titleColor" systemColor="linkColor"/>
+                                    <color key="titleColor" red="1" green="0.62745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="disabled">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -584,9 +584,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

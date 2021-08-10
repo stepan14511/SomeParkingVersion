@@ -18,6 +18,13 @@ class TransportTableViewCell: UITableViewCell {
     @IBOutlet var lotButton: UIButton?
     @IBOutlet var balanceButton: UIButton?
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        // Spaces between cells to make them divided
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0))
+    }
+    
     @IBAction func platesButtonPressed(){
         platesButtonFunction?(car_id)
     }
@@ -56,7 +63,12 @@ class TransportTableViewCell: UITableViewCell {
         }
         
         platesButton?.setTitle(car.plates, for: .normal)
-        lotButton?.setTitle(car.parking_lot_id ?? "Выбрать место", for: .normal)
+        if let lot = car.parking_lot_id{
+            lotButton?.setTitle("Место: " + lot, for: .normal)
+        }
+        else{
+            lotButton?.setTitle("Выбрать место", for: .normal)
+        }
         if let due_time = car.payed_till,
            due_time.minutes(from: Date()) > 0{
             if due_time.weeks(from: Date()) < 1{
