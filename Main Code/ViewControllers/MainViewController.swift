@@ -146,7 +146,7 @@ extension MainViewController{
     }
     
     func openHowToOwnerViewController(){
-        let storyboard = UIStoryboard(name: "Tariffs", bundle: nil)
+        let storyboard = UIStoryboard(name: "InfoPages", bundle: nil)
         guard let transportNavigationViewController = storyboard.instantiateViewController(withIdentifier: "howtoowner_nav") as? UINavigationController else { return }
         
         self.present(transportNavigationViewController, animated: true, completion: nil)
@@ -168,6 +168,21 @@ extension MainViewController{
             
         self.present(transportNavigationViewController, animated: true, completion: nil)
     }
+    
+    func openRulesPage(){
+        let storyboard = UIStoryboard(name: "InfoPages", bundle: nil)
+        guard let accountNavigationViewController = storyboard.instantiateViewController(withIdentifier: "rules_nav") as? UINavigationController else { return }
+        
+        self.present(accountNavigationViewController, animated: true, completion: nil)
+    }
+    
+    func openHowToUsePage(){
+        let storyboard = UIStoryboard(name: "InfoPages", bundle: nil)
+        guard let accountNavigationViewController = storyboard.instantiateViewController(withIdentifier: "howtouse_nav") as? UINavigationController else { return }
+        
+        self.present(accountNavigationViewController, animated: true, completion: nil)
+        
+    }
 }
 
 extension MainViewController: SideMenuNavigationControllerDelegate {
@@ -183,6 +198,8 @@ extension MainViewController: SideMenuNavigationControllerDelegate {
         sideMenuTableViewController.openPopolnitViewControllerClosure = openBalanceViewController
         sideMenuTableViewController.openTransportViewControllerClosure = openTransportViewController
         sideMenuTableViewController.openHowToOwnerViewControllerClosure = openHowToOwnerViewController
+        sideMenuTableViewController.openRulesPageClosure = openRulesPage
+        sideMenuTableViewController.openHowToUsePageClosure = openHowToUsePage
     }
     
     func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {

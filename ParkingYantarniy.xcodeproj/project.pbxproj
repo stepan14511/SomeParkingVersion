@@ -33,6 +33,9 @@
 		861FDE4E258E7D4C0061B565 /* CarEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861FDE4D258E7D4C0061B565 /* CarEditViewController.swift */; };
 		862838ED25AB206000C982B2 /* CarTariffChangeViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862838EC25AB206000C982B2 /* CarTariffChangeViewControler.swift */; };
 		862AC45C263EFFD600D9F481 /* PickerViewCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862AC45B263EFFD600D9F481 /* PickerViewCustomCell.swift */; };
+		8631824626C3D78800194ED0 /* InfoPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8631824526C3D78800194ED0 /* InfoPages.storyboard */; };
+		8631824826C3E42A00194ED0 /* RulesPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8631824726C3E42A00194ED0 /* RulesPageViewController.swift */; };
+		8631824A26C3E86D00194ED0 /* HowToUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8631824926C3E86D00194ED0 /* HowToUseViewController.swift */; };
 		863FD83F258CDB5C0072FDC0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */; };
 		863FD843258D127A0072FDC0 /* PhoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD842258D127A0072FDC0 /* PhoneTextField.swift */; };
 		863FD847258D12F50072FDC0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863FD846258D12F50072FDC0 /* StringExtension.swift */; };
@@ -109,6 +112,9 @@
 		861FDE4D258E7D4C0061B565 /* CarEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarEditViewController.swift; sourceTree = "<group>"; };
 		862838EC25AB206000C982B2 /* CarTariffChangeViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTariffChangeViewControler.swift; sourceTree = "<group>"; };
 		862AC45B263EFFD600D9F481 /* PickerViewCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewCustomCell.swift; sourceTree = "<group>"; };
+		8631824526C3D78800194ED0 /* InfoPages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InfoPages.storyboard; sourceTree = "<group>"; };
+		8631824726C3E42A00194ED0 /* RulesPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesPageViewController.swift; sourceTree = "<group>"; };
+		8631824926C3E86D00194ED0 /* HowToUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseViewController.swift; sourceTree = "<group>"; };
 		863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		863FD842258D127A0072FDC0 /* PhoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTextField.swift; sourceTree = "<group>"; };
 		863FD846258D12F50072FDC0 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -243,6 +249,7 @@
 				8684BDDB25DB69D3007A4DD8 /* Login.storyboard */,
 				7B5FA9B51DCB269700278DF6 /* Main.storyboard */,
 				8684BDE525DB7391007A4DD8 /* Tariffs.storyboard */,
+				8631824526C3D78800194ED0 /* InfoPages.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -269,6 +276,8 @@
 				863FD83E258CDB5C0072FDC0 /* RegistrationViewController.swift */,
 				7B48A0F51DCB2518002990A1 /* SideMenuTableViewController.swift */,
 				867BC4BC254C93D20066F565 /* TransportViewController.swift */,
+				8631824726C3E42A00194ED0 /* RulesPageViewController.swift */,
+				8631824926C3E86D00194ED0 /* HowToUseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -434,6 +443,7 @@
 				86BAE17F26601B7F00BF07B1 /* TransportTableViewCell.xib in Resources */,
 				7B48A0DD1DCB2487002990A1 /* Assets.xcassets in Resources */,
 				8684BDE625DB7391007A4DD8 /* Tariffs.storyboard in Resources */,
+				8631824626C3D78800194ED0 /* InfoPages.storyboard in Resources */,
 				7B5FA9B61DCB269700278DF6 /* Main.storyboard in Resources */,
 				8684BDEA25DB741E007A4DD8 /* Account.storyboard in Resources */,
 			);
@@ -522,6 +532,8 @@
 				867BC4BD254C93D30066F565 /* TransportViewController.swift in Sources */,
 				86BAE1812660EB2000BF07B1 /* DateExtension.swift in Sources */,
 				868F7F3C2587D98F003E68E9 /* AccountModel.swift in Sources */,
+				8631824A26C3E86D00194ED0 /* HowToUseViewController.swift in Sources */,
+				8631824826C3E42A00194ED0 /* RulesPageViewController.swift in Sources */,
 				863FD843258D127A0072FDC0 /* PhoneTextField.swift in Sources */,
 				7B48A0F61DCB2518002990A1 /* MainViewController.swift in Sources */,
 				864590B2265D49C000E284B6 /* FirstPageViewController.swift in Sources */,
@@ -584,7 +596,7 @@
 			baseConfigurationReference = 1F17B9D56ADA958C611FAA83 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = B3Q94Q4YNJ;
 				INFOPLIST_FILE = "Main Code/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -604,7 +616,7 @@
 			baseConfigurationReference = C7DA85E73FE6228663AD9236 /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = B3Q94Q4YNJ;
 				INFOPLIST_FILE = "Main Code/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

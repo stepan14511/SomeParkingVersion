@@ -66,7 +66,7 @@ class CarTariffChangeViewController: UITableViewController{
             }
         }
         if indexPath.section == 1{
-            let storyboard = UIStoryboard(name: "Tariffs", bundle: nil)
+            let storyboard = UIStoryboard(name: "InfoPages", bundle: nil)
             guard let transportNavigationViewController = storyboard.instantiateViewController(withIdentifier: "howtoowner_nav") as? UINavigationController else { return }
             self.present(transportNavigationViewController, animated: true, completion: nil)
         }

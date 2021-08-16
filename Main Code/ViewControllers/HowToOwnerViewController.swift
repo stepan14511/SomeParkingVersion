@@ -14,4 +14,9 @@ class HowToOwnerViewContoller: UIViewController{
     @IBAction func cancelButtonPressed(){
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func phoneNumberPressed(){
+        let number = URL(string: "tel://+74732075050")
+        UIApplication.shared.open(number!)
+    }
 }
