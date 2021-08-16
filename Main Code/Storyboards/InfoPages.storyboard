@@ -13,7 +13,6 @@
         <!--Navigation Controller-->
         <scene sceneID="KKC-fk-f04">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R1w-DK-J1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="howtoowner_nav" id="rii-pY-ijY" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w2U-LB-rPx">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -23,13 +22,13 @@
                         <segue destination="E9c-gh-hth" kind="relationship" relationship="rootViewController" id="iLu-xa-WKb"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R1w-DK-J1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5584" y="1852"/>
         </scene>
         <!--Купить место-->
         <scene sceneID="fgh-j1-ehW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MXj-BF-9Ik" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="E9c-gh-hth" customClass="HowToOwnerViewContoller" customModule="ParkingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hkT-tp-gr2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -75,6 +74,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MXj-BF-9Ik" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6506" y="1852"/>
         </scene>
@@ -120,7 +120,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQX-eS-Nmf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Правила пользования системой контроля доступа подземного паркинга. ">
@@ -205,7 +205,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> Пользователь подъезжает максимально близко к шлагбауму паркинга и, не выходя из автомобиля, подносит к лобовому стеклу ключ-карту в зоне действия считывателя (находится рядом со светофором), считыватель дает команду на открытие шлагбаума и ворот, одновременно загорается</mutableString>
+                                        <string key="content"> Пользователь подъезжает максимально близко к шлагбауму паркинга и, не выходя из автомобиля, подносит к лобовому стеклу ключ-карту в зоне действия считывателя (находится рядом со светофором), считыватель дает команду на открытие шлагбаума и ворот, одновременно загорается</string>
                                         <attributes>
                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="16" name="TimesNewRomanPSMT"/>
@@ -747,7 +747,7 @@ Cg
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B51-aV-9BD">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <attributedString key="attributedText">
                                     <fragment content="ПРАВИЛА ПОЛЬЗОВАНИЯ ПОДЗЕМНОЙ АВТОПАРКОВКОЙ">
@@ -928,8 +928,8 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">– лицо, о котором внесена запись в Единый государственный реестр прав на недвижимое имущество и сделок с ним с момента внесения указанной записи или лицо, принявшее от застройщика после выдачи ему разрешения на ввод подземной автопарковки в эксплуатацию, ММ в данной подземной автопарковке по передаточному акту, с момента такой передачи, либо лицо, приобретшее право собственности на Машино-место в порядке наследования или на основании вступившего в силу судебного решения и на иных законных основаниях.
-</mutableString>
+                                        <string key="content">– лицо, о котором внесена запись в Единый государственный реестр прав на недвижимое имущество и сделок с ним с момента внесения указанной записи или лицо, принявшее от застройщика после выдачи ему разрешения на ввод подземной автопарковки в эксплуатацию, ММ в данной подземной автопарковке по передаточному акту, с момента такой передачи, либо лицо, приобретшее право собственности на Машино-место в порядке наследования или на основании вступившего в силу судебного решения и на иных законных основаниях.
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -1213,8 +1213,8 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> – эксплуатация, техническое обслуживание инженерных систем и коммуникационных сетей Общего имущества подземной автопарковки, выполнения иных работ и услуг, с целью сохранения общего имущества в состоянии, обеспечивающем надежность и безопасность Паркинга, безопасность для жизни и здоровья граждан, в соответствии с иными определенными законодательством требованиями.
-</mutableString>
+                                        <string key="content"> – эксплуатация, техническое обслуживание инженерных систем и коммуникационных сетей Общего имущества подземной автопарковки, выполнения иных работ и услуг, с целью сохранения общего имущества в состоянии, обеспечивающем надежность и безопасность Паркинга, безопасность для жизни и здоровья граждан, в соответствии с иными определенными законодательством требованиями.
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -1627,7 +1627,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Все вопросы, не урегулированные настоящими Правилами, а также в случае возникновения разногласий или споров, стороны обязуются урегулировать путём переговоров, а при не возможности достижения согласия рассматриваются в порядке, установленном действующим законодательством РФ.</mutableString>
+                                        <string key="content">Все вопросы, не урегулированные настоящими Правилами, а также в случае возникновения разногласий или споров, стороны обязуются урегулировать путём переговоров, а при не возможности достижения согласия рассматриваются в порядке, установленном действующим законодательством РФ.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -1686,7 +1686,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Пользование паркингом должно осуществляется с учетом необходимости соблюдения прав и законных интересов граждан и юридических лиц, владеющих и пользующийся ММ, требований пожарной безопасности, санитарно-гигиенических, экологических, архитектурно-градостроительных, эксплуатационных, иных требования и настоящих Правил.</mutableString>
+                                        <string key="content">Пользование паркингом должно осуществляется с учетом необходимости соблюдения прав и законных интересов граждан и юридических лиц, владеющих и пользующийся ММ, требований пожарной безопасности, санитарно-гигиенических, экологических, архитектурно-градостроительных, эксплуатационных, иных требования и настоящих Правил.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -2218,7 +2218,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Парковка транспортных средств на свободные места, не принадлежащие Собственнику или Пользователю на соответствующем праве, не допускается. Доступ знакомых, гостей собственника ММ для парковки личного транспорта в помещение подземной автопарковки на свободные чужие места </mutableString>
+                                        <string key="content">Парковка транспортных средств на свободные места, не принадлежащие Собственнику или Пользователю на соответствующем праве, не допускается. Доступ знакомых, гостей собственника ММ для парковки личного транспорта в помещение подземной автопарковки на свободные чужие места </string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -2752,8 +2752,8 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Размещение транспортного средства на территории подземной автопарковки не является заключением договора хранения. Управляющая компания не несет ответственности за сохранность транспортных средств или иного имущества, размещенного на территории подземной автопарковки, в том числе оставленного в транспортных средствах.
-</mutableString>
+                                        <string key="content">Размещение транспортного средства на территории подземной автопарковки не является заключением договора хранения. Управляющая компания не несет ответственности за сохранность транспортных средств или иного имущества, размещенного на территории подземной автопарковки, в том числе оставленного в транспортных средствах.
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -2828,7 +2828,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Стоянка (хранение) автомобилей, предназначенных для перевозки горюче смазочных материалов, взрывчатых, ядовитых, инфицирующих и радиоактивных веществ, а также автомобилей с двигателями, работающими на сжатом природном газе и сжиженном нефтяном газе не допускается.</mutableString>
+                                        <string key="content">Стоянка (хранение) автомобилей, предназначенных для перевозки горюче смазочных материалов, взрывчатых, ядовитых, инфицирующих и радиоактивных веществ, а также автомобилей с двигателями, работающими на сжатом природном газе и сжиженном нефтяном газе не допускается.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -3085,8 +3085,8 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">В целях организации контрольно-пропускного режима на территории паркинга Исполнитель ведет электронную базу данных пользователей ММ, транспортных средств и лиц, имеющих право управления ими. Ведение баз данных осуществляется с соблюдением требований ФЗ «О персональных данных» от 27.07.2006 №152-ФЗ.
-</mutableString>
+                                        <string key="content">В целях организации контрольно-пропускного режима на территории паркинга Исполнитель ведет электронную базу данных пользователей ММ, транспортных средств и лиц, имеющих право управления ими. Ведение баз данных осуществляется с соблюдением требований ФЗ «О персональных данных» от 27.07.2006 №152-ФЗ.
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -3275,8 +3275,8 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Собственники и Пользователи подземной автопарковки осуществляют въезд на территорию парковки с помощью электронных ключей от ворот подземной автопарковки. За отдельную плату Управляющая компания вправе произвести закупку и программирование дополнительных и (или) утраченных электронных ключей. 
-</mutableString>
+                                        <string key="content">Собственники и Пользователи подземной автопарковки осуществляют въезд на территорию парковки с помощью электронных ключей от ворот подземной автопарковки. За отдельную плату Управляющая компания вправе произвести закупку и программирование дополнительных и (или) утраченных электронных ключей. 
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -3532,7 +3532,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Для выезда с территории подземной автопарковки: Пользователь подъезжает на автомобиле к выездным воротам (необходимо произвести остановку не далее 1-2 метров от ворот) , система определяет что подъехал автомобиль и активирует работоспособность считывателя карт, Пользователь подносит карту к лобовому стеклу к зоне действия приемника (считыватель карт находиться рядом со светофором), программа определяет данные карты и при условии, что данному пользователю разрешен выезд, открывает ворота (</mutableString>
+                                        <string key="content">Для выезда с территории подземной автопарковки: Пользователь подъезжает на автомобиле к выездным воротам (необходимо произвести остановку не далее 1-2 метров от ворот) , система определяет что подъехал автомобиль и активирует работоспособность считывателя карт, Пользователь подносит карту к лобовому стеклу к зоне действия приемника (считыватель карт находиться рядом со светофором), программа определяет данные карты и при условии, что данному пользователю разрешен выезд, открывает ворота (</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -4263,7 +4263,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Каждый собственник, а также Пользователь ММ, обязан своевременно вносить плату за содержание и ремонт общего имущества подземной автопарковки, включающую в себя плату за услуги и работы по управлению подземной автопарковкой, содержанию, текущему ремонту общего имущества в подземной автопарковке, плату за коммунальные услуги, а также иные платежи, установленные по решению общего собрания собственников ММ автопарковки, принятые в соответствии с законодательством.</mutableString>
+                                        <string key="content">Каждый собственник, а также Пользователь ММ, обязан своевременно вносить плату за содержание и ремонт общего имущества подземной автопарковки, включающую в себя плату за услуги и работы по управлению подземной автопарковкой, содержанию, текущему ремонту общего имущества в подземной автопарковке, плату за коммунальные услуги, а также иные платежи, установленные по решению общего собрания собственников ММ автопарковки, принятые в соответствии с законодательством.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -4322,7 +4322,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Собственник или Пользователь ММ, несвоевременно и (или) не полностью внесший плату за Машино-место и коммунальные услуги, обязан уплатить Управляющей организации пени в размере одной трехсотой ставки рефинансирования Центрального банка Российской Федерации, действующей на момент оплаты, от не выплаченных в срок сумм, за каждый день просрочки, начиная со следующего дня после наступления установленного срока оплаты по день фактической выплаты включительно.</mutableString>
+                                        <string key="content">Собственник или Пользователь ММ, несвоевременно и (или) не полностью внесший плату за Машино-место и коммунальные услуги, обязан уплатить Управляющей организации пени в размере одной трехсотой ставки рефинансирования Центрального банка Российской Федерации, действующей на момент оплаты, от не выплаченных в срок сумм, за каждый день просрочки, начиная со следующего дня после наступления установленного срока оплаты по день фактической выплаты включительно.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -4381,7 +4381,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">В случае невнесения платы за ММ и несвоевременной оплаты коммунальных услуг (2 месяца и более), Управляющая компания может отключить от системы въезда и выезда электронный ключ, принадлежащий Собственнику, Члену семьи Собственника или Пользователю, не оплатившему коммунальные платежи.</mutableString>
+                                        <string key="content">В случае невнесения платы за ММ и несвоевременной оплаты коммунальных услуг (2 месяца и более), Управляющая компания может отключить от системы въезда и выезда электронный ключ, принадлежащий Собственнику, Члену семьи Собственника или Пользователю, не оплатившему коммунальные платежи.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
@@ -4440,7 +4440,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">При обнаружении неисправностей, пожаров и аварий в помещении подземной автопарковки, инженерных сетей и систем, а также при обнаружении иных нарушений немедленно сообщать о них в рабочие часы с 8:00 до 17:00 в диспетчерскую службу ООО «УК ЭКОДОМ» по телефону 8-920-413-73-88, с 17:00 до 8:00 и в нерабочие дни в Аварийную службу по тел. 300-34-21.</mutableString>
+                                        <string key="content">При обнаружении неисправностей, пожаров и аварий в помещении подземной автопарковки, инженерных сетей и систем, а также при обнаружении иных нарушений немедленно сообщать о них в рабочие часы с 8:00 до 17:00 в диспетчерскую службу ООО «УК ЭКОДОМ» по телефону 8-920-413-73-88, с 17:00 до 8:00 и в нерабочие дни в Аварийную службу по тел. 300-34-21.</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="13.333333015441895" name="TimesNewRomanPSMT"/>
