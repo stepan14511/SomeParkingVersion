@@ -19,6 +19,7 @@ extension String {
         return String(filter(("0"..."9").contains))
     }
     
+    // Это страшная функция, но она работает и я счастлив
     func applyPatternOnNumbers(pattern: String = kPhonePattern, replacementCharacter: Character = kPhonePatternReplaceChar, numbersRE: String = "[^0-9]") -> String {
         var pureNumber = self.replacingOccurrences( of: numbersRE, with: "", options: .regularExpression)
         for index in 0 ..< pattern.count {
