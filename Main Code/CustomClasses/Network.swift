@@ -13,18 +13,18 @@ protocol Downloadable: class {
 }
 
 enum URLServices {
-    static let login: String = "http://31.210.210.172/Parking/login.php"
-    static let registration: String = "http://31.210.210.172/Parking/registration.php"
-    static let updateFIO: String = "http://31.210.210.172/Parking/updateFIO.php"
-    static let payment: String = "http://31.210.210.172/Parking/payment.php"
-    static let addCar: String = "http://31.210.210.172/Parking/addCar.php"
-    static let deleteCar: String = "http://31.210.210.172/Parking/deleteCar.php"
-    static let updateCards: String = "http://31.210.210.172/Parking/updateCards.php"
-    static let updateTariff: String = "http://31.210.210.172/Parking/updateTariff.php"
-    static let updateAutoPay: String = "http://31.210.210.172/Parking/updateAutoPay.php"
-    static let getAvailableParkingLots: String = "http://31.210.210.172/Parking/getAvailableParkingLots.php"
-    static let updateParkingLot: String = "http://31.210.210.172/Parking/updateParkingLot.php"
-    static let updatePlates: String = "http://31.210.210.172/Parking/updatePlates.php"
+    static let login: String = "https://mpaefcslpsoskmjikdn.ru/Parking/login.php"
+    static let registration: String = "https://mpaefcslpsoskmjikdn.ru/Parking/registration.php"
+    static let updateFIO: String = "https://mpaefcslpsoskmjikdn.ru/Parking/updateFIO.php"
+    static let payment: String = "https://mpaefcslpsoskmjikdn.ru/Parking/payment.php"
+    static let addCar: String = "https://mpaefcslpsoskmjikdn.ru/Parking/addCar.php"
+    static let deleteCar: String = "https://mpaefcslpsoskmjikdn.ru/Parking/deleteCar.php"
+    static let updateCards: String = "https://mpaefcslpsoskmjikdn.ru/Parking/updateCards.php"
+    static let updateTariff: String = "https://mpaefcslpsoskmjikdn.ru/Parking/updateTariff.php"
+    static let updateAutoPay: String = "https://mpaefcslpsoskmjikdn.ru/Parking/updateAutoPay.php"
+    static let getAvailableParkingLots: String = "https://mpaefcslpsoskmjikdn.ru/Parking/getAvailableParkingLots.php"
+    static let updateParkingLot: String = "https://mpaefcslpsoskmjikdn.ru/Parking/updateParkingLot.php"
+    static let updatePlates: String = "https://mpaefcslpsoskmjikdn.ru/Parking/updatePlates.php"
 }
 
 class Network {
