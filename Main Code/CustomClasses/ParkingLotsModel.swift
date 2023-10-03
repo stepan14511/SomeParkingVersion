@@ -11,6 +11,7 @@ import Foundation
 struct ParkingLot: Codable {
     var id: String?
     var type: Int8?
+    // 1 - стандартное, 2 - увеличенное, 3 - на 2 машины
 }
 
 class ParkingLotsModel {
